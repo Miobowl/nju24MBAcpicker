@@ -1,0 +1,18 @@
+# macOS
+.DS_Store
+
+# Temporary files
+tmpclaude-*
+NDH6SA~M
+
+# Excel source files (optional - uncomment if you don't want to include)
+# *.xlsx
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Node (if used later)
+node_modules/

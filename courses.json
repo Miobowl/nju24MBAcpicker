@@ -1,0 +1,2434 @@
+[
+  {
+    "id": 1,
+    "name": "职场超能力：AI 高效工作流实战-1班",
+    "sessions": [
+      {
+        "date": "2026-03-05",
+        "time": "9:00-12:00",
+        "weekday": "四",
+        "location": "907教室"
+      },
+      {
+        "date": "2026-03-05",
+        "time": "13:30-17:30",
+        "weekday": "四",
+        "location": "907教室"
+      },
+      {
+        "date": "2026-03-06",
+        "time": "9:00-12:00",
+        "weekday": "五",
+        "location": "907教室"
+      },
+      {
+        "date": "2026-03-06",
+        "time": "13:30-17:30",
+        "weekday": "五",
+        "location": "907教室"
+      }
+    ],
+    "is_online": false,
+    "credits": 1,
+    "start_date": "2026-03-05",
+    "end_date": "2026-03-06"
+  },
+  {
+    "id": 2,
+    "name": "一带一路与区域经济",
+    "sessions": [
+      {
+        "date": "2026-03-07",
+        "time": "9:00-12:00",
+        "weekday": "六",
+        "location": "201教室"
+      },
+      {
+        "date": "2026-03-07",
+        "time": "13:30-17:30",
+        "weekday": "六",
+        "location": "201教室"
+      },
+      {
+        "date": "2026-03-08",
+        "time": "9:00-12:00",
+        "weekday": "日",
+        "location": "201教室"
+      },
+      {
+        "date": "2026-03-08",
+        "time": "13:30-17:30",
+        "weekday": "日",
+        "location": "201教室"
+      }
+    ],
+    "is_online": false,
+    "credits": 1,
+    "start_date": "2026-03-07",
+    "end_date": "2026-03-08"
+  },
+  {
+    "id": 3,
+    "name": "企业发展环境与战略决策",
+    "sessions": [
+      {
+        "date": "2026-03-07",
+        "time": "9:00-12:00",
+        "weekday": "六",
+        "location": "202教室"
+      },
+      {
+        "date": "2026-03-07",
+        "time": "13:30-17:30",
+        "weekday": "六",
+        "location": "202教室"
+      },
+      {
+        "date": "2026-03-08",
+        "time": "9:00-12:00",
+        "weekday": "日",
+        "location": "202教室"
+      },
+      {
+        "date": "2026-03-08",
+        "time": "13:30-17:30",
+        "weekday": "日",
+        "location": "202教室"
+      }
+    ],
+    "is_online": false,
+    "credits": 1,
+    "start_date": "2026-03-07",
+    "end_date": "2026-03-08"
+  },
+  {
+    "id": 4,
+    "name": "资本市场与投融资策略",
+    "sessions": [
+      {
+        "date": "2026-03-07",
+        "time": "9:00-12:00",
+        "weekday": "六",
+        "location": "402教室"
+      },
+      {
+        "date": "2026-03-07",
+        "time": "13:30-17:30",
+        "weekday": "六",
+        "location": "402教室"
+      },
+      {
+        "date": "2026-03-08",
+        "time": "9:00-12:00",
+        "weekday": "日",
+        "location": "402教室"
+      },
+      {
+        "date": "2026-03-08",
+        "time": "13:30-17:30",
+        "weekday": "日",
+        "location": "402教室"
+      }
+    ],
+    "is_online": false,
+    "credits": 1,
+    "start_date": "2026-03-07",
+    "end_date": "2026-03-08"
+  },
+  {
+    "id": 5,
+    "name": "中国文化与管理",
+    "sessions": [
+      {
+        "date": "2026-03-07",
+        "time": "9:00-12:00",
+        "weekday": "六",
+        "location": "610教室"
+      },
+      {
+        "date": "2026-03-07",
+        "time": "13:30-17:30",
+        "weekday": "六",
+        "location": "610教室"
+      },
+      {
+        "date": "2026-03-08",
+        "time": "9:00-12:00",
+        "weekday": "日",
+        "location": "610教室"
+      },
+      {
+        "date": "2026-03-08",
+        "time": "13:30-17:30",
+        "weekday": "日",
+        "location": "610教室"
+      }
+    ],
+    "is_online": false,
+    "credits": 1,
+    "start_date": "2026-03-07",
+    "end_date": "2026-03-08"
+  },
+  {
+    "id": 6,
+    "name": "家庭金融与财富管理-1班",
+    "sessions": [
+      {
+        "date": "2026-03-21",
+        "time": "9:00-12:00",
+        "weekday": "六",
+        "location": "202教室"
+      },
+      {
+        "date": "2026-03-21",
+        "time": "13:30-17:30",
+        "weekday": "六",
+        "location": "202教室"
+      },
+      {
+        "date": "2026-03-28",
+        "time": "9:00-12:00",
+        "weekday": "六",
+        "location": "202教室"
+      },
+      {
+        "date": "2026-03-28",
+        "time": "13:30-17:30",
+        "weekday": "六",
+        "location": "202教室"
+      }
+    ],
+    "is_online": false,
+    "credits": 1,
+    "start_date": "2026-03-21",
+    "end_date": "2026-03-28"
+  },
+  {
+    "id": 7,
+    "name": "葡萄酒品鉴与赏析-1班",
+    "sessions": [
+      {
+        "date": "2026-03-21",
+        "time": "9:00-12:00",
+        "weekday": "六",
+        "location": "402教室"
+      },
+      {
+        "date": "2026-03-21",
+        "time": "13:30-17:30",
+        "weekday": "六",
+        "location": "402教室"
+      },
+      {
+        "date": "2026-03-22",
+        "time": "9:00-12:00",
+        "weekday": "日",
+        "location": "402教室"
+      },
+      {
+        "date": "2026-03-22",
+        "time": "13:30-17:30",
+        "weekday": "日",
+        "location": "402教室"
+      }
+    ],
+    "is_online": false,
+    "credits": 1,
+    "start_date": "2026-03-21",
+    "end_date": "2026-03-22"
+  },
+  {
+    "id": 8,
+    "name": "世界历史中的大国争霸与兴衰-1班",
+    "sessions": [
+      {
+        "date": "2026-03-21",
+        "time": "9:00-12:00",
+        "weekday": "六",
+        "location": "607教室"
+      },
+      {
+        "date": "2026-03-21",
+        "time": "13:30-17:30",
+        "weekday": "六",
+        "location": "607教室"
+      },
+      {
+        "date": "2026-03-28",
+        "time": "9:00-12:00",
+        "weekday": "六",
+        "location": "607教室"
+      },
+      {
+        "date": "2026-03-28",
+        "time": "13:30-17:30",
+        "weekday": "六",
+        "location": "607教室"
+      }
+    ],
+    "is_online": false,
+    "credits": 1,
+    "start_date": "2026-03-21",
+    "end_date": "2026-03-28"
+  },
+  {
+    "id": 9,
+    "name": "Project Management in Context",
+    "sessions": [
+      {
+        "date": "2026-03-21",
+        "time": "9:00-12:00",
+        "weekday": "六",
+        "location": "610教室"
+      },
+      {
+        "date": "2026-03-21",
+        "time": "13:30-17:30",
+        "weekday": "六",
+        "location": "610教室"
+      },
+      {
+        "date": "2026-03-22",
+        "time": "9:00-12:00",
+        "weekday": "日",
+        "location": "610教室"
+      },
+      {
+        "date": "2026-03-22",
+        "time": "13:30-17:30",
+        "weekday": "日",
+        "location": "610教室"
+      }
+    ],
+    "is_online": false,
+    "credits": 1,
+    "start_date": "2026-03-21",
+    "end_date": "2026-03-22"
+  },
+  {
+    "id": 10,
+    "name": "基于Excel的应用商务统计",
+    "sessions": [
+      {
+        "date": "2026-03-21",
+        "time": "9:00-12:00",
+        "weekday": "六",
+        "location": "907教室"
+      },
+      {
+        "date": "2026-03-21",
+        "time": "13:30-17:30",
+        "weekday": "六",
+        "location": "907教室"
+      },
+      {
+        "date": "2026-03-28",
+        "time": "9:00-12:00",
+        "weekday": "六",
+        "location": "907教室"
+      },
+      {
+        "date": "2026-03-28",
+        "time": "13:30-17:30",
+        "weekday": "六",
+        "location": "907教室"
+      }
+    ],
+    "is_online": false,
+    "credits": 1,
+    "start_date": "2026-03-21",
+    "end_date": "2026-03-28"
+  },
+  {
+    "id": 11,
+    "name": "生命科学与健康产业的商业模式创新",
+    "sessions": [
+      {
+        "date": "2026-03-22",
+        "time": "9:00-12:00",
+        "weekday": "日",
+        "location": "201教室"
+      },
+      {
+        "date": "2026-03-22",
+        "time": "13:30-17:30",
+        "weekday": "日",
+        "location": "201教室"
+      },
+      {
+        "date": "2026-03-29",
+        "time": "9:00-12:00",
+        "weekday": "日",
+        "location": "201教室"
+      },
+      {
+        "date": "2026-03-29",
+        "time": "13:30-17:30",
+        "weekday": "日",
+        "location": "201教室"
+      }
+    ],
+    "is_online": false,
+    "credits": 1,
+    "start_date": "2026-03-22",
+    "end_date": "2026-03-29"
+  },
+  {
+    "id": 12,
+    "name": "数智时代的公司战略",
+    "sessions": [
+      {
+        "date": "2026-03-22",
+        "time": "9:00-12:00",
+        "weekday": "日",
+        "location": "202教室"
+      },
+      {
+        "date": "2026-03-22",
+        "time": "13:30-17:30",
+        "weekday": "日",
+        "location": "202教室"
+      },
+      {
+        "date": "2026-03-29",
+        "time": "9:00-12:00",
+        "weekday": "日",
+        "location": "202教室"
+      },
+      {
+        "date": "2026-03-29",
+        "time": "13:30-17:30",
+        "weekday": "日",
+        "location": "202教室"
+      }
+    ],
+    "is_online": false,
+    "credits": 1,
+    "start_date": "2026-03-22",
+    "end_date": "2026-03-29"
+  },
+  {
+    "id": 13,
+    "name": "Business Communication across Cultures",
+    "sessions": [
+      {
+        "date": "2026-03-22",
+        "time": "9:00-12:00",
+        "weekday": "日",
+        "location": "607教室"
+      },
+      {
+        "date": "2026-03-22",
+        "time": "13:30-17:30",
+        "weekday": "日",
+        "location": "607教室"
+      },
+      {
+        "date": "2026-03-29",
+        "time": "9:00-12:00",
+        "weekday": "日",
+        "location": "607教室"
+      },
+      {
+        "date": "2026-03-29",
+        "time": "13:30-17:30",
+        "weekday": "日",
+        "location": "607教室"
+      }
+    ],
+    "is_online": false,
+    "credits": 1,
+    "start_date": "2026-03-22",
+    "end_date": "2026-03-29"
+  },
+  {
+    "id": 14,
+    "name": "Investment and Risk Management Options in USA （线上）",
+    "sessions": [
+      {
+        "date": "2026-03-28",
+        "time": "9:00-12:00",
+        "weekday": "六",
+        "location": "线上"
+      },
+      {
+        "date": "2026-03-28",
+        "time": "13:30-17:30",
+        "weekday": "六",
+        "location": "线上"
+      },
+      {
+        "date": "2026-03-29",
+        "time": "9:00-12:00",
+        "weekday": "日",
+        "location": "线上"
+      },
+      {
+        "date": "2026-03-29",
+        "time": "13:30-17:30",
+        "weekday": "日",
+        "location": "线上"
+      }
+    ],
+    "is_online": true,
+    "credits": 1,
+    "start_date": "2026-03-28",
+    "end_date": "2026-03-29"
+  },
+  {
+    "id": 15,
+    "name": "人工智能在商业中应用",
+    "sessions": [
+      {
+        "date": "2026-03-28",
+        "time": "9:00-12:00",
+        "weekday": "六",
+        "location": "610教室"
+      },
+      {
+        "date": "2026-03-28",
+        "time": "13:30-17:30",
+        "weekday": "六",
+        "location": "610教室"
+      },
+      {
+        "date": "2026-03-29",
+        "time": "9:00-12:00",
+        "weekday": "日",
+        "location": "610教室"
+      },
+      {
+        "date": "2026-03-29",
+        "time": "13:30-17:30",
+        "weekday": "日",
+        "location": "610教室"
+      }
+    ],
+    "is_online": false,
+    "credits": 1,
+    "start_date": "2026-03-28",
+    "end_date": "2026-03-29"
+  },
+  {
+    "id": 16,
+    "name": "企业投融资及资本运作实战",
+    "sessions": [
+      {
+        "date": "2026-04-11",
+        "time": "9:00-12:00",
+        "weekday": "六",
+        "location": "102教室"
+      },
+      {
+        "date": "2026-04-11",
+        "time": "13:30-17:30",
+        "weekday": "六",
+        "location": "102教室"
+      },
+      {
+        "date": "2026-04-12",
+        "time": "9:00-12:00",
+        "weekday": "日",
+        "location": "102教室"
+      },
+      {
+        "date": "2026-04-12",
+        "time": "13:30-17:30",
+        "weekday": "日",
+        "location": "102教室"
+      }
+    ],
+    "is_online": false,
+    "credits": 1,
+    "start_date": "2026-04-11",
+    "end_date": "2026-04-12"
+  },
+  {
+    "id": 17,
+    "name": "区块链与数字货币",
+    "sessions": [
+      {
+        "date": "2026-04-11",
+        "time": "9:00-12:00",
+        "weekday": "六",
+        "location": "201教室"
+      },
+      {
+        "date": "2026-04-11",
+        "time": "13:30-17:30",
+        "weekday": "六",
+        "location": "201教室"
+      },
+      {
+        "date": "2026-04-12",
+        "time": "9:00-12:00",
+        "weekday": "日",
+        "location": "201教室"
+      },
+      {
+        "date": "2026-04-12",
+        "time": "13:30-17:30",
+        "weekday": "日",
+        "location": "201教室"
+      }
+    ],
+    "is_online": false,
+    "credits": 1,
+    "start_date": "2026-04-11",
+    "end_date": "2026-04-12"
+  },
+  {
+    "id": 18,
+    "name": "制度创新与企业发展",
+    "sessions": [
+      {
+        "date": "2026-04-11",
+        "time": "9:00-12:00",
+        "weekday": "六",
+        "location": "202教室"
+      },
+      {
+        "date": "2026-04-11",
+        "time": "13:30-17:30",
+        "weekday": "六",
+        "location": "202教室"
+      },
+      {
+        "date": "2026-04-12",
+        "time": "9:00-12:00",
+        "weekday": "日",
+        "location": "202教室"
+      },
+      {
+        "date": "2026-04-12",
+        "time": "13:30-17:30",
+        "weekday": "日",
+        "location": "202教室"
+      }
+    ],
+    "is_online": false,
+    "credits": 1,
+    "start_date": "2026-04-11",
+    "end_date": "2026-04-12"
+  },
+  {
+    "id": 19,
+    "name": "宝玉石鉴赏-1班",
+    "sessions": [
+      {
+        "date": "2026-04-11",
+        "time": "9:00-12:00",
+        "weekday": "六",
+        "location": "402教室"
+      },
+      {
+        "date": "2026-04-11",
+        "time": "13:30-17:30",
+        "weekday": "六",
+        "location": "402教室"
+      },
+      {
+        "date": "2026-04-12",
+        "time": "9:00-12:00",
+        "weekday": "日",
+        "location": "402教室"
+      },
+      {
+        "date": "2026-04-12",
+        "time": "13:30-17:30",
+        "weekday": "日",
+        "location": "402教室"
+      }
+    ],
+    "is_online": false,
+    "credits": 1,
+    "start_date": "2026-04-11",
+    "end_date": "2026-04-12"
+  },
+  {
+    "id": 20,
+    "name": "应用博弈论-1班",
+    "sessions": [
+      {
+        "date": "2026-04-11",
+        "time": "9:00-12:00",
+        "weekday": "六",
+        "location": "607教室"
+      },
+      {
+        "date": "2026-04-11",
+        "time": "13:30-17:30",
+        "weekday": "六",
+        "location": "607教室"
+      },
+      {
+        "date": "2026-04-12",
+        "time": "9:00-12:00",
+        "weekday": "日",
+        "location": "607教室"
+      },
+      {
+        "date": "2026-04-12",
+        "time": "13:30-17:30",
+        "weekday": "日",
+        "location": "607教室"
+      }
+    ],
+    "is_online": false,
+    "credits": 1,
+    "start_date": "2026-04-11",
+    "end_date": "2026-04-12"
+  },
+  {
+    "id": 21,
+    "name": "商业模式创新与设计",
+    "sessions": [
+      {
+        "date": "2026-04-11",
+        "time": "9:00-12:00",
+        "weekday": "六",
+        "location": "610教室"
+      },
+      {
+        "date": "2026-04-11",
+        "time": "13:30-17:30",
+        "weekday": "六",
+        "location": "610教室"
+      },
+      {
+        "date": "2026-04-12",
+        "time": "9:00-12:00",
+        "weekday": "日",
+        "location": "610教室"
+      },
+      {
+        "date": "2026-04-12",
+        "time": "13:30-17:30",
+        "weekday": "日",
+        "location": "610教室"
+      }
+    ],
+    "is_online": false,
+    "credits": 1,
+    "start_date": "2026-04-11",
+    "end_date": "2026-04-12"
+  },
+  {
+    "id": 22,
+    "name": "现代零售与实体零售转型",
+    "sessions": [
+      {
+        "date": "2026-04-18",
+        "time": "9:00-12:00",
+        "weekday": "六",
+        "location": "201教室"
+      },
+      {
+        "date": "2026-04-18",
+        "time": "13:30-17:30",
+        "weekday": "六",
+        "location": "201教室"
+      },
+      {
+        "date": "2026-04-19",
+        "time": "9:00-12:00",
+        "weekday": "日",
+        "location": "201教室"
+      },
+      {
+        "date": "2026-04-19",
+        "time": "13:30-17:30",
+        "weekday": "日",
+        "location": "201教室"
+      }
+    ],
+    "is_online": false,
+    "credits": 1,
+    "start_date": "2026-04-18",
+    "end_date": "2026-04-19"
+  },
+  {
+    "id": 23,
+    "name": "固定收益证券原理与应用",
+    "sessions": [
+      {
+        "date": "2026-04-18",
+        "time": "9:00-12:00",
+        "weekday": "六",
+        "location": "202教室"
+      },
+      {
+        "date": "2026-04-18",
+        "time": "13:30-17:30",
+        "weekday": "六",
+        "location": "202教室"
+      },
+      {
+        "date": "2026-04-19",
+        "time": "9:00-12:00",
+        "weekday": "日",
+        "location": "202教室"
+      },
+      {
+        "date": "2026-04-19",
+        "time": "13:30-17:30",
+        "weekday": "日",
+        "location": "202教室"
+      }
+    ],
+    "is_online": false,
+    "credits": 1,
+    "start_date": "2026-04-18",
+    "end_date": "2026-04-19"
+  },
+  {
+    "id": 24,
+    "name": "大数据时代的管理决策",
+    "sessions": [
+      {
+        "date": "2026-04-18",
+        "time": "9:00-12:00",
+        "weekday": "六",
+        "location": "402教室"
+      },
+      {
+        "date": "2026-04-18",
+        "time": "13:30-17:30",
+        "weekday": "六",
+        "location": "402教室"
+      },
+      {
+        "date": "2026-04-19",
+        "time": "9:00-12:00",
+        "weekday": "日",
+        "location": "402教室"
+      },
+      {
+        "date": "2026-04-19",
+        "time": "13:30-17:30",
+        "weekday": "日",
+        "location": "402教室"
+      }
+    ],
+    "is_online": false,
+    "credits": 1,
+    "start_date": "2026-04-18",
+    "end_date": "2026-04-19"
+  },
+  {
+    "id": 25,
+    "name": "品牌管理",
+    "sessions": [
+      {
+        "date": "2026-04-18",
+        "time": "9:00-12:00",
+        "weekday": "六",
+        "location": "607教室"
+      },
+      {
+        "date": "2026-04-18",
+        "time": "13:30-17:30",
+        "weekday": "六",
+        "location": "607教室"
+      },
+      {
+        "date": "2026-04-19",
+        "time": "9:00-12:00",
+        "weekday": "日",
+        "location": "607教室"
+      },
+      {
+        "date": "2026-04-19",
+        "time": "13:30-17:30",
+        "weekday": "日",
+        "location": "607教室"
+      }
+    ],
+    "is_online": false,
+    "credits": 1,
+    "start_date": "2026-04-18",
+    "end_date": "2026-04-19"
+  },
+  {
+    "id": 26,
+    "name": "消费研究-1班",
+    "sessions": [
+      {
+        "date": "2026-04-18",
+        "time": "9:00-12:00",
+        "weekday": "六",
+        "location": "610教室"
+      },
+      {
+        "date": "2026-04-18",
+        "time": "13:30-17:30",
+        "weekday": "六",
+        "location": "610教室"
+      },
+      {
+        "date": "2026-04-19",
+        "time": "9:00-12:00",
+        "weekday": "日",
+        "location": "610教室"
+      },
+      {
+        "date": "2026-04-19",
+        "time": "13:30-17:30",
+        "weekday": "日",
+        "location": "610教室"
+      }
+    ],
+    "is_online": false,
+    "credits": 1,
+    "start_date": "2026-04-18",
+    "end_date": "2026-04-19"
+  },
+  {
+    "id": 27,
+    "name": "赛艇与团队领导力-1班",
+    "sessions": [
+      {
+        "date": "2026-04-25",
+        "time": "9:00-12:00",
+        "weekday": "六",
+        "location": "秦淮河赛 艇俱乐部"
+      },
+      {
+        "date": "2026-04-25",
+        "time": "13:30-17:30",
+        "weekday": "六",
+        "location": "秦淮河赛 艇俱乐部"
+      },
+      {
+        "date": "2026-04-26",
+        "time": "9:00-12:00",
+        "weekday": "日",
+        "location": "202教室"
+      },
+      {
+        "date": "2026-04-26",
+        "time": "13:30-17:30",
+        "weekday": "日",
+        "location": "202教室"
+      }
+    ],
+    "is_online": false,
+    "credits": 1,
+    "start_date": "2026-04-25",
+    "end_date": "2026-04-26"
+  },
+  {
+    "id": 28,
+    "name": "人才领先战略",
+    "sessions": [
+      {
+        "date": "2026-04-25",
+        "time": "9:00-12:00",
+        "weekday": "六",
+        "location": "301教室"
+      },
+      {
+        "date": "2026-04-25",
+        "time": "13:30-17:30",
+        "weekday": "六",
+        "location": "301教室"
+      },
+      {
+        "date": "2026-04-26",
+        "time": "9:00-12:00",
+        "weekday": "日",
+        "location": "301教室"
+      },
+      {
+        "date": "2026-04-26",
+        "time": "13:30-17:30",
+        "weekday": "日",
+        "location": "301教室"
+      }
+    ],
+    "is_online": false,
+    "credits": 1,
+    "start_date": "2026-04-25",
+    "end_date": "2026-04-26"
+  },
+  {
+    "id": 29,
+    "name": "公司层次的战略",
+    "sessions": [
+      {
+        "date": "2026-04-25",
+        "time": "9:00-12:00",
+        "weekday": "六",
+        "location": "302教室"
+      },
+      {
+        "date": "2026-04-25",
+        "time": "13:30-17:30",
+        "weekday": "六",
+        "location": "302教室"
+      },
+      {
+        "date": "2026-04-26",
+        "time": "9:00-12:00",
+        "weekday": "日",
+        "location": "302教室"
+      },
+      {
+        "date": "2026-04-26",
+        "time": "13:30-17:30",
+        "weekday": "日",
+        "location": "302教室"
+      }
+    ],
+    "is_online": false,
+    "credits": 1,
+    "start_date": "2026-04-25",
+    "end_date": "2026-04-26"
+  },
+  {
+    "id": 30,
+    "name": "Understanding the Chinese Economy for Business and Investment Decision-making",
+    "sessions": [
+      {
+        "date": "2026-04-25",
+        "time": "9:00-12:00",
+        "weekday": "六",
+        "location": "402教室"
+      },
+      {
+        "date": "2026-04-25",
+        "time": "13:30-17:30",
+        "weekday": "六",
+        "location": "402教室"
+      },
+      {
+        "date": "2026-04-26",
+        "time": "9:00-12:00",
+        "weekday": "日",
+        "location": "402教室"
+      },
+      {
+        "date": "2026-04-26",
+        "time": "13:30-17:30",
+        "weekday": "日",
+        "location": "402教室"
+      }
+    ],
+    "is_online": false,
+    "credits": 1,
+    "start_date": "2026-04-25",
+    "end_date": "2026-04-26"
+  },
+  {
+    "id": 31,
+    "name": "人工智能与科技创新",
+    "sessions": [
+      {
+        "date": "2026-04-25",
+        "time": "9:00-12:00",
+        "weekday": "六",
+        "location": "607教室"
+      },
+      {
+        "date": "2026-04-25",
+        "time": "13:30-17:30",
+        "weekday": "六",
+        "location": "607教室"
+      },
+      {
+        "date": "2026-04-26",
+        "time": "9:00-12:00",
+        "weekday": "日",
+        "location": "607教室"
+      },
+      {
+        "date": "2026-04-26",
+        "time": "13:30-17:30",
+        "weekday": "日",
+        "location": "607教室"
+      }
+    ],
+    "is_online": false,
+    "credits": 1,
+    "start_date": "2026-04-25",
+    "end_date": "2026-04-26"
+  },
+  {
+    "id": 32,
+    "name": "宝玉石鉴赏-2班",
+    "sessions": [
+      {
+        "date": "2026-04-25",
+        "time": "9:00-12:00",
+        "weekday": "六",
+        "location": "610教室"
+      },
+      {
+        "date": "2026-04-25",
+        "time": "13:30-17:30",
+        "weekday": "六",
+        "location": "610教室"
+      },
+      {
+        "date": "2026-04-26",
+        "time": "9:00-12:00",
+        "weekday": "日",
+        "location": "610教室"
+      },
+      {
+        "date": "2026-04-26",
+        "time": "13:30-17:30",
+        "weekday": "日",
+        "location": "610教室"
+      }
+    ],
+    "is_online": false,
+    "credits": 1,
+    "start_date": "2026-04-25",
+    "end_date": "2026-04-26"
+  },
+  {
+    "id": 33,
+    "name": "赛艇与团队领导力-2班",
+    "sessions": [
+      {
+        "date": "2026-05-23",
+        "time": "9:00-12:00",
+        "weekday": "六",
+        "location": "秦淮河赛 艇俱乐部"
+      },
+      {
+        "date": "2026-05-23",
+        "time": "13:30-17:30",
+        "weekday": "六",
+        "location": "秦淮河赛 艇俱乐部"
+      },
+      {
+        "date": "2026-05-24",
+        "time": "9:00-12:00",
+        "weekday": "日",
+        "location": "201教室"
+      },
+      {
+        "date": "2026-05-24",
+        "time": "13:30-17:30",
+        "weekday": "日",
+        "location": "201教室"
+      }
+    ],
+    "is_online": false,
+    "credits": 1,
+    "start_date": "2026-05-23",
+    "end_date": "2026-05-24"
+  },
+  {
+    "id": 34,
+    "name": "商业银行运作与管理",
+    "sessions": [
+      {
+        "date": "2026-05-23",
+        "time": "9:00-12:00",
+        "weekday": "六",
+        "location": "202教室"
+      },
+      {
+        "date": "2026-05-23",
+        "time": "13:30-17:30",
+        "weekday": "六",
+        "location": "202教室"
+      },
+      {
+        "date": "2026-05-24",
+        "time": "9:00-12:00",
+        "weekday": "日",
+        "location": "202教室"
+      },
+      {
+        "date": "2026-05-24",
+        "time": "13:30-17:30",
+        "weekday": "日",
+        "location": "202教室"
+      }
+    ],
+    "is_online": false,
+    "credits": 1,
+    "start_date": "2026-05-23",
+    "end_date": "2026-05-24"
+  },
+  {
+    "id": 35,
+    "name": "电子商务商业模式、战略与运营",
+    "sessions": [
+      {
+        "date": "2026-05-23",
+        "time": "9:00-12:00",
+        "weekday": "六",
+        "location": "302教室"
+      },
+      {
+        "date": "2026-05-23",
+        "time": "13:30-17:30",
+        "weekday": "六",
+        "location": "302教室"
+      },
+      {
+        "date": "2026-05-30",
+        "time": "9:00-12:00",
+        "weekday": "六",
+        "location": "302教室"
+      },
+      {
+        "date": "2026-05-30",
+        "time": "13:30-17:30",
+        "weekday": "六",
+        "location": "302教室"
+      }
+    ],
+    "is_online": false,
+    "credits": 1,
+    "start_date": "2026-05-23",
+    "end_date": "2026-05-30"
+  },
+  {
+    "id": 36,
+    "name": "葡萄酒品鉴与赏析-2班",
+    "sessions": [
+      {
+        "date": "2026-05-23",
+        "time": "9:00-12:00",
+        "weekday": "六",
+        "location": "402教室"
+      },
+      {
+        "date": "2026-05-23",
+        "time": "13:30-17:30",
+        "weekday": "六",
+        "location": "402教室"
+      },
+      {
+        "date": "2026-05-24",
+        "time": "9:00-12:00",
+        "weekday": "日",
+        "location": "402教室"
+      },
+      {
+        "date": "2026-05-24",
+        "time": "13:30-17:30",
+        "weekday": "日",
+        "location": "402教室"
+      }
+    ],
+    "is_online": false,
+    "credits": 1,
+    "start_date": "2026-05-23",
+    "end_date": "2026-05-24"
+  },
+  {
+    "id": 37,
+    "name": "先秦诸子与中国古代政治思想-1班",
+    "sessions": [
+      {
+        "date": "2026-05-23",
+        "time": "9:00-12:00",
+        "weekday": "六",
+        "location": "607教室"
+      },
+      {
+        "date": "2026-05-23",
+        "time": "13:30-17:30",
+        "weekday": "六",
+        "location": "607教室"
+      },
+      {
+        "date": "2026-05-24",
+        "time": "9:00-12:00",
+        "weekday": "日",
+        "location": "607教室"
+      },
+      {
+        "date": "2026-05-24",
+        "time": "13:30-17:30",
+        "weekday": "日",
+        "location": "607教室"
+      }
+    ],
+    "is_online": false,
+    "credits": 1,
+    "start_date": "2026-05-23",
+    "end_date": "2026-05-24"
+  },
+  {
+    "id": 38,
+    "name": "有效管理沟通-1班",
+    "sessions": [
+      {
+        "date": "2026-05-23",
+        "time": "9:00-12:00",
+        "weekday": "六",
+        "location": "610教室"
+      },
+      {
+        "date": "2026-05-23",
+        "time": "13:30-17:30",
+        "weekday": "六",
+        "location": "610教室"
+      },
+      {
+        "date": "2026-05-24",
+        "time": "9:00-12:00",
+        "weekday": "日",
+        "location": "610教室"
+      },
+      {
+        "date": "2026-05-24",
+        "time": "13:30-17:30",
+        "weekday": "日",
+        "location": "610教室"
+      }
+    ],
+    "is_online": false,
+    "credits": 1,
+    "start_date": "2026-05-23",
+    "end_date": "2026-05-24"
+  },
+  {
+    "id": 41,
+    "name": "家庭金融与财富管理-2班",
+    "sessions": [
+      {
+        "date": "2026-05-24",
+        "time": "9:00-12:00",
+        "weekday": "日",
+        "location": "302教室"
+      },
+      {
+        "date": "2026-05-24",
+        "time": "13:30-17:30",
+        "weekday": "日",
+        "location": "302教室"
+      },
+      {
+        "date": "2026-05-31",
+        "time": "9:00-12:00",
+        "weekday": "日",
+        "location": "302教室"
+      },
+      {
+        "date": "2026-05-31",
+        "time": "13:30-17:30",
+        "weekday": "日",
+        "location": "302教室"
+      }
+    ],
+    "is_online": false,
+    "credits": 1,
+    "start_date": "2026-05-24",
+    "end_date": "2026-05-31"
+  },
+  {
+    "id": 39,
+    "name": "行业前沿课：制造业",
+    "sessions": [
+      {
+        "date": "2026-05-30",
+        "time": "9:00-12:00",
+        "weekday": "六",
+        "location": "201教室"
+      },
+      {
+        "date": "2026-05-30",
+        "time": "13:30-17:30",
+        "weekday": "六",
+        "location": "201教室"
+      },
+      {
+        "date": "2026-05-31",
+        "time": "9:00-12:00",
+        "weekday": "日",
+        "location": "201教室"
+      },
+      {
+        "date": "2026-05-31",
+        "time": "13:30-17:30",
+        "weekday": "日",
+        "location": "201教室"
+      }
+    ],
+    "is_online": false,
+    "credits": 1,
+    "start_date": "2026-05-30",
+    "end_date": "2026-05-31"
+  },
+  {
+    "id": 40,
+    "name": "产品差异化与竞争战略",
+    "sessions": [
+      {
+        "date": "2026-05-30",
+        "time": "9:00-12:00",
+        "weekday": "六",
+        "location": "202教室"
+      },
+      {
+        "date": "2026-05-30",
+        "time": "13:30-17:30",
+        "weekday": "六",
+        "location": "202教室"
+      },
+      {
+        "date": "2026-05-31",
+        "time": "9:00-12:00",
+        "weekday": "日",
+        "location": "202教室"
+      },
+      {
+        "date": "2026-05-31",
+        "time": "13:30-17:30",
+        "weekday": "日",
+        "location": "202教室"
+      }
+    ],
+    "is_online": false,
+    "credits": 1,
+    "start_date": "2026-05-30",
+    "end_date": "2026-05-31"
+  },
+  {
+    "id": 42,
+    "name": "日本制造产业现状与经营管理之道",
+    "sessions": [
+      {
+        "date": "2026-05-30",
+        "time": "9:00-12:00",
+        "weekday": "六",
+        "location": "402教室"
+      },
+      {
+        "date": "2026-05-30",
+        "time": "13:30-17:30",
+        "weekday": "六",
+        "location": "402教室"
+      },
+      {
+        "date": "2026-05-31",
+        "time": "9:00-12:00",
+        "weekday": "日",
+        "location": "402教室"
+      },
+      {
+        "date": "2026-05-31",
+        "time": "13:30-17:30",
+        "weekday": "日",
+        "location": "402教室"
+      }
+    ],
+    "is_online": false,
+    "credits": 1,
+    "start_date": "2026-05-30",
+    "end_date": "2026-05-31"
+  },
+  {
+    "id": 43,
+    "name": "消费研究-2班",
+    "sessions": [
+      {
+        "date": "2026-05-30",
+        "time": "9:00-12:00",
+        "weekday": "六",
+        "location": "610教室"
+      },
+      {
+        "date": "2026-05-30",
+        "time": "13:30-17:30",
+        "weekday": "六",
+        "location": "610教室"
+      },
+      {
+        "date": "2026-05-31",
+        "time": "9:00-12:00",
+        "weekday": "日",
+        "location": "610教室"
+      },
+      {
+        "date": "2026-05-31",
+        "time": "13:30-17:30",
+        "weekday": "日",
+        "location": "610教室"
+      }
+    ],
+    "is_online": false,
+    "credits": 1,
+    "start_date": "2026-05-30",
+    "end_date": "2026-05-31"
+  },
+  {
+    "id": 44,
+    "name": "职场超能力：AI 高效工作流实战-2班",
+    "sessions": [
+      {
+        "date": "2026-05-30",
+        "time": "9:00-12:00",
+        "weekday": "六",
+        "location": "907教室"
+      },
+      {
+        "date": "2026-05-30",
+        "time": "13:30-17:30",
+        "weekday": "六",
+        "location": "907教室"
+      },
+      {
+        "date": "2026-05-31",
+        "time": "9:00-12:00",
+        "weekday": "日",
+        "location": "907教室"
+      },
+      {
+        "date": "2026-05-31",
+        "time": "13:30-17:30",
+        "weekday": "日",
+        "location": "907教室"
+      }
+    ],
+    "is_online": false,
+    "credits": 1,
+    "start_date": "2026-05-30",
+    "end_date": "2026-05-31"
+  },
+  {
+    "id": 45,
+    "name": "人工智能（深度学习与大语言模型）",
+    "sessions": [
+      {
+        "date": "2026-06-06",
+        "time": "9:00-12:00",
+        "weekday": "六",
+        "location": "201教室"
+      },
+      {
+        "date": "2026-06-06",
+        "time": "13:30-17:30",
+        "weekday": "六",
+        "location": "201教室"
+      },
+      {
+        "date": "2026-06-13",
+        "time": "9:00-12:00",
+        "weekday": "六",
+        "location": "201教室"
+      },
+      {
+        "date": "2026-06-13",
+        "time": "13:30-17:30",
+        "weekday": "六",
+        "location": "201教室"
+      }
+    ],
+    "is_online": false,
+    "credits": 1,
+    "start_date": "2026-06-06",
+    "end_date": "2026-06-13"
+  },
+  {
+    "id": 46,
+    "name": "世界历史中的大国争霸与兴衰-2班",
+    "sessions": [
+      {
+        "date": "2026-06-06",
+        "time": "9:00-12:00",
+        "weekday": "六",
+        "location": "202教室"
+      },
+      {
+        "date": "2026-06-06",
+        "time": "13:30-17:30",
+        "weekday": "六",
+        "location": "202教室"
+      },
+      {
+        "date": "2026-06-07",
+        "time": "9:00-12:00",
+        "weekday": "日",
+        "location": "202教室"
+      },
+      {
+        "date": "2026-06-07",
+        "time": "13:30-17:30",
+        "weekday": "日",
+        "location": "202教室"
+      }
+    ],
+    "is_online": false,
+    "credits": 1,
+    "start_date": "2026-06-06",
+    "end_date": "2026-06-07"
+  },
+  {
+    "id": 47,
+    "name": "从平庸到卓越：危机管理",
+    "sessions": [
+      {
+        "date": "2026-06-06",
+        "time": "9:00-12:00",
+        "weekday": "六",
+        "location": "402教室"
+      },
+      {
+        "date": "2026-06-06",
+        "time": "13:30-17:30",
+        "weekday": "六",
+        "location": "402教室"
+      },
+      {
+        "date": "2026-06-07",
+        "time": "9:00-12:00",
+        "weekday": "日",
+        "location": "402教室"
+      },
+      {
+        "date": "2026-06-07",
+        "time": "13:30-17:30",
+        "weekday": "日",
+        "location": "402教室"
+      }
+    ],
+    "is_online": false,
+    "credits": 1,
+    "start_date": "2026-06-06",
+    "end_date": "2026-06-07"
+  },
+  {
+    "id": 48,
+    "name": "舆情管理和应对",
+    "sessions": [
+      {
+        "date": "2026-06-06",
+        "time": "9:00-12:00",
+        "weekday": "六",
+        "location": "607教室"
+      },
+      {
+        "date": "2026-06-06",
+        "time": "13:30-17:30",
+        "weekday": "六",
+        "location": "607教室"
+      },
+      {
+        "date": "2026-06-07",
+        "time": "9:00-12:00",
+        "weekday": "日",
+        "location": "607教室"
+      },
+      {
+        "date": "2026-06-07",
+        "time": "13:30-17:30",
+        "weekday": "日",
+        "location": "607教室"
+      }
+    ],
+    "is_online": false,
+    "credits": 1,
+    "start_date": "2026-06-06",
+    "end_date": "2026-06-07"
+  },
+  {
+    "id": 49,
+    "name": "企业数位转型的双轨战略",
+    "sessions": [
+      {
+        "date": "2026-06-06",
+        "time": "9:00-12:00",
+        "weekday": "六",
+        "location": "610教室"
+      },
+      {
+        "date": "2026-06-06",
+        "time": "13:30-17:30",
+        "weekday": "六",
+        "location": "610教室"
+      },
+      {
+        "date": "2026-06-07",
+        "time": "9:00-12:00",
+        "weekday": "日",
+        "location": "610教室"
+      },
+      {
+        "date": "2026-06-07",
+        "time": "13:30-17:30",
+        "weekday": "日",
+        "location": "610教室"
+      }
+    ],
+    "is_online": false,
+    "credits": 1,
+    "start_date": "2026-06-06",
+    "end_date": "2026-06-07"
+  },
+  {
+    "id": 50,
+    "name": "项目管理思维和范式",
+    "sessions": [
+      {
+        "date": "2026-06-07",
+        "time": "9:00-12:00",
+        "weekday": "日",
+        "location": "201教室"
+      },
+      {
+        "date": "2026-06-07",
+        "time": "13:30-17:30",
+        "weekday": "日",
+        "location": "201教室"
+      },
+      {
+        "date": "2026-06-14",
+        "time": "9:00-12:00",
+        "weekday": "日",
+        "location": "201教室"
+      },
+      {
+        "date": "2026-06-14",
+        "time": "13:30-17:30",
+        "weekday": "日",
+        "location": "201教室"
+      }
+    ],
+    "is_online": false,
+    "credits": 1,
+    "start_date": "2026-06-07",
+    "end_date": "2026-06-14"
+  },
+  {
+    "id": 51,
+    "name": "保险经济学",
+    "sessions": [
+      {
+        "date": "2026-06-13",
+        "time": "9:00-12:00",
+        "weekday": "六",
+        "location": "202教室"
+      },
+      {
+        "date": "2026-06-13",
+        "time": "13:30-17:30",
+        "weekday": "六",
+        "location": "202教室"
+      },
+      {
+        "date": "2026-06-14",
+        "time": "9:00-12:00",
+        "weekday": "日",
+        "location": "202教室"
+      },
+      {
+        "date": "2026-06-14",
+        "time": "13:30-17:30",
+        "weekday": "日",
+        "location": "202教室"
+      }
+    ],
+    "is_online": false,
+    "credits": 1,
+    "start_date": "2026-06-13",
+    "end_date": "2026-06-14"
+  },
+  {
+    "id": 52,
+    "name": "世界发展报告解读",
+    "sessions": [
+      {
+        "date": "2026-06-13",
+        "time": "9:00-12:00",
+        "weekday": "六",
+        "location": "402教室"
+      },
+      {
+        "date": "2026-06-13",
+        "time": "13:30-17:30",
+        "weekday": "六",
+        "location": "402教室"
+      },
+      {
+        "date": "2026-06-14",
+        "time": "9:00-12:00",
+        "weekday": "日",
+        "location": "402教室"
+      },
+      {
+        "date": "2026-06-14",
+        "time": "13:30-17:30",
+        "weekday": "日",
+        "location": "402教室"
+      }
+    ],
+    "is_online": false,
+    "credits": 1,
+    "start_date": "2026-06-13",
+    "end_date": "2026-06-14"
+  },
+  {
+    "id": 53,
+    "name": "风险管理与决策思维-1班",
+    "sessions": [
+      {
+        "date": "2026-06-13",
+        "time": "9:00-12:00",
+        "weekday": "六",
+        "location": "607教室"
+      },
+      {
+        "date": "2026-06-13",
+        "time": "13:30-17:30",
+        "weekday": "六",
+        "location": "607教室"
+      },
+      {
+        "date": "2026-06-14",
+        "time": "9:00-12:00",
+        "weekday": "日",
+        "location": "607教室"
+      },
+      {
+        "date": "2026-06-14",
+        "time": "13:30-17:30",
+        "weekday": "日",
+        "location": "607教室"
+      }
+    ],
+    "is_online": false,
+    "credits": 1,
+    "start_date": "2026-06-13",
+    "end_date": "2026-06-14"
+  },
+  {
+    "id": 54,
+    "name": "并购、战略与公司治理",
+    "sessions": [
+      {
+        "date": "2026-06-13",
+        "time": "9:00-12:00",
+        "weekday": "六",
+        "location": "610教室"
+      },
+      {
+        "date": "2026-06-13",
+        "time": "13:30-17:30",
+        "weekday": "六",
+        "location": "610教室"
+      },
+      {
+        "date": "2026-06-14",
+        "time": "9:00-12:00",
+        "weekday": "日",
+        "location": "610教室"
+      },
+      {
+        "date": "2026-06-14",
+        "time": "13:30-17:30",
+        "weekday": "日",
+        "location": "610教室"
+      }
+    ],
+    "is_online": false,
+    "credits": 1,
+    "start_date": "2026-06-13",
+    "end_date": "2026-06-14"
+  },
+  {
+    "id": 55,
+    "name": "电商运营原理与实战",
+    "sessions": [
+      {
+        "date": "2026-06-27",
+        "time": "9:00-12:00",
+        "weekday": "六",
+        "location": "201教室"
+      },
+      {
+        "date": "2026-06-27",
+        "time": "13:30-16:30",
+        "weekday": "六",
+        "location": "201教室"
+      },
+      {
+        "date": "2026-06-28",
+        "time": "9:00-12:00",
+        "weekday": "日",
+        "location": "201教室"
+      },
+      {
+        "date": "2026-06-28",
+        "time": "13:30-16:30",
+        "weekday": "日",
+        "location": "201教室"
+      }
+    ],
+    "is_online": false,
+    "credits": 1,
+    "start_date": "2026-06-27",
+    "end_date": "2026-06-28"
+  },
+  {
+    "id": 56,
+    "name": "新消费与商业地产战略创新",
+    "sessions": [
+      {
+        "date": "2026-06-27",
+        "time": "9:00-12:00",
+        "weekday": "六",
+        "location": "202教室"
+      },
+      {
+        "date": "2026-06-27",
+        "time": "13:30-16:30",
+        "weekday": "六",
+        "location": "202教室"
+      },
+      {
+        "date": "2026-06-28",
+        "time": "9:00-12:00",
+        "weekday": "日",
+        "location": "202教室"
+      },
+      {
+        "date": "2026-06-28",
+        "time": "13:30-16:30",
+        "weekday": "日",
+        "location": "202教室"
+      }
+    ],
+    "is_online": false,
+    "credits": 1,
+    "start_date": "2026-06-27",
+    "end_date": "2026-06-28"
+  },
+  {
+    "id": 57,
+    "name": "从天使投资人角度看创业",
+    "sessions": [
+      {
+        "date": "2026-06-27",
+        "time": "9:00-12:00",
+        "weekday": "六",
+        "location": "607教室"
+      },
+      {
+        "date": "2026-06-27",
+        "time": "13:30-16:30",
+        "weekday": "六",
+        "location": "607教室"
+      },
+      {
+        "date": "2026-06-28",
+        "time": "9:00-12:00",
+        "weekday": "日",
+        "location": "607教室"
+      },
+      {
+        "date": "2026-06-28",
+        "time": "13:30-16:30",
+        "weekday": "日",
+        "location": "607教室"
+      }
+    ],
+    "is_online": false,
+    "credits": 1,
+    "start_date": "2026-06-27",
+    "end_date": "2026-06-28"
+  },
+  {
+    "id": 58,
+    "name": "先秦诸子与中国古代政治思想-2班",
+    "sessions": [
+      {
+        "date": "2026-06-27",
+        "time": "9:00-12:00",
+        "weekday": "六",
+        "location": "610教室"
+      },
+      {
+        "date": "2026-06-27",
+        "time": "13:30-16:30",
+        "weekday": "六",
+        "location": "610教室"
+      },
+      {
+        "date": "2026-06-28",
+        "time": "9:00-12:00",
+        "weekday": "日",
+        "location": "610教室"
+      },
+      {
+        "date": "2026-06-28",
+        "time": "13:30-16:30",
+        "weekday": "日",
+        "location": "610教室"
+      }
+    ],
+    "is_online": false,
+    "credits": 1,
+    "start_date": "2026-06-27",
+    "end_date": "2026-06-28"
+  },
+  {
+    "id": 59,
+    "name": "职场超能力：AI 高效工作流实战-3班",
+    "sessions": [
+      {
+        "date": "2026-06-27",
+        "time": "9:00-12:00",
+        "weekday": "六",
+        "location": "907教室"
+      },
+      {
+        "date": "2026-06-27",
+        "time": "13:30-16:30",
+        "weekday": "六",
+        "location": "907教室"
+      },
+      {
+        "date": "2026-06-28",
+        "time": "9:00-12:00",
+        "weekday": "日",
+        "location": "907教室"
+      },
+      {
+        "date": "2026-06-28",
+        "time": "13:30-16:30",
+        "weekday": "日",
+        "location": "907教室"
+      }
+    ],
+    "is_online": false,
+    "credits": 1,
+    "start_date": "2026-06-27",
+    "end_date": "2026-06-28"
+  },
+  {
+    "id": 64,
+    "name": "Management of Information Systems（线上）",
+    "sessions": [
+      {
+        "date": "2026-07-03",
+        "time": "13:30-16:30",
+        "weekday": "五",
+        "location": "线上"
+      },
+      {
+        "date": "2026-07-03",
+        "time": "18:30-21:30",
+        "weekday": "五",
+        "location": "线上"
+      },
+      {
+        "date": "2026-07-04",
+        "time": "9:00-12:00",
+        "weekday": "六",
+        "location": "线上"
+      },
+      {
+        "date": "2026-07-04",
+        "time": "13:30-17:30",
+        "weekday": "六",
+        "location": "线上"
+      },
+      {
+        "date": "2026-07-04",
+        "time": "18:30-21:30",
+        "weekday": "六",
+        "location": "线上"
+      },
+      {
+        "date": "2026-07-05",
+        "time": "9:00-12:00",
+        "weekday": "日",
+        "location": "线上"
+      },
+      {
+        "date": "2026-07-05",
+        "time": "13:30-17:30",
+        "weekday": "日",
+        "location": "线上"
+      }
+    ],
+    "is_online": true,
+    "credits": 2,
+    "start_date": "2026-07-03",
+    "end_date": "2026-07-05"
+  },
+  {
+    "id": 60,
+    "name": "金融科技",
+    "sessions": [
+      {
+        "date": "2026-07-04",
+        "time": "9:00-12:00",
+        "weekday": "六",
+        "location": "202教室"
+      },
+      {
+        "date": "2026-07-04",
+        "time": "13:30-17:30",
+        "weekday": "六",
+        "location": "202教室"
+      },
+      {
+        "date": "2026-07-05",
+        "time": "9:00-12:00",
+        "weekday": "日",
+        "location": "202教室"
+      },
+      {
+        "date": "2026-07-05",
+        "time": "13:30-17:30",
+        "weekday": "日",
+        "location": "202教室"
+      }
+    ],
+    "is_online": false,
+    "credits": 1,
+    "start_date": "2026-07-04",
+    "end_date": "2026-07-05"
+  },
+  {
+    "id": 61,
+    "name": "当代世界经济热点问题解析",
+    "sessions": [
+      {
+        "date": "2026-07-04",
+        "time": "9:00-12:00",
+        "weekday": "六",
+        "location": "402教室"
+      },
+      {
+        "date": "2026-07-04",
+        "time": "13:30-17:30",
+        "weekday": "六",
+        "location": "402教室"
+      },
+      {
+        "date": "2026-07-05",
+        "time": "9:00-12:00",
+        "weekday": "日",
+        "location": "402教室"
+      },
+      {
+        "date": "2026-07-05",
+        "time": "13:30-17:30",
+        "weekday": "日",
+        "location": "402教室"
+      }
+    ],
+    "is_online": false,
+    "credits": 1,
+    "start_date": "2026-07-04",
+    "end_date": "2026-07-05"
+  },
+  {
+    "id": 62,
+    "name": "增长：战略与市场营销融合的新结构",
+    "sessions": [
+      {
+        "date": "2026-07-04",
+        "time": "9:00-12:00",
+        "weekday": "六",
+        "location": "607教室"
+      },
+      {
+        "date": "2026-07-04",
+        "time": "13:30-17:30",
+        "weekday": "六",
+        "location": "607教室"
+      },
+      {
+        "date": "2026-07-05",
+        "time": "9:00-12:00",
+        "weekday": "日",
+        "location": "607教室"
+      },
+      {
+        "date": "2026-07-05",
+        "time": "13:30-17:30",
+        "weekday": "日",
+        "location": "607教室"
+      }
+    ],
+    "is_online": false,
+    "credits": 1,
+    "start_date": "2026-07-04",
+    "end_date": "2026-07-05"
+  },
+  {
+    "id": 63,
+    "name": "应用博弈论-2班",
+    "sessions": [
+      {
+        "date": "2026-07-04",
+        "time": "9:00-12:00",
+        "weekday": "六",
+        "location": "610教室"
+      },
+      {
+        "date": "2026-07-04",
+        "time": "13:30-17:30",
+        "weekday": "六",
+        "location": "610教室"
+      },
+      {
+        "date": "2026-07-05",
+        "time": "9:00-12:00",
+        "weekday": "日",
+        "location": "610教室"
+      },
+      {
+        "date": "2026-07-05",
+        "time": "13:30-17:30",
+        "weekday": "日",
+        "location": "610教室"
+      }
+    ],
+    "is_online": false,
+    "credits": 1,
+    "start_date": "2026-07-04",
+    "end_date": "2026-07-05"
+  },
+  {
+    "id": 65,
+    "name": "高绩效供应链管理",
+    "sessions": [
+      {
+        "date": "2026-07-09",
+        "time": "9:00-12:00",
+        "weekday": "四",
+        "location": "501教室"
+      },
+      {
+        "date": "2026-07-09",
+        "time": "13:30-17:30",
+        "weekday": "四",
+        "location": "501教室"
+      },
+      {
+        "date": "2026-07-10",
+        "time": "9:00-12:00",
+        "weekday": "五",
+        "location": "501教室"
+      },
+      {
+        "date": "2026-07-10",
+        "time": "13:30-17:30",
+        "weekday": "五",
+        "location": "501教室"
+      }
+    ],
+    "is_online": false,
+    "credits": 1,
+    "start_date": "2026-07-09",
+    "end_date": "2026-07-10"
+  },
+  {
+    "id": 66,
+    "name": "社会资本理论与实务",
+    "sessions": [
+      {
+        "date": "2026-07-11",
+        "time": "9:00-12:00",
+        "weekday": "六",
+        "location": "201教室"
+      },
+      {
+        "date": "2026-07-11",
+        "time": "13:30-17:30",
+        "weekday": "六",
+        "location": "201教室"
+      },
+      {
+        "date": "2026-07-12",
+        "time": "9:00-12:00",
+        "weekday": "日",
+        "location": "201教室"
+      },
+      {
+        "date": "2026-07-12",
+        "time": "13:30-17:30",
+        "weekday": "日",
+        "location": "201教室"
+      }
+    ],
+    "is_online": false,
+    "credits": 1,
+    "start_date": "2026-07-11",
+    "end_date": "2026-07-12"
+  },
+  {
+    "id": 67,
+    "name": "企业咨询理论与实务（曾鑫）",
+    "sessions": [
+      {
+        "date": "2026-07-11",
+        "time": "9:00-12:00",
+        "weekday": "六",
+        "location": "401教室"
+      },
+      {
+        "date": "2026-07-11",
+        "time": "13:30-17:30",
+        "weekday": "六",
+        "location": "401教室"
+      },
+      {
+        "date": "2026-07-12",
+        "time": "9:00-12:00",
+        "weekday": "日",
+        "location": "401教室"
+      },
+      {
+        "date": "2026-07-12",
+        "time": "13:30-17:30",
+        "weekday": "日",
+        "location": "401教室"
+      }
+    ],
+    "is_online": false,
+    "credits": 1,
+    "start_date": "2026-07-11",
+    "end_date": "2026-07-12"
+  },
+  {
+    "id": 68,
+    "name": "风险管理与决策思维-2班",
+    "sessions": [
+      {
+        "date": "2026-07-11",
+        "time": "9:00-12:00",
+        "weekday": "六",
+        "location": "607教室"
+      },
+      {
+        "date": "2026-07-11",
+        "time": "13:30-17:30",
+        "weekday": "六",
+        "location": "607教室"
+      },
+      {
+        "date": "2026-07-12",
+        "time": "9:00-12:00",
+        "weekday": "日",
+        "location": "607教室"
+      },
+      {
+        "date": "2026-07-12",
+        "time": "13:30-17:30",
+        "weekday": "日",
+        "location": "607教室"
+      }
+    ],
+    "is_online": false,
+    "credits": 1,
+    "start_date": "2026-07-11",
+    "end_date": "2026-07-12"
+  },
+  {
+    "id": 69,
+    "name": "有效管理沟通-2班",
+    "sessions": [
+      {
+        "date": "2026-07-11",
+        "time": "9:00-12:00",
+        "weekday": "六",
+        "location": "610教室"
+      },
+      {
+        "date": "2026-07-11",
+        "time": "13:30-17:30",
+        "weekday": "六",
+        "location": "610教室"
+      },
+      {
+        "date": "2026-07-12",
+        "time": "9:00-12:00",
+        "weekday": "日",
+        "location": "610教室"
+      },
+      {
+        "date": "2026-07-12",
+        "time": "13:30-17:30",
+        "weekday": "日",
+        "location": "610教室"
+      }
+    ],
+    "is_online": false,
+    "credits": 1,
+    "start_date": "2026-07-11",
+    "end_date": "2026-07-12"
+  },
+  {
+    "id": 70,
+    "name": "马克思主义与社会科学方法论（24级ABCD班）",
+    "sessions": [
+      {
+        "date": "2026-08-29",
+        "time": "9:00-12:00",
+        "weekday": "六",
+        "location": "待定"
+      },
+      {
+        "date": "2026-08-29",
+        "time": "13:30-17:30",
+        "weekday": "六",
+        "location": "待定"
+      },
+      {
+        "date": "2026-08-30",
+        "time": "9:00-12:00",
+        "weekday": "日",
+        "location": "待定"
+      },
+      {
+        "date": "2026-08-30",
+        "time": "13:30-17:30",
+        "weekday": "日",
+        "location": "待定"
+      }
+    ],
+    "is_online": false,
+    "credits": 1,
+    "start_date": "2026-08-29",
+    "end_date": "2026-08-30"
+  },
+  {
+    "id": 71,
+    "name": "马克思主义经典著作选读（24级EFG班）",
+    "sessions": [
+      {
+        "date": "2026-08-29",
+        "time": "9:00-12:00",
+        "weekday": "六",
+        "location": "210报告厅"
+      },
+      {
+        "date": "2026-08-29",
+        "time": "13:30-17:30",
+        "weekday": "六",
+        "location": "210报告厅"
+      },
+      {
+        "date": "2026-08-30",
+        "time": "9:00-12:00",
+        "weekday": "日",
+        "location": "210报告厅"
+      },
+      {
+        "date": "2026-08-30",
+        "time": "13:30-17:30",
+        "weekday": "日",
+        "location": "210报告厅"
+      }
+    ],
+    "is_online": false,
+    "credits": 1,
+    "start_date": "2026-08-29",
+    "end_date": "2026-08-30"
+  }
+]

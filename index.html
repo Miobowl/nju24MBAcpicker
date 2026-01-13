@@ -1,0 +1,2126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MBA选课助手 - 2025-2026学年第二学期</title>
+    <!-- 引入精选字体 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=ZCOOL+XiaoWei&display=swap" rel="stylesheet">
+    <style>
+        /* ═══════════════════════════════════════════════════════════════════
+           「墨韵学府」- 新文人商学风设计系统
+           ═══════════════════════════════════════════════════════════════════ */
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            /* 核心色彩 - 墨韵靛青 */
+            --ink-900: #0f172a;
+            --ink-800: #1e293b;
+            --ink-700: #334155;
+            --ink-600: #475569;
+            --ink-500: #64748b;
+            --ink-400: #94a3b8;
+            --ink-300: #cbd5e1;
+            --ink-200: #e2e8f0;
+            --ink-100: #f1f5f9;
+
+            /* 宣纸白 - 温暖的背景 */
+            --paper: #faf9f7;
+            --paper-warm: #f5f3ef;
+            --paper-cream: #fffef9;
+
+            /* 暖金点缀 */
+            --gold: #b8860b;
+            --gold-light: #d4a574;
+            --gold-glow: rgba(184, 134, 11, 0.15);
+            --gold-border: rgba(184, 134, 11, 0.3);
+
+            /* 朱砂红 - 必选 */
+            --vermilion: #c41e3a;
+            --vermilion-light: #dc143c;
+            --vermilion-bg: #fef2f2;
+
+            /* 靛青蓝 - 想选 */
+            --indigo: #1e3a5f;
+            --indigo-light: #2563eb;
+            --indigo-bg: #eff6ff;
+
+            /* 墨灰 - 可选 */
+            --slate: #64748b;
+            --slate-light: #94a3b8;
+            --slate-bg: #f8fafc;
+
+            /* 翠绿 - 成功 */
+            --jade: #166534;
+            --jade-light: #22c55e;
+            --jade-bg: #f0fdf4;
+
+            /* 琥珀 - 警告 */
+            --amber: #b45309;
+            --amber-light: #f59e0b;
+
+            /* 阴影系统 */
+            --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.08), 0 2px 4px -2px rgba(15, 23, 42, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.1), 0 4px 6px -4px rgba(15, 23, 42, 0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(15, 23, 42, 0.1), 0 8px 10px -6px rgba(15, 23, 42, 0.1);
+            --shadow-gold: 0 4px 14px rgba(184, 134, 11, 0.15);
+
+            /* 过渡 */
+            --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* 全局背景 - 宣纸纹理 */
+        body {
+            font-family: 'Noto Serif SC', 'Source Serif 4', Georgia, serif;
+            background: var(--paper);
+            background-image:
+                radial-gradient(ellipse at 20% 30%, rgba(184, 134, 11, 0.03) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 70%, rgba(30, 58, 95, 0.03) 0%, transparent 50%),
+                url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            background-blend-mode: normal, normal, soft-light;
+            color: var(--ink-800);
+            line-height: 1.7;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════════
+           Header - 匾额风格
+           ═══════════════════════════════════════════════════════════════════ */
+        header {
+            background: linear-gradient(135deg, var(--ink-900) 0%, var(--ink-800) 50%, var(--ink-900) 100%);
+            color: var(--paper-cream);
+            padding: 20px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 3px solid var(--gold);
+        }
+
+        /* 装饰性金边 */
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: 3px;
+            left: 5%;
+            right: 5%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+        }
+
+        header h1 {
+            font-family: 'ZCOOL XiaoWei', 'Noto Serif SC', serif;
+            font-size: 1.75rem;
+            font-weight: 400;
+            letter-spacing: 0.15em;
+            position: relative;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        /* 标题装饰 */
+        header h1::before,
+        header h1::after {
+            content: '◆';
+            font-size: 0.5em;
+            color: var(--gold);
+            margin: 0 12px;
+            vertical-align: middle;
+            opacity: 0.8;
+        }
+
+        .stats {
+            display: flex;
+            gap: 32px;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+            position: relative;
+            padding: 8px 16px;
+        }
+
+        .stat::after {
+            content: '';
+            position: absolute;
+            right: -16px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 1px;
+            height: 60%;
+            background: linear-gradient(to bottom, transparent, var(--gold-border), transparent);
+        }
+
+        .stat:last-child::after {
+            display: none;
+        }
+
+        .stat .value {
+            font-family: 'Source Serif 4', Georgia, serif;
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--gold-light);
+            line-height: 1.2;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+        }
+
+        .stat .label {
+            font-size: 0.75rem;
+            opacity: 0.8;
+            letter-spacing: 0.05em;
+            margin-top: 4px;
+        }
+
+        .stat.danger .value {
+            color: #fca5a5;
+            animation: pulse-warning 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-warning {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        /* ═══════════════════════════════════════════════════════════════════
+           Main Layout - 三栏书卷式布局
+           ═══════════════════════════════════════════════════════════════════ */
+        .main-container {
+            display: grid;
+            grid-template-columns: 1fr 360px 1fr;
+            gap: 20px;
+            padding: 20px;
+            height: calc(100vh - 100px);
+            max-width: 1800px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 1400px) { .main-container { grid-template-columns: 1fr 320px 1fr; gap: 16px; } }
+        @media (max-width: 1100px) { .main-container { grid-template-columns: 1fr 1fr; } }
+        @media (max-width: 700px) { .main-container { grid-template-columns: 1fr; } }
+
+        /* ═══════════════════════════════════════════════════════════════════
+           Panel - 卷轴风格面板
+           ═══════════════════════════════════════════════════════════════════ */
+        .panel {
+            background: var(--paper-cream);
+            border-radius: 4px;
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid var(--ink-200);
+        }
+
+        /* 面板顶部装饰线 */
+        .panel::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+        }
+
+        .panel-header {
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--ink-200);
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--ink-700);
+            flex-shrink: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(to bottom, var(--paper-cream), var(--paper-warm));
+            letter-spacing: 0.05em;
+        }
+
+        .panel-header::before {
+            content: '『';
+            color: var(--gold);
+            margin-right: 8px;
+            font-weight: 400;
+        }
+
+        .panel-header::after {
+            content: '』';
+            color: var(--gold);
+            margin-left: auto;
+            font-weight: 400;
+        }
+
+        .panel-body {
+            flex: 1;
+            overflow-y: auto;
+            padding: 16px;
+            background: var(--paper-cream);
+        }
+
+        /* 自定义滚动条 */
+        .panel-body::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .panel-body::-webkit-scrollbar-track {
+            background: var(--ink-100);
+            border-radius: 4px;
+        }
+
+        .panel-body::-webkit-scrollbar-thumb {
+            background: var(--ink-300);
+            border-radius: 4px;
+            border: 2px solid var(--ink-100);
+        }
+
+        .panel-body::-webkit-scrollbar-thumb:hover {
+            background: var(--ink-400);
+        }
+
+        /* ═══════════════════════════════════════════════════════════════════
+           搜索框 - 砚台风格
+           ═══════════════════════════════════════════════════════════════════ */
+        .search-box {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+
+        .search-box input {
+            flex: 1;
+            padding: 10px 16px;
+            border: 1px solid var(--ink-200);
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-family: inherit;
+            background: white;
+            color: var(--ink-700);
+            transition: var(--transition-base);
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px var(--gold-glow);
+        }
+
+        .search-box input::placeholder {
+            color: var(--ink-400);
+        }
+
+        .search-box select {
+            padding: 10px 12px;
+            border: 1px solid var(--ink-200);
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-family: inherit;
+            background: white;
+            color: var(--ink-700);
+            cursor: pointer;
+            transition: var(--transition-base);
+        }
+
+        .search-box select:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px var(--gold-glow);
+        }
+
+        /* ═══════════════════════════════════════════════════════════════════
+           标签筛选 - 印章风格
+           ═══════════════════════════════════════════════════════════════════ */
+        .filter-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 16px;
+            padding-bottom: 16px;
+            border-bottom: 1px dashed var(--ink-200);
+        }
+
+        .filter-tag {
+            padding: 6px 14px;
+            border-radius: 2px;
+            font-size: 0.8rem;
+            border: 1px solid var(--ink-300);
+            background: white;
+            cursor: pointer;
+            transition: var(--transition-base);
+            white-space: nowrap;
+            position: relative;
+            letter-spacing: 0.03em;
+        }
+
+        .filter-tag:hover {
+            border-color: var(--gold);
+            background: var(--gold-glow);
+            transform: translateY(-1px);
+        }
+
+        .filter-tag.active {
+            background: var(--ink-800);
+            color: var(--gold-light);
+            border-color: var(--ink-800);
+            box-shadow: var(--shadow-md);
+        }
+
+        .filter-tag.active::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: -1px;
+            right: -1px;
+            bottom: -1px;
+            border: 1px solid var(--gold);
+            border-radius: 2px;
+            pointer-events: none;
+        }
+
+        .filter-tag.separator {
+            background: none;
+            border: none;
+            padding: 6px 4px;
+            cursor: default;
+            color: var(--ink-300);
+            font-weight: 300;
+        }
+
+        .filter-tag.separator:hover {
+            background: none;
+            transform: none;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════════
+           课程卡片 - 书简风格
+           ═══════════════════════════════════════════════════════════════════ */
+        .course-card {
+            padding: 14px 16px;
+            border: 1px solid var(--ink-200);
+            border-radius: 4px;
+            margin-bottom: 10px;
+            cursor: grab;
+            transition: var(--transition-base);
+            background: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 左侧装饰线 */
+        .course-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--ink-300);
+            transition: var(--transition-base);
+        }
+
+        .course-card:hover {
+            border-color: var(--gold);
+            box-shadow: var(--shadow-gold);
+            transform: translateY(-2px);
+        }
+
+        .course-card:hover::before {
+            background: var(--gold);
+        }
+
+        .course-card.dragging {
+            opacity: 0.6;
+            transform: rotate(2deg) scale(1.02);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .course-card .name {
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 8px;
+            color: var(--ink-800);
+            line-height: 1.4;
+        }
+
+        .course-card .name span:first-child {
+            flex: 1;
+        }
+
+        .course-card .info {
+            font-size: 0.8rem;
+            color: var(--ink-500);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .course-card .info::before {
+            content: '◇';
+            font-size: 0.6em;
+            color: var(--gold);
+        }
+
+        .course-card .conflict-warn {
+            font-size: 0.8rem;
+            color: var(--vermilion);
+            margin-top: 8px;
+            padding: 6px 10px;
+            background: var(--vermilion-bg);
+            border-radius: 3px;
+            border-left: 2px solid var(--vermilion);
+        }
+
+        /* 课程额外信息 - 考核方式和备注 */
+        .course-card .course-extras {
+            margin-top: 8px;
+            font-size: 0.75rem;
+            line-height: 1.5;
+        }
+
+        .course-card .assessment {
+            color: var(--ink-600);
+            padding: 4px 8px;
+            background: var(--paper-warm);
+            border-radius: 3px;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .course-card .assessment::before {
+            content: '考核';
+            font-weight: 600;
+            color: var(--indigo);
+            font-size: 0.7rem;
+        }
+
+        .course-card .notes {
+            margin-top: 6px;
+            color: var(--amber);
+            padding: 4px 8px;
+            background: linear-gradient(135deg, #fffbeb, #fef3c7);
+            border-radius: 3px;
+            border-left: 2px solid var(--amber-light);
+            display: flex;
+            align-items: flex-start;
+            gap: 4px;
+        }
+
+        .course-card .notes::before {
+            content: '📌';
+            font-size: 0.8em;
+            flex-shrink: 0;
+        }
+
+        /* 徽章样式 */
+        .badge {
+            font-size: 0.7rem;
+            padding: 3px 8px;
+            border-radius: 2px;
+            font-weight: 500;
+            white-space: nowrap;
+            letter-spacing: 0.02em;
+        }
+
+        .badge.online {
+            background: var(--indigo-bg);
+            color: var(--indigo);
+            border: 1px solid rgba(30, 58, 95, 0.2);
+        }
+
+        .badge.credits {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            color: var(--amber);
+            border: 1px solid rgba(180, 83, 9, 0.2);
+        }
+
+        /* ═══════════════════════════════════════════════════════════════════
+           优先级栏 - 三段折叠屏风
+           ═══════════════════════════════════════════════════════════════════ */
+        .priority-columns {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            height: 100%;
+        }
+
+        .priority-col {
+            flex: 1;
+            background: var(--paper-cream);
+            border-radius: 4px;
+            box-shadow: var(--shadow-md);
+            display: flex;
+            flex-direction: column;
+            min-height: 100px;
+            border: 1px solid var(--ink-200);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .priority-header {
+            padding: 12px 16px;
+            border-bottom: 2px solid;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-shrink: 0;
+            letter-spacing: 0.05em;
+        }
+
+        .priority-header .coin-hint {
+            font-size: 0.75rem;
+            font-weight: 500;
+            opacity: 0.8;
+        }
+
+        /* 必选 - 朱砂红 */
+        .priority-col.must .priority-header {
+            border-color: var(--vermilion);
+            color: var(--vermilion);
+            background: linear-gradient(to bottom, var(--vermilion-bg), rgba(254, 242, 242, 0.5));
+        }
+
+        .priority-col.must .priority-header::before {
+            content: '壹';
+            font-family: 'ZCOOL XiaoWei', serif;
+            margin-right: 8px;
+            opacity: 0.6;
+        }
+
+        /* 想选 - 靛青蓝 */
+        .priority-col.want .priority-header {
+            border-color: var(--indigo);
+            color: var(--indigo);
+            background: linear-gradient(to bottom, var(--indigo-bg), rgba(239, 246, 255, 0.5));
+        }
+
+        .priority-col.want .priority-header::before {
+            content: '贰';
+            font-family: 'ZCOOL XiaoWei', serif;
+            margin-right: 8px;
+            opacity: 0.6;
+        }
+
+        /* 可选 - 墨灰 */
+        .priority-col.optional .priority-header {
+            border-color: var(--slate);
+            color: var(--slate);
+            background: linear-gradient(to bottom, var(--slate-bg), rgba(248, 250, 252, 0.5));
+        }
+
+        .priority-col.optional .priority-header::before {
+            content: '叁';
+            font-family: 'ZCOOL XiaoWei', serif;
+            margin-right: 8px;
+            opacity: 0.6;
+        }
+
+        .priority-body {
+            flex: 1;
+            padding: 12px;
+            overflow-y: auto;
+            min-height: 60px;
+            transition: var(--transition-base);
+            background: var(--paper-cream);
+        }
+
+        .priority-body.drag-over {
+            background: var(--jade-bg);
+            border: 2px dashed var(--jade);
+            border-radius: 0 0 4px 4px;
+        }
+
+        .priority-body .empty-hint {
+            color: var(--ink-400);
+            font-size: 0.85rem;
+            text-align: center;
+            padding: 20px 12px;
+            font-style: italic;
+        }
+
+        /* 优先级栏内的课程卡片 */
+        .priority-body .course-card::before {
+            width: 4px;
+        }
+
+        .priority-col.must .course-card::before { background: var(--vermilion); }
+        .priority-col.want .course-card::before { background: var(--indigo); }
+        .priority-col.optional .course-card::before { background: var(--slate); }
+
+        /* ═══════════════════════════════════════════════════════════════════
+           金币分配输入
+           ═══════════════════════════════════════════════════════════════════ */
+        .coin-input-wrap {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px dashed var(--ink-200);
+        }
+
+        .coin-input-wrap input {
+            width: 60px;
+            padding: 4px 8px;
+            border: 1px solid var(--ink-300);
+            border-radius: 3px;
+            font-size: 0.85rem;
+            font-family: 'Source Serif 4', serif;
+            text-align: right;
+            color: var(--ink-700);
+            transition: var(--transition-base);
+        }
+
+        .coin-input-wrap input:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 2px var(--gold-glow);
+        }
+
+        .coin-input-wrap span {
+            font-size: 0.8rem;
+            color: var(--ink-500);
+        }
+
+        .coin-input-wrap .suggested {
+            font-size: 0.75rem;
+            color: var(--gold);
+            margin-left: auto;
+            font-weight: 500;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════════
+           金币统计与策略提示
+           ═══════════════════════════════════════════════════════════════════ */
+        .coin-summary {
+            padding: 12px 16px;
+            background: var(--paper-warm);
+            border-top: 1px solid var(--ink-200);
+            font-size: 0.9rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .coin-summary.over {
+            background: var(--vermilion-bg);
+            color: var(--vermilion);
+            border-top-color: var(--vermilion);
+        }
+
+        .auto-btn {
+            padding: 6px 14px;
+            font-size: 0.8rem;
+            font-family: inherit;
+            background: var(--ink-800);
+            color: var(--gold-light);
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: var(--transition-base);
+            letter-spacing: 0.05em;
+        }
+
+        .auto-btn:hover {
+            background: var(--ink-700);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-1px);
+        }
+
+        .strategy-hint {
+            padding: 10px 14px;
+            background: linear-gradient(to right, #fffbeb, #fef3c7);
+            border-top: 1px solid var(--gold-border);
+            font-size: 0.8rem;
+            color: var(--amber);
+            flex-shrink: 0;
+            line-height: 1.5;
+        }
+
+        .strategy-hint strong {
+            color: var(--gold);
+        }
+
+        /* ═══════════════════════════════════════════════════════════════════
+           移除按钮
+           ═══════════════════════════════════════════════════════════════════ */
+        .remove-btn {
+            background: none;
+            border: none;
+            color: var(--ink-400);
+            cursor: pointer;
+            font-size: 1.1rem;
+            padding: 2px 8px;
+            border-radius: 3px;
+            transition: var(--transition-base);
+            line-height: 1;
+        }
+
+        .remove-btn:hover {
+            background: var(--vermilion-bg);
+            color: var(--vermilion);
+        }
+
+        /* ═══════════════════════════════════════════════════════════════════
+           日历 - 黄历风格
+           ═══════════════════════════════════════════════════════════════════ */
+        .calendar-scroll {
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        .month-section {
+            margin-bottom: 24px;
+        }
+
+        .month-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--ink-700);
+            margin-bottom: 12px;
+            padding: 10px 14px;
+            background: linear-gradient(to right, var(--ink-800), var(--ink-700));
+            color: var(--gold-light);
+            border-radius: 3px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            letter-spacing: 0.1em;
+            box-shadow: var(--shadow-md);
+        }
+
+        .month-title::before {
+            content: '◈';
+            margin-right: 10px;
+            font-size: 0.8em;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 4px;
+        }
+
+        .calendar-header {
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.75rem;
+            color: var(--ink-600);
+            padding: 8px 0;
+            background: var(--paper-warm);
+            border-radius: 2px;
+        }
+
+        .calendar-day {
+            min-height: 70px;
+            padding: 6px;
+            border: 1px solid var(--ink-200);
+            border-radius: 3px;
+            font-size: 0.75rem;
+            background: white;
+            transition: var(--transition-base);
+        }
+
+        .calendar-day:hover {
+            border-color: var(--gold-border);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .calendar-day.other-month {
+            background: var(--ink-100);
+            opacity: 0.4;
+        }
+
+        .calendar-day.has-course {
+            background: linear-gradient(135deg, var(--jade-bg), #ecfdf5);
+            border-color: rgba(22, 101, 52, 0.2);
+        }
+
+        .calendar-day .day-number {
+            font-weight: 700;
+            margin-bottom: 4px;
+            font-size: 0.85rem;
+            color: var(--ink-700);
+            font-family: 'Source Serif 4', serif;
+        }
+
+        .calendar-day .event {
+            padding: 2px 4px;
+            margin-bottom: 2px;
+            border-radius: 2px;
+            font-size: 0.65rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .calendar-day .event.no-conflict {
+            background: #d1fae5;
+            color: var(--jade);
+        }
+
+        .calendar-day .event.conflict {
+            background: #fee2e2;
+            color: var(--vermilion);
+            animation: conflict-flash 1.5s ease-in-out infinite;
+        }
+
+        @keyframes conflict-flash {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .calendar-day .event.must { border-left: 3px solid var(--vermilion); }
+        .calendar-day .event.want { border-left: 3px solid var(--indigo); }
+        .calendar-day .event.optional { border-left: 3px solid var(--slate); }
+
+        /* ═══════════════════════════════════════════════════════════════════
+           冲突高亮样式
+           ═══════════════════════════════════════════════════════════════════ */
+        .course-card.conflict-highlight {
+            border-color: var(--vermilion) !important;
+            background: var(--vermilion-bg) !important;
+            animation: conflict-pulse 0.8s ease-in-out infinite;
+            z-index: 10;
+        }
+
+        .course-card.conflict-highlight::before {
+            background: var(--vermilion) !important;
+        }
+
+        .course-card.conflict-source {
+            border-color: var(--amber-light) !important;
+            box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2);
+        }
+
+        @keyframes conflict-pulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(196, 30, 58, 0.3); }
+            50% { transform: scale(1.01); box-shadow: 0 0 0 6px rgba(196, 30, 58, 0); }
+        }
+
+        .calendar-day.conflict-highlight {
+            background: var(--vermilion-bg) !important;
+            border-color: var(--vermilion) !important;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════════
+           移动端底部导航
+           ═══════════════════════════════════════════════════════════════════ */
+        .bottom-nav {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 64px;
+            background: var(--ink-900);
+            border-top: 2px solid var(--gold);
+            justify-content: space-around;
+            align-items: center;
+            z-index: 100;
+            box-shadow: 0 -4px 20px rgba(15, 23, 42, 0.2);
+        }
+
+        .bottom-nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            padding: 10px 20px;
+            color: var(--ink-400);
+            font-size: 0.75rem;
+            cursor: pointer;
+            position: relative;
+            transition: var(--transition-base);
+            letter-spacing: 0.05em;
+        }
+
+        .bottom-nav-item:hover {
+            color: var(--ink-200);
+        }
+
+        .bottom-nav-item.active {
+            color: var(--gold-light);
+        }
+
+        .bottom-nav-item .icon {
+            font-size: 1.5rem;
+        }
+
+        .bottom-nav-item .nav-badge {
+            position: absolute;
+            top: 4px;
+            right: 12px;
+            background: var(--vermilion);
+            color: white;
+            font-size: 0.65rem;
+            padding: 2px 6px;
+            border-radius: 10px;
+            min-width: 18px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════════
+           移动端响应式
+           ═══════════════════════════════════════════════════════════════════ */
+        @media (max-width: 700px) {
+            .main-container {
+                grid-template-columns: 1fr;
+                padding: 12px;
+                padding-bottom: 80px;
+                height: auto;
+                min-height: calc(100vh - 100px);
+            }
+
+            .panel, .priority-columns {
+                display: none;
+                min-height: calc(100vh - 180px);
+            }
+
+            .panel.mobile-active, .priority-columns.mobile-active {
+                display: flex;
+            }
+
+            .bottom-nav {
+                display: flex;
+            }
+
+            header {
+                padding: 16px 20px;
+            }
+
+            header h1 {
+                font-size: 1.3rem;
+            }
+
+            header h1::before,
+            header h1::after {
+                display: none;
+            }
+
+            .stats {
+                gap: 20px;
+            }
+
+            .stat {
+                padding: 4px 8px;
+            }
+
+            .stat .value {
+                font-size: 1.3rem;
+            }
+
+            .stat .label {
+                font-size: 0.65rem;
+            }
+
+            .stat::after {
+                right: -10px;
+            }
+
+            .priority-columns.mobile-active {
+                flex-direction: column;
+                gap: 12px;
+                padding: 0;
+            }
+
+            .priority-col {
+                min-height: 140px;
+            }
+
+            .calendar-day {
+                min-height: 55px;
+                font-size: 0.7rem;
+            }
+
+            .calendar-day .day-number {
+                font-size: 0.8rem;
+            }
+
+            .calendar-day .event {
+                font-size: 0.6rem;
+            }
+        }
+
+        /* ═══════════════════════════════════════════════════════════════════
+           优雅的加载动画
+           ═══════════════════════════════════════════════════════════════════ */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .panel, .priority-col {
+            animation: fadeInUp 0.5s ease-out;
+        }
+
+        .priority-col:nth-child(1) { animation-delay: 0.1s; }
+        .priority-col:nth-child(2) { animation-delay: 0.2s; }
+        .priority-col:nth-child(3) { animation-delay: 0.3s; }
+
+        /* ═══════════════════════════════════════════════════════════════════
+           移动端Action Sheet 选择弹窗
+           ═══════════════════════════════════════════════════════════════════ */
+        .mobile-action-sheet {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1000;
+        }
+
+        .mobile-action-sheet.active {
+            display: block;
+        }
+
+        .action-sheet-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(4px);
+            animation: fadeIn 0.2s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .action-sheet-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--paper);
+            border-radius: 20px 20px 0 0;
+            padding: 20px;
+            padding-bottom: calc(20px + env(safe-area-inset-bottom, 0));
+            animation: slideUp 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 -10px 40px rgba(15, 23, 42, 0.3);
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(100%); }
+            to { transform: translateY(0); }
+        }
+
+        .action-sheet-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--ink-200);
+            margin-bottom: 16px;
+        }
+
+        .action-sheet-title {
+            font-family: 'ZCOOL XiaoWei', 'Noto Serif SC', serif;
+            font-size: 1.2rem;
+            color: var(--ink-800);
+            letter-spacing: 0.1em;
+        }
+
+        .action-sheet-close {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: none;
+            background: var(--ink-100);
+            color: var(--ink-600);
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition-fast);
+        }
+
+        .action-sheet-close:hover {
+            background: var(--ink-200);
+            color: var(--ink-800);
+        }
+
+        .action-sheet-course {
+            background: var(--paper-warm);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--gold);
+        }
+
+        .action-sheet-course .course-name {
+            font-weight: 600;
+            color: var(--ink-800);
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+
+        .action-sheet-course .course-info {
+            display: flex;
+            gap: 16px;
+            font-size: 0.85rem;
+            color: var(--ink-500);
+        }
+
+        .action-sheet-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .action-option {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px 20px;
+            border-radius: 12px;
+            border: 2px solid var(--ink-200);
+            background: white;
+            cursor: pointer;
+            transition: var(--transition-base);
+        }
+
+        .action-option:active {
+            transform: scale(0.98);
+        }
+
+        .action-option .option-icon {
+            font-family: 'ZCOOL XiaoWei', serif;
+            font-size: 1.5rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .action-option .option-text {
+            font-weight: 600;
+            font-size: 1rem;
+            flex-grow: 1;
+        }
+
+        .action-option .option-hint {
+            font-size: 0.8rem;
+            color: var(--ink-400);
+        }
+
+        /* 必选按钮样式 */
+        .action-option.must {
+            border-color: var(--vermilion-light);
+        }
+
+        .action-option.must:hover,
+        .action-option.must:active {
+            background: var(--vermilion-bg);
+            border-color: var(--vermilion);
+        }
+
+        .action-option.must .option-icon {
+            background: var(--vermilion-bg);
+            color: var(--vermilion);
+        }
+
+        .action-option.must .option-text {
+            color: var(--vermilion);
+        }
+
+        /* 想选按钮样式 */
+        .action-option.want {
+            border-color: var(--indigo-light);
+        }
+
+        .action-option.want:hover,
+        .action-option.want:active {
+            background: var(--indigo-bg);
+            border-color: var(--indigo);
+        }
+
+        .action-option.want .option-icon {
+            background: var(--indigo-bg);
+            color: var(--indigo);
+        }
+
+        .action-option.want .option-text {
+            color: var(--indigo);
+        }
+
+        /* 可选按钮样式 */
+        .action-option.optional {
+            border-color: var(--slate-light);
+        }
+
+        .action-option.optional:hover,
+        .action-option.optional:active {
+            background: var(--slate-bg);
+            border-color: var(--slate);
+        }
+
+        .action-option.optional .option-icon {
+            background: var(--slate-bg);
+            color: var(--slate);
+        }
+
+        .action-option.optional .option-text {
+            color: var(--slate);
+        }
+
+        .action-cancel {
+            width: 100%;
+            padding: 16px;
+            border-radius: 12px;
+            border: none;
+            background: var(--ink-100);
+            color: var(--ink-600);
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition-base);
+        }
+
+        .action-cancel:hover {
+            background: var(--ink-200);
+        }
+
+        /* 移动端课程卡片可点击样式 */
+        @media (max-width: 700px) {
+            .course-list .course-card:not(.selected) {
+                cursor: pointer;
+            }
+
+            .course-list .course-card:not(.selected):active {
+                transform: scale(0.98);
+                background: var(--paper-warm);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>MBA选课助手</h1>
+        <div class="stats">
+            <div class="stat">
+                <div class="value" id="totalCredits">0</div>
+                <div class="label">已选学分</div>
+            </div>
+            <div class="stat">
+                <div class="value" id="selectedCount">0</div>
+                <div class="label">已选课程</div>
+            </div>
+            <div class="stat" id="conflictStat">
+                <div class="value" id="conflictCount">0</div>
+                <div class="label">时间冲突</div>
+            </div>
+            <div class="stat">
+                <div class="value" id="remainingCoins">1000</div>
+                <div class="label">剩余金币</div>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <!-- 左侧：课程列表 -->
+        <div class="panel mobile-active" id="panelCourses">
+            <div class="panel-header">全部课程 (71门)</div>
+            <div class="panel-body">
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="搜索课程名称...">
+                    <select id="monthFilter">
+                        <option value="">全部月份</option>
+                        <option value="03">3月</option>
+                        <option value="04">4月</option>
+                        <option value="05">5月</option>
+                        <option value="06">6月</option>
+                        <option value="07">7月</option>
+                        <option value="08">8月</option>
+                    </select>
+                </div>
+                <div class="filter-tags" id="filterTags">
+                    <span class="filter-tag active" data-tag="all">全部</span>
+                    <span class="filter-tag" data-tag="finance">金融</span>
+                    <span class="filter-tag" data-tag="ai">AI/科技</span>
+                    <span class="filter-tag" data-tag="strategy">战略</span>
+                    <span class="filter-tag" data-tag="culture">人文</span>
+                    <span class="filter-tag" data-tag="marketing">营销</span>
+                    <span class="filter-tag" data-tag="leadership">领导力</span>
+                    <span class="filter-tag separator">│</span>
+                    <span class="filter-tag" data-tag="online">线上</span>
+                    <span class="filter-tag" data-tag="2credits">2学分</span>
+                </div>
+                <div id="courseList"></div>
+            </div>
+        </div>
+
+        <!-- 中间：三个优先级栏 -->
+        <div class="priority-columns" id="panelSelection">
+            <div class="priority-col must" data-priority="must">
+                <div class="priority-header">
+                    <span>必选</span>
+                    <span class="coin-hint" id="mustHint">权重×3</span>
+                </div>
+                <div class="priority-body" id="mustList">
+                    <div class="empty-hint">拖拽课程至此处</div>
+                </div>
+            </div>
+            <div class="priority-col want" data-priority="want">
+                <div class="priority-header">
+                    <span>想选</span>
+                    <span class="coin-hint" id="wantHint">权重×2</span>
+                </div>
+                <div class="priority-body" id="wantList">
+                    <div class="empty-hint">拖拽课程至此处</div>
+                </div>
+            </div>
+            <div class="priority-col optional" data-priority="optional">
+                <div class="priority-header">
+                    <span>可选</span>
+                    <span class="coin-hint" id="optionalHint">权重×1</span>
+                </div>
+                <div class="priority-body" id="optionalList">
+                    <div class="empty-hint">拖拽课程至此处</div>
+                </div>
+            </div>
+            <div class="coin-summary" id="coinSummary">
+                <span><strong id="coinTotal">0</strong> / 1000 枚金币</span>
+                <button class="auto-btn" onclick="autoAllocateCoins()">智能分配</button>
+            </div>
+            <div class="strategy-hint">
+                <strong>策略提示：</strong>按学分×优先级权重分配金币，自动避开整数陷阱
+            </div>
+        </div>
+
+        <!-- 右侧：日历 -->
+        <div class="panel" id="panelCalendar">
+            <div class="panel-header">日历视图</div>
+            <div class="panel-body calendar-scroll" id="calendarScroll"></div>
+        </div>
+    </div>
+
+    <!-- 移动端选择优先级弹窗 -->
+    <div class="mobile-action-sheet" id="actionSheet">
+        <div class="action-sheet-overlay" onclick="closeActionSheet()"></div>
+        <div class="action-sheet-content">
+            <div class="action-sheet-header">
+                <span class="action-sheet-title" id="actionSheetTitle">选择优先级</span>
+                <button class="action-sheet-close" onclick="closeActionSheet()">×</button>
+            </div>
+            <div class="action-sheet-course" id="actionSheetCourse"></div>
+            <div class="action-sheet-options">
+                <button class="action-option must" onclick="addToPriority('must')">
+                    <span class="option-icon">壹</span>
+                    <span class="option-text">必选</span>
+                    <span class="option-hint">权重×3</span>
+                </button>
+                <button class="action-option want" onclick="addToPriority('want')">
+                    <span class="option-icon">贰</span>
+                    <span class="option-text">想选</span>
+                    <span class="option-hint">权重×2</span>
+                </button>
+                <button class="action-option optional" onclick="addToPriority('optional')">
+                    <span class="option-icon">叁</span>
+                    <span class="option-text">可选</span>
+                    <span class="option-hint">权重×1</span>
+                </button>
+            </div>
+            <button class="action-cancel" onclick="closeActionSheet()">取消</button>
+        </div>
+    </div>
+
+    <!-- 移动端底部导航 -->
+    <nav class="bottom-nav" id="bottomNav">
+        <div class="bottom-nav-item active" data-panel="panelCourses">
+            <span class="icon">📚</span>
+            <span>课程</span>
+        </div>
+        <div class="bottom-nav-item" data-panel="panelSelection">
+            <span class="icon">✅</span>
+            <span>选课</span>
+            <span class="nav-badge" id="navBadge" style="display:none">0</span>
+        </div>
+        <div class="bottom-nav-item" data-panel="panelCalendar">
+            <span class="icon">📅</span>
+            <span>日历</span>
+        </div>
+    </nav>
+
+    <script>
+// 课程数据
+// 课程额外信息（考核方式和备注）
+const courseExtras = {
+  "1": { "assessment": "课堂实战70-课后作业30" },
+  "2": { "assessment": "案例讨论20-考试60" },
+  "3": { "assessment": "专题报告30-论文50", "notes": "最后半天全是汇报" },
+  "4": { "notes": "啥也没说" },
+  "5": { "assessment": "考试80", "notes": "都是老师讲" },
+  "6": { "assessment": "考试80", "notes": "结合家庭财富管理案例分析、讨论" },
+  "7": { "assessment": "案例讨论20-专题报告30-考试50", "notes": "限额51-54位，最后半天小组讨论与角色扮演" },
+  "8": { "assessment": "案例讨论30-考试50", "notes": "讲授为主，结合历史案例分析与讨论" },
+  "9": { "assessment": "小作文100", "notes": "有小组讨论" },
+  "10": { "assessment": "案例分析80", "notes": "内容很基础" },
+  "11": { "notes": "课堂实验与案例分析，没说比例" },
+  "12": { "assessment": "论文80" },
+  "13": { "assessment": "案例讨论20-考试60", "notes": "很多discussion" },
+  "14": { "notes": "华人老师，有小组讨论，要写投资方案" },
+  "15": { "assessment": "课堂测验10-案例讨论10-分组研究报告30-考试30", "notes": "分组制定AI项目建议书" },
+  "16": { "assessment": "案例讨论20-专题报告30-考试50" },
+  "17": { "assessment": "考试80", "notes": "结合课堂仿真系统实操、案例讨论" },
+  "18": { "assessment": "课堂讨论20-考试60", "notes": "每节课都案例分析" },
+  "19": { "assessment": "考试80" },
+  "20": { "assessment": "专题报告30-考试50", "notes": "期末考试以课程论文形式进行" },
+  "21": { "assessment": "案例讨论报告40-论文40", "notes": "每节课都有案例" },
+  "22": { "assessment": "案例讨论20-考试60", "notes": "结合案例分析、讨论、互动答疑" },
+  "23": { "assessment": "案例讨论20-专题报告20-考试40" },
+  "24": { "assessment": "课堂讨论与作业40-期末报告与展示50", "notes": "实战分析项目" },
+  "25": { "assessment": "案例讨论30-考试50", "notes": "电影案例、广告分享、实战演练与角色扮演" },
+  "26": { "assessment": "案例讨论40-课堂汇报40", "notes": "结合专题讨论、资料阅读" },
+  "27": { "assessment": "案例讨论40-论文40", "notes": "第一天赛艇训练，第二天课堂教学" },
+  "28": { "assessment": "专题报告30-考试50", "notes": "专题汇报以小组形式进行" },
+  "29": { "assessment": "课堂讨论30-论文70", "notes": "2/3老师讲述+1/3案例讨论" },
+  "30": { "notes": "16个课时，老师讲为主，很多readings" },
+  "31": { "assessment": "考试80", "notes": "每节课都预习及小组讨论案例" },
+  "32": { "assessment": "考试80" },
+  "33": { "assessment": "案例讨论40-论文40", "notes": "第一天赛艇训练，第二天课堂教学" },
+  "34": { "assessment": "案例讨论20-专题报告20-考试40", "notes": "结合课堂案例讨论、小组专题报告" },
+  "35": { "assessment": "案例讨论30-PPT汇报50", "notes": "上课前要阅读教材和案例资料" },
+  "36": { "assessment": "案例讨论20-专题报告30-考试50", "notes": "限额51-54位，最后半天小组讨论与角色扮演" },
+  "37": { "assessment": "平时40-考试40", "notes": "讨论辩论" },
+  "38": { "assessment": "课堂讨论25-论文15-考试65", "notes": "情景再现、案例分析、实际演练等全程互动" },
+  "39": { "notes": "啥也没说" },
+  "40": { "assessment": "平时30-考试40", "notes": "每节课都预习及小组讨论案例" },
+  "41": { "assessment": "考试80", "notes": "结合家庭财富管理案例分析、讨论" },
+  "42": { "assessment": "案例讨论30-专题报告20-考试50", "notes": "华人老师，小组准备+分享，模拟生产流程" },
+  "43": { "assessment": "案例讨论40-课堂汇报40", "notes": "结合专题讨论、资料阅读" },
+  "44": { "assessment": "课堂实战70-课后作业30" },
+  "45": { "assessment": "案例讨论20-专题报告60" },
+  "46": { "assessment": "案例讨论30-考试50", "notes": "讲授为主，结合历史案例分析与讨论" },
+  "47": { "assessment": "案例讨论报告40-论文40", "notes": "案例解析和分组研讨" },
+  "48": { "assessment": "案例讨论20-专题报告20-考试40", "notes": "以LARP方式进行模拟情景，第二天大半天分组模拟" },
+  "49": { "assessment": "课堂讨论30-小组作业60", "notes": "远程授课及分组讨论，每组6-8人" },
+  "50": { "assessment": "案例讨论20-考试60", "notes": "课堂案例讨论和项目复盘" },
+  "51": { "assessment": "课堂讨论20-考试80", "notes": "课堂教学+专题讨论+小论文写作" },
+  "52": { "assessment": "案例讨论30-考试50", "notes": "建议预习，以读书报告形式期末评价" },
+  "53": { "assessment": "案例讨论20-专题报告20-考试40", "notes": "南大「我最喜爱的老师」，最后半天小组报告" },
+  "54": { "assessment": "案例讨论40-论文40", "notes": "每个模块2-3个案例，5人左右小组讨论" },
+  "55": { "assessment": "考试80", "notes": "老师讲课内容嘎嘎多" },
+  "56": { "assessment": "论文80", "notes": "论文形式进行期末考核" },
+  "57": { "assessment": "课堂创业项目写作30-路演活动30", "notes": "最后半天企业参访和路演答辩" },
+  "58": { "assessment": "平时40-考试40", "notes": "讨论辩论" },
+  "59": { "assessment": "课堂实战70-课后作业30" },
+  "60": { "assessment": "案例讨论20-专题报告30-考试50", "notes": "专题报告围绕AI或区块链在金融中的创新应用" },
+  "61": { "assessment": "提问10-专题讨论20-考试70", "notes": "学员分组准备，课堂讨论" },
+  "62": { "notes": "结合案例讨论、小组专题报告，没说考核方式" },
+  "63": { "assessment": "专题报告30-考试50", "notes": "期末考试以课程论文形式进行" },
+  "65": { "assessment": "课堂讨论10-案例分析70", "notes": "每节课都案例分析" },
+  "66": { "assessment": "案例讨论30-论文50", "notes": "课堂授课、案例讨论、视频观摩、团队任务" },
+  "67": { "assessment": "专题报告80", "notes": "多个案例讨论、小组协作解决问题" },
+  "68": { "assessment": "案例讨论20-专题报告20-考试40", "notes": "南大「我最喜爱的老师」，最后半天小组报告" },
+  "69": { "assessment": "课堂讨论25-论文15-考试65", "notes": "情景再现、案例分析、实际演练等全程互动" },
+  "70": { "notes": "C班必选" }
+};
+
+const courses = [{"id":1,"name":"职场超能力：AI 高效工作流实战-1班","sessions":[{"date":"2026-03-05","time":"9:00-12:00","weekday":"四","location":"907教室"},{"date":"2026-03-05","time":"13:30-17:30","weekday":"四","location":"907教室"},{"date":"2026-03-06","time":"9:00-12:00","weekday":"五","location":"907教室"},{"date":"2026-03-06","time":"13:30-17:30","weekday":"五","location":"907教室"}],"is_online":false,"credits":1,"start_date":"2026-03-05","end_date":"2026-03-06"},{"id":2,"name":"一带一路与区域经济","sessions":[{"date":"2026-03-07","time":"9:00-12:00","weekday":"六","location":"201教室"},{"date":"2026-03-07","time":"13:30-17:30","weekday":"六","location":"201教室"},{"date":"2026-03-08","time":"9:00-12:00","weekday":"日","location":"201教室"},{"date":"2026-03-08","time":"13:30-17:30","weekday":"日","location":"201教室"}],"is_online":false,"credits":1,"start_date":"2026-03-07","end_date":"2026-03-08"},{"id":3,"name":"企业发展环境与战略决策","sessions":[{"date":"2026-03-07","time":"9:00-12:00","weekday":"六","location":"202教室"},{"date":"2026-03-07","time":"13:30-17:30","weekday":"六","location":"202教室"},{"date":"2026-03-08","time":"9:00-12:00","weekday":"日","location":"202教室"},{"date":"2026-03-08","time":"13:30-17:30","weekday":"日","location":"202教室"}],"is_online":false,"credits":1,"start_date":"2026-03-07","end_date":"2026-03-08"},{"id":4,"name":"资本市场与投融资策略","sessions":[{"date":"2026-03-07","time":"9:00-12:00","weekday":"六","location":"402教室"},{"date":"2026-03-07","time":"13:30-17:30","weekday":"六","location":"402教室"},{"date":"2026-03-08","time":"9:00-12:00","weekday":"日","location":"402教室"},{"date":"2026-03-08","time":"13:30-17:30","weekday":"日","location":"402教室"}],"is_online":false,"credits":1,"start_date":"2026-03-07","end_date":"2026-03-08"},{"id":5,"name":"中国文化与管理","sessions":[{"date":"2026-03-07","time":"9:00-12:00","weekday":"六","location":"610教室"},{"date":"2026-03-07","time":"13:30-17:30","weekday":"六","location":"610教室"},{"date":"2026-03-08","time":"9:00-12:00","weekday":"日","location":"610教室"},{"date":"2026-03-08","time":"13:30-17:30","weekday":"日","location":"610教室"}],"is_online":false,"credits":1,"start_date":"2026-03-07","end_date":"2026-03-08"},{"id":6,"name":"家庭金融与财富管理-1班","sessions":[{"date":"2026-03-21","time":"9:00-12:00","weekday":"六","location":"202教室"},{"date":"2026-03-21","time":"13:30-17:30","weekday":"六","location":"202教室"},{"date":"2026-03-28","time":"9:00-12:00","weekday":"六","location":"202教室"},{"date":"2026-03-28","time":"13:30-17:30","weekday":"六","location":"202教室"}],"is_online":false,"credits":1,"start_date":"2026-03-21","end_date":"2026-03-28"},{"id":7,"name":"葡萄酒品鉴与赏析-1班","sessions":[{"date":"2026-03-21","time":"9:00-12:00","weekday":"六","location":"402教室"},{"date":"2026-03-21","time":"13:30-17:30","weekday":"六","location":"402教室"},{"date":"2026-03-22","time":"9:00-12:00","weekday":"日","location":"402教室"},{"date":"2026-03-22","time":"13:30-17:30","weekday":"日","location":"402教室"}],"is_online":false,"credits":1,"start_date":"2026-03-21","end_date":"2026-03-22"},{"id":8,"name":"世界历史中的大国争霸与兴衰-1班","sessions":[{"date":"2026-03-21","time":"9:00-12:00","weekday":"六","location":"607教室"},{"date":"2026-03-21","time":"13:30-17:30","weekday":"六","location":"607教室"},{"date":"2026-03-28","time":"9:00-12:00","weekday":"六","location":"607教室"},{"date":"2026-03-28","time":"13:30-17:30","weekday":"六","location":"607教室"}],"is_online":false,"credits":1,"start_date":"2026-03-21","end_date":"2026-03-28"},{"id":9,"name":"Project Management in Context","sessions":[{"date":"2026-03-21","time":"9:00-12:00","weekday":"六","location":"610教室"},{"date":"2026-03-21","time":"13:30-17:30","weekday":"六","location":"610教室"},{"date":"2026-03-22","time":"9:00-12:00","weekday":"日","location":"610教室"},{"date":"2026-03-22","time":"13:30-17:30","weekday":"日","location":"610教室"}],"is_online":false,"credits":1,"start_date":"2026-03-21","end_date":"2026-03-22"},{"id":10,"name":"基于Excel的应用商务统计","sessions":[{"date":"2026-03-21","time":"9:00-12:00","weekday":"六","location":"907教室"},{"date":"2026-03-21","time":"13:30-17:30","weekday":"六","location":"907教室"},{"date":"2026-03-28","time":"9:00-12:00","weekday":"六","location":"907教室"},{"date":"2026-03-28","time":"13:30-17:30","weekday":"六","location":"907教室"}],"is_online":false,"credits":1,"start_date":"2026-03-21","end_date":"2026-03-28"},{"id":11,"name":"生命科学与健康产业的商业模式创新","sessions":[{"date":"2026-03-22","time":"9:00-12:00","weekday":"日","location":"201教室"},{"date":"2026-03-22","time":"13:30-17:30","weekday":"日","location":"201教室"},{"date":"2026-03-29","time":"9:00-12:00","weekday":"日","location":"201教室"},{"date":"2026-03-29","time":"13:30-17:30","weekday":"日","location":"201教室"}],"is_online":false,"credits":1,"start_date":"2026-03-22","end_date":"2026-03-29"},{"id":12,"name":"数智时代的公司战略","sessions":[{"date":"2026-03-22","time":"9:00-12:00","weekday":"日","location":"202教室"},{"date":"2026-03-22","time":"13:30-17:30","weekday":"日","location":"202教室"},{"date":"2026-03-29","time":"9:00-12:00","weekday":"日","location":"202教室"},{"date":"2026-03-29","time":"13:30-17:30","weekday":"日","location":"202教室"}],"is_online":false,"credits":1,"start_date":"2026-03-22","end_date":"2026-03-29"},{"id":13,"name":"Business Communication across Cultures","sessions":[{"date":"2026-03-22","time":"9:00-12:00","weekday":"日","location":"607教室"},{"date":"2026-03-22","time":"13:30-17:30","weekday":"日","location":"607教室"},{"date":"2026-03-29","time":"9:00-12:00","weekday":"日","location":"607教室"},{"date":"2026-03-29","time":"13:30-17:30","weekday":"日","location":"607教室"}],"is_online":false,"credits":1,"start_date":"2026-03-22","end_date":"2026-03-29"},{"id":14,"name":"Investment and Risk Management Options in USA （线上）","sessions":[{"date":"2026-03-28","time":"9:00-12:00","weekday":"六","location":"线上"},{"date":"2026-03-28","time":"13:30-17:30","weekday":"六","location":"线上"},{"date":"2026-03-29","time":"9:00-12:00","weekday":"日","location":"线上"},{"date":"2026-03-29","time":"13:30-17:30","weekday":"日","location":"线上"}],"is_online":true,"credits":1,"start_date":"2026-03-28","end_date":"2026-03-29"},{"id":15,"name":"人工智能在商业中应用","sessions":[{"date":"2026-03-28","time":"9:00-12:00","weekday":"六","location":"610教室"},{"date":"2026-03-28","time":"13:30-17:30","weekday":"六","location":"610教室"},{"date":"2026-03-29","time":"9:00-12:00","weekday":"日","location":"610教室"},{"date":"2026-03-29","time":"13:30-17:30","weekday":"日","location":"610教室"}],"is_online":false,"credits":1,"start_date":"2026-03-28","end_date":"2026-03-29"},{"id":16,"name":"企业投融资及资本运作实战","sessions":[{"date":"2026-04-11","time":"9:00-12:00","weekday":"六","location":"102教室"},{"date":"2026-04-11","time":"13:30-17:30","weekday":"六","location":"102教室"},{"date":"2026-04-12","time":"9:00-12:00","weekday":"日","location":"102教室"},{"date":"2026-04-12","time":"13:30-17:30","weekday":"日","location":"102教室"}],"is_online":false,"credits":1,"start_date":"2026-04-11","end_date":"2026-04-12"},{"id":17,"name":"区块链与数字货币","sessions":[{"date":"2026-04-11","time":"9:00-12:00","weekday":"六","location":"201教室"},{"date":"2026-04-11","time":"13:30-17:30","weekday":"六","location":"201教室"},{"date":"2026-04-12","time":"9:00-12:00","weekday":"日","location":"201教室"},{"date":"2026-04-12","time":"13:30-17:30","weekday":"日","location":"201教室"}],"is_online":false,"credits":1,"start_date":"2026-04-11","end_date":"2026-04-12"},{"id":18,"name":"制度创新与企业发展","sessions":[{"date":"2026-04-11","time":"9:00-12:00","weekday":"六","location":"202教室"},{"date":"2026-04-11","time":"13:30-17:30","weekday":"六","location":"202教室"},{"date":"2026-04-12","time":"9:00-12:00","weekday":"日","location":"202教室"},{"date":"2026-04-12","time":"13:30-17:30","weekday":"日","location":"202教室"}],"is_online":false,"credits":1,"start_date":"2026-04-11","end_date":"2026-04-12"},{"id":19,"name":"宝玉石鉴赏-1班","sessions":[{"date":"2026-04-11","time":"9:00-12:00","weekday":"六","location":"402教室"},{"date":"2026-04-11","time":"13:30-17:30","weekday":"六","location":"402教室"},{"date":"2026-04-12","time":"9:00-12:00","weekday":"日","location":"402教室"},{"date":"2026-04-12","time":"13:30-17:30","weekday":"日","location":"402教室"}],"is_online":false,"credits":1,"start_date":"2026-04-11","end_date":"2026-04-12"},{"id":20,"name":"应用博弈论-1班","sessions":[{"date":"2026-04-11","time":"9:00-12:00","weekday":"六","location":"607教室"},{"date":"2026-04-11","time":"13:30-17:30","weekday":"六","location":"607教室"},{"date":"2026-04-12","time":"9:00-12:00","weekday":"日","location":"607教室"},{"date":"2026-04-12","time":"13:30-17:30","weekday":"日","location":"607教室"}],"is_online":false,"credits":1,"start_date":"2026-04-11","end_date":"2026-04-12"},{"id":21,"name":"商业模式创新与设计","sessions":[{"date":"2026-04-11","time":"9:00-12:00","weekday":"六","location":"610教室"},{"date":"2026-04-11","time":"13:30-17:30","weekday":"六","location":"610教室"},{"date":"2026-04-12","time":"9:00-12:00","weekday":"日","location":"610教室"},{"date":"2026-04-12","time":"13:30-17:30","weekday":"日","location":"610教室"}],"is_online":false,"credits":1,"start_date":"2026-04-11","end_date":"2026-04-12"},{"id":22,"name":"现代零售与实体零售转型","sessions":[{"date":"2026-04-18","time":"9:00-12:00","weekday":"六","location":"201教室"},{"date":"2026-04-18","time":"13:30-17:30","weekday":"六","location":"201教室"},{"date":"2026-04-19","time":"9:00-12:00","weekday":"日","location":"201教室"},{"date":"2026-04-19","time":"13:30-17:30","weekday":"日","location":"201教室"}],"is_online":false,"credits":1,"start_date":"2026-04-18","end_date":"2026-04-19"},{"id":23,"name":"固定收益证券原理与应用","sessions":[{"date":"2026-04-18","time":"9:00-12:00","weekday":"六","location":"202教室"},{"date":"2026-04-18","time":"13:30-17:30","weekday":"六","location":"202教室"},{"date":"2026-04-19","time":"9:00-12:00","weekday":"日","location":"202教室"},{"date":"2026-04-19","time":"13:30-17:30","weekday":"日","location":"202教室"}],"is_online":false,"credits":1,"start_date":"2026-04-18","end_date":"2026-04-19"},{"id":24,"name":"大数据时代的管理决策","sessions":[{"date":"2026-04-18","time":"9:00-12:00","weekday":"六","location":"402教室"},{"date":"2026-04-18","time":"13:30-17:30","weekday":"六","location":"402教室"},{"date":"2026-04-19","time":"9:00-12:00","weekday":"日","location":"402教室"},{"date":"2026-04-19","time":"13:30-17:30","weekday":"日","location":"402教室"}],"is_online":false,"credits":1,"start_date":"2026-04-18","end_date":"2026-04-19"},{"id":25,"name":"品牌管理","sessions":[{"date":"2026-04-18","time":"9:00-12:00","weekday":"六","location":"607教室"},{"date":"2026-04-18","time":"13:30-17:30","weekday":"六","location":"607教室"},{"date":"2026-04-19","time":"9:00-12:00","weekday":"日","location":"607教室"},{"date":"2026-04-19","time":"13:30-17:30","weekday":"日","location":"607教室"}],"is_online":false,"credits":1,"start_date":"2026-04-18","end_date":"2026-04-19"},{"id":26,"name":"消费研究-1班","sessions":[{"date":"2026-04-18","time":"9:00-12:00","weekday":"六","location":"610教室"},{"date":"2026-04-18","time":"13:30-17:30","weekday":"六","location":"610教室"},{"date":"2026-04-19","time":"9:00-12:00","weekday":"日","location":"610教室"},{"date":"2026-04-19","time":"13:30-17:30","weekday":"日","location":"610教室"}],"is_online":false,"credits":1,"start_date":"2026-04-18","end_date":"2026-04-19"},{"id":27,"name":"赛艇与团队领导力-1班","sessions":[{"date":"2026-04-25","time":"9:00-12:00","weekday":"六","location":"秦淮河赛艇俱乐部"},{"date":"2026-04-25","time":"13:30-17:30","weekday":"六","location":"秦淮河赛艇俱乐部"},{"date":"2026-04-26","time":"9:00-12:00","weekday":"日","location":"202教室"},{"date":"2026-04-26","time":"13:30-17:30","weekday":"日","location":"202教室"}],"is_online":false,"credits":1,"start_date":"2026-04-25","end_date":"2026-04-26"},{"id":28,"name":"人才领先战略","sessions":[{"date":"2026-04-25","time":"9:00-12:00","weekday":"六","location":"301教室"},{"date":"2026-04-25","time":"13:30-17:30","weekday":"六","location":"301教室"},{"date":"2026-04-26","time":"9:00-12:00","weekday":"日","location":"301教室"},{"date":"2026-04-26","time":"13:30-17:30","weekday":"日","location":"301教室"}],"is_online":false,"credits":1,"start_date":"2026-04-25","end_date":"2026-04-26"},{"id":29,"name":"公司层次的战略","sessions":[{"date":"2026-04-25","time":"9:00-12:00","weekday":"六","location":"302教室"},{"date":"2026-04-25","time":"13:30-17:30","weekday":"六","location":"302教室"},{"date":"2026-04-26","time":"9:00-12:00","weekday":"日","location":"302教室"},{"date":"2026-04-26","time":"13:30-17:30","weekday":"日","location":"302教室"}],"is_online":false,"credits":1,"start_date":"2026-04-25","end_date":"2026-04-26"},{"id":30,"name":"Understanding the Chinese Economy for Business and Investment Decision-making","sessions":[{"date":"2026-04-25","time":"9:00-12:00","weekday":"六","location":"402教室"},{"date":"2026-04-25","time":"13:30-17:30","weekday":"六","location":"402教室"},{"date":"2026-04-26","time":"9:00-12:00","weekday":"日","location":"402教室"},{"date":"2026-04-26","time":"13:30-17:30","weekday":"日","location":"402教室"}],"is_online":false,"credits":1,"start_date":"2026-04-25","end_date":"2026-04-26"},{"id":31,"name":"人工智能与科技创新","sessions":[{"date":"2026-04-25","time":"9:00-12:00","weekday":"六","location":"607教室"},{"date":"2026-04-25","time":"13:30-17:30","weekday":"六","location":"607教室"},{"date":"2026-04-26","time":"9:00-12:00","weekday":"日","location":"607教室"},{"date":"2026-04-26","time":"13:30-17:30","weekday":"日","location":"607教室"}],"is_online":false,"credits":1,"start_date":"2026-04-25","end_date":"2026-04-26"},{"id":32,"name":"宝玉石鉴赏-2班","sessions":[{"date":"2026-04-25","time":"9:00-12:00","weekday":"六","location":"610教室"},{"date":"2026-04-25","time":"13:30-17:30","weekday":"六","location":"610教室"},{"date":"2026-04-26","time":"9:00-12:00","weekday":"日","location":"610教室"},{"date":"2026-04-26","time":"13:30-17:30","weekday":"日","location":"610教室"}],"is_online":false,"credits":1,"start_date":"2026-04-25","end_date":"2026-04-26"},{"id":33,"name":"赛艇与团队领导力-2班","sessions":[{"date":"2026-05-23","time":"9:00-12:00","weekday":"六","location":"秦淮河赛艇俱乐部"},{"date":"2026-05-23","time":"13:30-17:30","weekday":"六","location":"秦淮河赛艇俱乐部"},{"date":"2026-05-24","time":"9:00-12:00","weekday":"日","location":"201教室"},{"date":"2026-05-24","time":"13:30-17:30","weekday":"日","location":"201教室"}],"is_online":false,"credits":1,"start_date":"2026-05-23","end_date":"2026-05-24"},{"id":34,"name":"商业银行运作与管理","sessions":[{"date":"2026-05-23","time":"9:00-12:00","weekday":"六","location":"202教室"},{"date":"2026-05-23","time":"13:30-17:30","weekday":"六","location":"202教室"},{"date":"2026-05-24","time":"9:00-12:00","weekday":"日","location":"202教室"},{"date":"2026-05-24","time":"13:30-17:30","weekday":"日","location":"202教室"}],"is_online":false,"credits":1,"start_date":"2026-05-23","end_date":"2026-05-24"},{"id":35,"name":"电子商务商业模式、战略与运营","sessions":[{"date":"2026-05-23","time":"9:00-12:00","weekday":"六","location":"302教室"},{"date":"2026-05-23","time":"13:30-17:30","weekday":"六","location":"302教室"},{"date":"2026-05-30","time":"9:00-12:00","weekday":"六","location":"302教室"},{"date":"2026-05-30","time":"13:30-17:30","weekday":"六","location":"302教室"}],"is_online":false,"credits":1,"start_date":"2026-05-23","end_date":"2026-05-30"},{"id":36,"name":"葡萄酒品鉴与赏析-2班","sessions":[{"date":"2026-05-23","time":"9:00-12:00","weekday":"六","location":"402教室"},{"date":"2026-05-23","time":"13:30-17:30","weekday":"六","location":"402教室"},{"date":"2026-05-24","time":"9:00-12:00","weekday":"日","location":"402教室"},{"date":"2026-05-24","time":"13:30-17:30","weekday":"日","location":"402教室"}],"is_online":false,"credits":1,"start_date":"2026-05-23","end_date":"2026-05-24"},{"id":37,"name":"先秦诸子与中国古代政治思想-1班","sessions":[{"date":"2026-05-23","time":"9:00-12:00","weekday":"六","location":"607教室"},{"date":"2026-05-23","time":"13:30-17:30","weekday":"六","location":"607教室"},{"date":"2026-05-24","time":"9:00-12:00","weekday":"日","location":"607教室"},{"date":"2026-05-24","time":"13:30-17:30","weekday":"日","location":"607教室"}],"is_online":false,"credits":1,"start_date":"2026-05-23","end_date":"2026-05-24"},{"id":38,"name":"有效管理沟通-1班","sessions":[{"date":"2026-05-23","time":"9:00-12:00","weekday":"六","location":"610教室"},{"date":"2026-05-23","time":"13:30-17:30","weekday":"六","location":"610教室"},{"date":"2026-05-24","time":"9:00-12:00","weekday":"日","location":"610教室"},{"date":"2026-05-24","time":"13:30-17:30","weekday":"日","location":"610教室"}],"is_online":false,"credits":1,"start_date":"2026-05-23","end_date":"2026-05-24"},{"id":41,"name":"家庭金融与财富管理-2班","sessions":[{"date":"2026-05-24","time":"9:00-12:00","weekday":"日","location":"302教室"},{"date":"2026-05-24","time":"13:30-17:30","weekday":"日","location":"302教室"},{"date":"2026-05-31","time":"9:00-12:00","weekday":"日","location":"302教室"},{"date":"2026-05-31","time":"13:30-17:30","weekday":"日","location":"302教室"}],"is_online":false,"credits":1,"start_date":"2026-05-24","end_date":"2026-05-31"},{"id":39,"name":"行业前沿课：制造业","sessions":[{"date":"2026-05-30","time":"9:00-12:00","weekday":"六","location":"201教室"},{"date":"2026-05-30","time":"13:30-17:30","weekday":"六","location":"201教室"},{"date":"2026-05-31","time":"9:00-12:00","weekday":"日","location":"201教室"},{"date":"2026-05-31","time":"13:30-17:30","weekday":"日","location":"201教室"}],"is_online":false,"credits":1,"start_date":"2026-05-30","end_date":"2026-05-31"},{"id":40,"name":"产品差异化与竞争战略","sessions":[{"date":"2026-05-30","time":"9:00-12:00","weekday":"六","location":"202教室"},{"date":"2026-05-30","time":"13:30-17:30","weekday":"六","location":"202教室"},{"date":"2026-05-31","time":"9:00-12:00","weekday":"日","location":"202教室"},{"date":"2026-05-31","time":"13:30-17:30","weekday":"日","location":"202教室"}],"is_online":false,"credits":1,"start_date":"2026-05-30","end_date":"2026-05-31"},{"id":42,"name":"日本制造产业现状与经营管理之道","sessions":[{"date":"2026-05-30","time":"9:00-12:00","weekday":"六","location":"402教室"},{"date":"2026-05-30","time":"13:30-17:30","weekday":"六","location":"402教室"},{"date":"2026-05-31","time":"9:00-12:00","weekday":"日","location":"402教室"},{"date":"2026-05-31","time":"13:30-17:30","weekday":"日","location":"402教室"}],"is_online":false,"credits":1,"start_date":"2026-05-30","end_date":"2026-05-31"},{"id":43,"name":"消费研究-2班","sessions":[{"date":"2026-05-30","time":"9:00-12:00","weekday":"六","location":"610教室"},{"date":"2026-05-30","time":"13:30-17:30","weekday":"六","location":"610教室"},{"date":"2026-05-31","time":"9:00-12:00","weekday":"日","location":"610教室"},{"date":"2026-05-31","time":"13:30-17:30","weekday":"日","location":"610教室"}],"is_online":false,"credits":1,"start_date":"2026-05-30","end_date":"2026-05-31"},{"id":44,"name":"职场超能力：AI 高效工作流实战-2班","sessions":[{"date":"2026-05-30","time":"9:00-12:00","weekday":"六","location":"907教室"},{"date":"2026-05-30","time":"13:30-17:30","weekday":"六","location":"907教室"},{"date":"2026-05-31","time":"9:00-12:00","weekday":"日","location":"907教室"},{"date":"2026-05-31","time":"13:30-17:30","weekday":"日","location":"907教室"}],"is_online":false,"credits":1,"start_date":"2026-05-30","end_date":"2026-05-31"},{"id":45,"name":"人工智能（深度学习与大语言模型）","sessions":[{"date":"2026-06-06","time":"9:00-12:00","weekday":"六","location":"201教室"},{"date":"2026-06-06","time":"13:30-17:30","weekday":"六","location":"201教室"},{"date":"2026-06-13","time":"9:00-12:00","weekday":"六","location":"201教室"},{"date":"2026-06-13","time":"13:30-17:30","weekday":"六","location":"201教室"}],"is_online":false,"credits":1,"start_date":"2026-06-06","end_date":"2026-06-13"},{"id":46,"name":"世界历史中的大国争霸与兴衰-2班","sessions":[{"date":"2026-06-06","time":"9:00-12:00","weekday":"六","location":"202教室"},{"date":"2026-06-06","time":"13:30-17:30","weekday":"六","location":"202教室"},{"date":"2026-06-07","time":"9:00-12:00","weekday":"日","location":"202教室"},{"date":"2026-06-07","time":"13:30-17:30","weekday":"日","location":"202教室"}],"is_online":false,"credits":1,"start_date":"2026-06-06","end_date":"2026-06-07"},{"id":47,"name":"从平庸到卓越：危机管理","sessions":[{"date":"2026-06-06","time":"9:00-12:00","weekday":"六","location":"402教室"},{"date":"2026-06-06","time":"13:30-17:30","weekday":"六","location":"402教室"},{"date":"2026-06-07","time":"9:00-12:00","weekday":"日","location":"402教室"},{"date":"2026-06-07","time":"13:30-17:30","weekday":"日","location":"402教室"}],"is_online":false,"credits":1,"start_date":"2026-06-06","end_date":"2026-06-07"},{"id":48,"name":"舆情管理和应对","sessions":[{"date":"2026-06-06","time":"9:00-12:00","weekday":"六","location":"607教室"},{"date":"2026-06-06","time":"13:30-17:30","weekday":"六","location":"607教室"},{"date":"2026-06-07","time":"9:00-12:00","weekday":"日","location":"607教室"},{"date":"2026-06-07","time":"13:30-17:30","weekday":"日","location":"607教室"}],"is_online":false,"credits":1,"start_date":"2026-06-06","end_date":"2026-06-07"},{"id":49,"name":"企业数位转型的双轨战略","sessions":[{"date":"2026-06-06","time":"9:00-12:00","weekday":"六","location":"610教室"},{"date":"2026-06-06","time":"13:30-17:30","weekday":"六","location":"610教室"},{"date":"2026-06-07","time":"9:00-12:00","weekday":"日","location":"610教室"},{"date":"2026-06-07","time":"13:30-17:30","weekday":"日","location":"610教室"}],"is_online":false,"credits":1,"start_date":"2026-06-06","end_date":"2026-06-07"},{"id":50,"name":"项目管理思维和范式","sessions":[{"date":"2026-06-07","time":"9:00-12:00","weekday":"日","location":"201教室"},{"date":"2026-06-07","time":"13:30-17:30","weekday":"日","location":"201教室"},{"date":"2026-06-14","time":"9:00-12:00","weekday":"日","location":"201教室"},{"date":"2026-06-14","time":"13:30-17:30","weekday":"日","location":"201教室"}],"is_online":false,"credits":1,"start_date":"2026-06-07","end_date":"2026-06-14"},{"id":51,"name":"保险经济学","sessions":[{"date":"2026-06-13","time":"9:00-12:00","weekday":"六","location":"202教室"},{"date":"2026-06-13","time":"13:30-17:30","weekday":"六","location":"202教室"},{"date":"2026-06-14","time":"9:00-12:00","weekday":"日","location":"202教室"},{"date":"2026-06-14","time":"13:30-17:30","weekday":"日","location":"202教室"}],"is_online":false,"credits":1,"start_date":"2026-06-13","end_date":"2026-06-14"},{"id":52,"name":"世界发展报告解读","sessions":[{"date":"2026-06-13","time":"9:00-12:00","weekday":"六","location":"402教室"},{"date":"2026-06-13","time":"13:30-17:30","weekday":"六","location":"402教室"},{"date":"2026-06-14","time":"9:00-12:00","weekday":"日","location":"402教室"},{"date":"2026-06-14","time":"13:30-17:30","weekday":"日","location":"402教室"}],"is_online":false,"credits":1,"start_date":"2026-06-13","end_date":"2026-06-14"},{"id":53,"name":"风险管理与决策思维-1班","sessions":[{"date":"2026-06-13","time":"9:00-12:00","weekday":"六","location":"607教室"},{"date":"2026-06-13","time":"13:30-17:30","weekday":"六","location":"607教室"},{"date":"2026-06-14","time":"9:00-12:00","weekday":"日","location":"607教室"},{"date":"2026-06-14","time":"13:30-17:30","weekday":"日","location":"607教室"}],"is_online":false,"credits":1,"start_date":"2026-06-13","end_date":"2026-06-14"},{"id":54,"name":"并购、战略与公司治理","sessions":[{"date":"2026-06-13","time":"9:00-12:00","weekday":"六","location":"610教室"},{"date":"2026-06-13","time":"13:30-17:30","weekday":"六","location":"610教室"},{"date":"2026-06-14","time":"9:00-12:00","weekday":"日","location":"610教室"},{"date":"2026-06-14","time":"13:30-17:30","weekday":"日","location":"610教室"}],"is_online":false,"credits":1,"start_date":"2026-06-13","end_date":"2026-06-14"},{"id":55,"name":"电商运营原理与实战","sessions":[{"date":"2026-06-27","time":"9:00-12:00","weekday":"六","location":"201教室"},{"date":"2026-06-27","time":"13:30-16:30","weekday":"六","location":"201教室"},{"date":"2026-06-28","time":"9:00-12:00","weekday":"日","location":"201教室"},{"date":"2026-06-28","time":"13:30-16:30","weekday":"日","location":"201教室"}],"is_online":false,"credits":1,"start_date":"2026-06-27","end_date":"2026-06-28"},{"id":56,"name":"新消费与商业地产战略创新","sessions":[{"date":"2026-06-27","time":"9:00-12:00","weekday":"六","location":"202教室"},{"date":"2026-06-27","time":"13:30-16:30","weekday":"六","location":"202教室"},{"date":"2026-06-28","time":"9:00-12:00","weekday":"日","location":"202教室"},{"date":"2026-06-28","time":"13:30-16:30","weekday":"日","location":"202教室"}],"is_online":false,"credits":1,"start_date":"2026-06-27","end_date":"2026-06-28"},{"id":57,"name":"从天使投资人角度看创业","sessions":[{"date":"2026-06-27","time":"9:00-12:00","weekday":"六","location":"607教室"},{"date":"2026-06-27","time":"13:30-16:30","weekday":"六","location":"607教室"},{"date":"2026-06-28","time":"9:00-12:00","weekday":"日","location":"607教室"},{"date":"2026-06-28","time":"13:30-16:30","weekday":"日","location":"607教室"}],"is_online":false,"credits":1,"start_date":"2026-06-27","end_date":"2026-06-28"},{"id":58,"name":"先秦诸子与中国古代政治思想-2班","sessions":[{"date":"2026-06-27","time":"9:00-12:00","weekday":"六","location":"610教室"},{"date":"2026-06-27","time":"13:30-16:30","weekday":"六","location":"610教室"},{"date":"2026-06-28","time":"9:00-12:00","weekday":"日","location":"610教室"},{"date":"2026-06-28","time":"13:30-16:30","weekday":"日","location":"610教室"}],"is_online":false,"credits":1,"start_date":"2026-06-27","end_date":"2026-06-28"},{"id":59,"name":"职场超能力：AI 高效工作流实战-3班","sessions":[{"date":"2026-06-27","time":"9:00-12:00","weekday":"六","location":"907教室"},{"date":"2026-06-27","time":"13:30-16:30","weekday":"六","location":"907教室"},{"date":"2026-06-28","time":"9:00-12:00","weekday":"日","location":"907教室"},{"date":"2026-06-28","time":"13:30-16:30","weekday":"日","location":"907教室"}],"is_online":false,"credits":1,"start_date":"2026-06-27","end_date":"2026-06-28"},{"id":64,"name":"Management of Information Systems（线上）","sessions":[{"date":"2026-07-03","time":"13:30-16:30","weekday":"五","location":"线上"},{"date":"2026-07-03","time":"18:30-21:30","weekday":"五","location":"线上"},{"date":"2026-07-04","time":"9:00-12:00","weekday":"六","location":"线上"},{"date":"2026-07-04","time":"13:30-17:30","weekday":"六","location":"线上"},{"date":"2026-07-04","time":"18:30-21:30","weekday":"六","location":"线上"},{"date":"2026-07-05","time":"9:00-12:00","weekday":"日","location":"线上"},{"date":"2026-07-05","time":"13:30-17:30","weekday":"日","location":"线上"}],"is_online":true,"credits":2,"start_date":"2026-07-03","end_date":"2026-07-05"},{"id":60,"name":"金融科技","sessions":[{"date":"2026-07-04","time":"9:00-12:00","weekday":"六","location":"202教室"},{"date":"2026-07-04","time":"13:30-17:30","weekday":"六","location":"202教室"},{"date":"2026-07-05","time":"9:00-12:00","weekday":"日","location":"202教室"},{"date":"2026-07-05","time":"13:30-17:30","weekday":"日","location":"202教室"}],"is_online":false,"credits":1,"start_date":"2026-07-04","end_date":"2026-07-05"},{"id":61,"name":"当代世界经济热点问题解析","sessions":[{"date":"2026-07-04","time":"9:00-12:00","weekday":"六","location":"402教室"},{"date":"2026-07-04","time":"13:30-17:30","weekday":"六","location":"402教室"},{"date":"2026-07-05","time":"9:00-12:00","weekday":"日","location":"402教室"},{"date":"2026-07-05","time":"13:30-17:30","weekday":"日","location":"402教室"}],"is_online":false,"credits":1,"start_date":"2026-07-04","end_date":"2026-07-05"},{"id":62,"name":"增长：战略与市场营销融合的新结构","sessions":[{"date":"2026-07-04","time":"9:00-12:00","weekday":"六","location":"607教室"},{"date":"2026-07-04","time":"13:30-17:30","weekday":"六","location":"607教室"},{"date":"2026-07-05","time":"9:00-12:00","weekday":"日","location":"607教室"},{"date":"2026-07-05","time":"13:30-17:30","weekday":"日","location":"607教室"}],"is_online":false,"credits":1,"start_date":"2026-07-04","end_date":"2026-07-05"},{"id":63,"name":"应用博弈论-2班","sessions":[{"date":"2026-07-04","time":"9:00-12:00","weekday":"六","location":"610教室"},{"date":"2026-07-04","time":"13:30-17:30","weekday":"六","location":"610教室"},{"date":"2026-07-05","time":"9:00-12:00","weekday":"日","location":"610教室"},{"date":"2026-07-05","time":"13:30-17:30","weekday":"日","location":"610教室"}],"is_online":false,"credits":1,"start_date":"2026-07-04","end_date":"2026-07-05"},{"id":65,"name":"高绩效供应链管理","sessions":[{"date":"2026-07-09","time":"9:00-12:00","weekday":"四","location":"501教室"},{"date":"2026-07-09","time":"13:30-17:30","weekday":"四","location":"501教室"},{"date":"2026-07-10","time":"9:00-12:00","weekday":"五","location":"501教室"},{"date":"2026-07-10","time":"13:30-17:30","weekday":"五","location":"501教室"}],"is_online":false,"credits":1,"start_date":"2026-07-09","end_date":"2026-07-10"},{"id":66,"name":"社会资本理论与实务","sessions":[{"date":"2026-07-11","time":"9:00-12:00","weekday":"六","location":"201教室"},{"date":"2026-07-11","time":"13:30-17:30","weekday":"六","location":"201教室"},{"date":"2026-07-12","time":"9:00-12:00","weekday":"日","location":"201教室"},{"date":"2026-07-12","time":"13:30-17:30","weekday":"日","location":"201教室"}],"is_online":false,"credits":1,"start_date":"2026-07-11","end_date":"2026-07-12"},{"id":67,"name":"企业咨询理论与实务（曾鑫）","sessions":[{"date":"2026-07-11","time":"9:00-12:00","weekday":"六","location":"401教室"},{"date":"2026-07-11","time":"13:30-17:30","weekday":"六","location":"401教室"},{"date":"2026-07-12","time":"9:00-12:00","weekday":"日","location":"401教室"},{"date":"2026-07-12","time":"13:30-17:30","weekday":"日","location":"401教室"}],"is_online":false,"credits":1,"start_date":"2026-07-11","end_date":"2026-07-12"},{"id":68,"name":"风险管理与决策思维-2班","sessions":[{"date":"2026-07-11","time":"9:00-12:00","weekday":"六","location":"607教室"},{"date":"2026-07-11","time":"13:30-17:30","weekday":"六","location":"607教室"},{"date":"2026-07-12","time":"9:00-12:00","weekday":"日","location":"607教室"},{"date":"2026-07-12","time":"13:30-17:30","weekday":"日","location":"607教室"}],"is_online":false,"credits":1,"start_date":"2026-07-11","end_date":"2026-07-12"},{"id":69,"name":"有效管理沟通-2班","sessions":[{"date":"2026-07-11","time":"9:00-12:00","weekday":"六","location":"610教室"},{"date":"2026-07-11","time":"13:30-17:30","weekday":"六","location":"610教室"},{"date":"2026-07-12","time":"9:00-12:00","weekday":"日","location":"610教室"},{"date":"2026-07-12","time":"13:30-17:30","weekday":"日","location":"610教室"}],"is_online":false,"credits":1,"start_date":"2026-07-11","end_date":"2026-07-12"},{"id":70,"name":"马克思主义与社会科学方法论（24级ABCD班）","sessions":[{"date":"2026-08-29","time":"9:00-12:00","weekday":"六","location":"待定"},{"date":"2026-08-29","time":"13:30-17:30","weekday":"六","location":"待定"},{"date":"2026-08-30","time":"9:00-12:00","weekday":"日","location":"待定"},{"date":"2026-08-30","time":"13:30-17:30","weekday":"日","location":"待定"}],"is_online":false,"credits":1,"start_date":"2026-08-29","end_date":"2026-08-30"},{"id":71,"name":"马克思主义经典著作选读（24级EFG班）","sessions":[{"date":"2026-08-29","time":"9:00-12:00","weekday":"六","location":"210报告厅"},{"date":"2026-08-29","time":"13:30-17:30","weekday":"六","location":"210报告厅"},{"date":"2026-08-30","time":"9:00-12:00","weekday":"日","location":"210报告厅"},{"date":"2026-08-30","time":"13:30-17:30","weekday":"日","location":"210报告厅"}],"is_online":false,"credits":1,"start_date":"2026-08-29","end_date":"2026-08-30"}];
+
+// 状态管理
+let selections = { must: [], want: [], optional: [] };
+let coinAllocations = {};
+let activeFilters = new Set(['all']);
+
+// 博弈策略：优先级权重
+const priorityWeights = { must: 3, want: 2, optional: 1 };
+
+// 标签分类规则
+const tagRules = {
+    finance: ['投融资', '财富', '证券', '银行', '金融', '资本', '保险', '货币', '收益'],
+    ai: ['AI', '人工智能', '区块链', '数字', '数据', '科技', '智能', 'Excel'],
+    strategy: ['战略', '商业模式', '竞争', '并购', '公司治理', '转型', '创新', '决策'],
+    culture: ['历史', '文化', '诸子', '葡萄酒', '宝玉石', '赛艇', '马克思', '哲学', '世界发展'],
+    marketing: ['品牌', '消费', '零售', '电商', '营销', '增长'],
+    leadership: ['沟通', '团队', '人才', '领导', '管理沟通', '咨询', '项目管理', '危机']
+};
+
+function getCourseTag(course) {
+    const name = course.name;
+    for (const [tag, keywords] of Object.entries(tagRules)) {
+        if (keywords.some(kw => name.includes(kw))) return tag;
+    }
+    return 'other';
+}
+
+function matchFilters(course) {
+    if (activeFilters.has('all')) return true;
+    let matchCategory = false, needCategoryMatch = false;
+    for (const filter of activeFilters) {
+        if (filter === 'online') { if (!course.is_online) return false; }
+        else if (filter === '2credits') { if (course.credits < 2) return false; }
+        else { needCategoryMatch = true; if (getCourseTag(course) === filter) matchCategory = true; }
+    }
+    if (needCategoryMatch && !matchCategory) return false;
+    return true;
+}
+
+function calculateDynamicCoins() {
+    const allSelected = getAllSelectedIds();
+    if (allSelected.length === 0) return {};
+    let totalWeighted = 0;
+    const courseWeights = {};
+    allSelected.forEach(id => {
+        const course = courses.find(c => c.id === id);
+        const priority = getCoursesPriority(id);
+        if (course && priority) {
+            const weight = course.credits * priorityWeights[priority];
+            courseWeights[id] = weight;
+            totalWeighted += weight;
+        }
+    });
+    if (totalWeighted === 0) return {};
+    const result = {};
+    const offsets = [3, -3, 7, -7, 13, -13, 17, -17];
+    let idx = 0;
+    allSelected.forEach(id => {
+        const weight = courseWeights[id] || 0;
+        let coins = Math.round((weight / totalWeighted) * 1000);
+        if (coins % 50 === 0 || coins % 10 === 0) { coins += offsets[idx % offsets.length]; idx++; }
+        result[id] = Math.max(10, Math.min(500, coins));
+    });
+    return result;
+}
+
+function autoAllocateCoins() {
+    const dynamicCoins = calculateDynamicCoins();
+    if (Object.keys(dynamicCoins).length === 0) { alert('请先选择课程'); return; }
+    Object.assign(coinAllocations, dynamicCoins);
+    saveToLocalStorage();
+    renderPriorityLists();
+    updateStats();
+}
+
+function suggestCoins(priority, courseId) {
+    const course = courses.find(c => c.id === courseId);
+    if (!course) return 50;
+    const allSelected = getAllSelectedIds();
+    if (allSelected.length === 0) return 50;
+    let totalWeighted = 0;
+    allSelected.forEach(id => {
+        const c = courses.find(x => x.id === id);
+        const p = getCoursesPriority(id);
+        if (c && p) totalWeighted += c.credits * priorityWeights[p];
+    });
+    if (totalWeighted === 0) return 50;
+    const weight = course.credits * priorityWeights[priority];
+    let coins = Math.round((weight / totalWeighted) * 1000);
+    if (coins % 50 === 0) coins += 3;
+    else if (coins % 10 === 0) coins += 7;
+    return Math.max(10, Math.min(500, coins));
+}
+
+function init() {
+    loadFromLocalStorage();
+    renderCourseList();
+    renderPriorityLists();
+    renderCalendar();
+    updateStats();
+    setupDragAndDrop();
+}
+
+function saveToLocalStorage() {
+    localStorage.setItem('mba_selections', JSON.stringify(selections));
+    localStorage.setItem('mba_coins', JSON.stringify(coinAllocations));
+}
+
+function loadFromLocalStorage() {
+    const saved = localStorage.getItem('mba_selections');
+    if (saved) selections = JSON.parse(saved);
+    const coins = localStorage.getItem('mba_coins');
+    if (coins) coinAllocations = JSON.parse(coins);
+}
+
+function getAllSelectedIds() {
+    return [...selections.must, ...selections.want, ...selections.optional];
+}
+
+function getCoursesPriority(id) {
+    if (selections.must.includes(id)) return 'must';
+    if (selections.want.includes(id)) return 'want';
+    if (selections.optional.includes(id)) return 'optional';
+    return null;
+}
+
+function getConflicts(courseId) {
+    const course = courses.find(c => c.id === courseId);
+    if (!course) return [];
+    const allSelected = getAllSelectedIds();
+    const conflicts = [];
+    allSelected.forEach(id => {
+        if (id === courseId) return;
+        const other = courses.find(c => c.id === id);
+        if (!other) return;
+        for (const s of course.sessions) {
+            for (const os of other.sessions) {
+                if (s.date === os.date && s.time === os.time) { conflicts.push(other.name); return; }
+            }
+        }
+    });
+    return conflicts;
+}
+
+function getConflictIds(courseId) {
+    const course = courses.find(c => c.id === courseId);
+    if (!course) return [];
+    const allSelected = getAllSelectedIds();
+    const conflictIds = [];
+    allSelected.forEach(id => {
+        if (id === courseId) return;
+        const other = courses.find(c => c.id === id);
+        if (!other) return;
+        for (const s of course.sessions) {
+            for (const os of other.sessions) {
+                if (s.date === os.date && s.time === os.time) { conflictIds.push(id); return; }
+            }
+        }
+    });
+    return conflictIds;
+}
+
+function getConflictDates(courseId) {
+    const course = courses.find(c => c.id === courseId);
+    if (!course) return [];
+    const allSelected = getAllSelectedIds();
+    const conflictDates = [];
+    allSelected.forEach(id => {
+        if (id === courseId) return;
+        const other = courses.find(c => c.id === id);
+        if (!other) return;
+        for (const s of course.sessions) {
+            for (const os of other.sessions) {
+                if (s.date === os.date && s.time === os.time) conflictDates.push(s.date);
+            }
+        }
+    });
+    return conflictDates;
+}
+
+function highlightConflicts(courseId) {
+    const conflictIds = getConflictIds(courseId);
+    const conflictDates = getConflictDates(courseId);
+    conflictIds.forEach(id => {
+        document.querySelectorAll(`.course-card[data-id="${id}"]`).forEach(card => card.classList.add('conflict-highlight'));
+    });
+    document.querySelectorAll(`.course-card[data-id="${courseId}"]`).forEach(card => card.classList.add('conflict-source'));
+    conflictDates.forEach(date => {
+        document.querySelectorAll(`.calendar-day[data-date="${date}"]`).forEach(day => day.classList.add('conflict-highlight'));
+    });
+}
+
+function clearConflictHighlights() {
+    document.querySelectorAll('.conflict-highlight').forEach(el => el.classList.remove('conflict-highlight'));
+    document.querySelectorAll('.conflict-source').forEach(el => el.classList.remove('conflict-source'));
+}
+
+function updateStats() {
+    const allSelected = getAllSelectedIds();
+    let credits = 0, conflicts = 0, totalCoins = 0;
+    allSelected.forEach(id => {
+        const c = courses.find(x => x.id === id);
+        if (c) { credits += c.credits; if (getConflicts(id).length > 0) conflicts++; }
+        totalCoins += coinAllocations[id] || 0;
+    });
+    document.getElementById('totalCredits').textContent = credits;
+    document.getElementById('selectedCount').textContent = allSelected.length;
+    document.getElementById('conflictCount').textContent = conflicts;
+    document.getElementById('remainingCoins').textContent = 1000 - totalCoins;
+    document.getElementById('conflictStat').classList.toggle('danger', conflicts > 0);
+    document.getElementById('coinTotal').textContent = totalCoins;
+    document.getElementById('coinSummary').classList.toggle('over', totalCoins > 1000);
+    updateNavBadge();
+}
+
+function renderCourseList() {
+    const container = document.getElementById('courseList');
+    const search = document.getElementById('searchInput').value.toLowerCase();
+    const month = document.getElementById('monthFilter').value;
+    const allSelected = getAllSelectedIds();
+    const filtered = courses.filter(c => {
+        const matchSearch = c.name.toLowerCase().includes(search);
+        const matchMonth = !month || c.start_date.substring(5, 7) === month;
+        const notSelected = !allSelected.includes(c.id);
+        const matchTag = matchFilters(c);
+        return matchSearch && matchMonth && notSelected && matchTag;
+    });
+    container.innerHTML = filtered.map(c => {
+        const dates = [...new Set(c.sessions.map(s => s.date))].map(d => {
+            const [,m,day] = d.split('-');
+            return `${parseInt(m)}/${parseInt(day)}`;
+        }).join(', ');
+        const extras = courseExtras[c.id] || {};
+        let extrasHtml = '';
+        if (extras.assessment || extras.notes) {
+            extrasHtml = '<div class="course-extras">';
+            if (extras.assessment) extrasHtml += '<div class="assessment">' + extras.assessment + '</div>';
+            if (extras.notes) extrasHtml += '<div class="notes">' + extras.notes + '</div>';
+            extrasHtml += '</div>';
+        }
+        return '<div class="course-card" draggable="true" data-id="' + c.id + '">' +
+            '<div class="name">' +
+                '<span>' + c.name + '</span>' +
+                '<span>' + (c.is_online ? '<span class="badge online">线上</span>' : '') + (c.credits > 1 ? '<span class="badge credits">' + c.credits + '学分</span>' : '') + '</span>' +
+            '</div>' +
+            '<div class="info">' + dates + '</div>' +
+            extrasHtml +
+        '</div>';
+    }).join('');
+    container.querySelectorAll('.course-card').forEach(card => {
+        card.addEventListener('dragstart', handleDragStart);
+        card.addEventListener('dragend', handleDragEnd);
+        // 移动端点击事件
+        card.addEventListener('click', handleCourseCardClick);
+    });
+}
+
+function renderPriorityLists() {
+    ['must', 'want', 'optional'].forEach(priority => {
+        const container = document.getElementById(priority + 'List');
+        const ids = selections[priority];
+        if (ids.length === 0) {
+            container.innerHTML = '<div class="empty-hint">拖拽课程至此处</div>';
+            return;
+        }
+        container.innerHTML = ids.map((id, idx) => {
+            const c = courses.find(x => x.id === id);
+            if (!c) return '';
+            const conflicts = getConflicts(id);
+            const suggested = suggestCoins(priority, id);
+            const coins = coinAllocations[id] || suggested;
+            if (!coinAllocations[id]) coinAllocations[id] = coins;
+            const dates = [...new Set(c.sessions.map(s => s.date))].map(d => {
+                const [,m,day] = d.split('-');
+                return `${parseInt(m)}/${parseInt(day)}`;
+            }).join(', ');
+            const extras = courseExtras[id] || {};
+            let extrasHtml = '';
+            if (extras.assessment || extras.notes) {
+                extrasHtml = '<div class="course-extras">';
+                if (extras.assessment) extrasHtml += '<div class="assessment">' + extras.assessment + '</div>';
+                if (extras.notes) extrasHtml += '<div class="notes">' + extras.notes + '</div>';
+                extrasHtml += '</div>';
+            }
+            return '<div class="course-card" draggable="true" data-id="' + id + '" data-priority="' + priority + '">' +
+                '<div class="name">' +
+                    '<span>' + c.name + '</span>' +
+                    '<button class="remove-btn" onclick="removeCourse(' + id + ', \'' + priority + '\')" title="移除">×</button>' +
+                '</div>' +
+                '<div class="info">' + dates + ' | ' + c.credits + '学分</div>' +
+                extrasHtml +
+                (conflicts.length ? '<div class="conflict-warn">⚠ 冲突: ' + conflicts.join(', ') + '</div>' : '') +
+                '<div class="coin-input-wrap">' +
+                    '<span>投入</span>' +
+                    '<input type="number" value="' + coins + '" min="0" max="1000" onchange="updateCoin(' + id + ', this.value)">' +
+                    '<span>枚</span>' +
+                    '<span class="suggested" title="基于学分×优先级权重动态计算">建议' + suggested + '</span>' +
+                '</div>' +
+            '</div>';
+        }).join('');
+        container.querySelectorAll('.course-card').forEach(card => {
+            card.addEventListener('dragstart', handleDragStart);
+            card.addEventListener('dragend', handleDragEnd);
+            card.addEventListener('mouseenter', () => highlightConflicts(parseInt(card.dataset.id)));
+            card.addEventListener('mouseleave', clearConflictHighlights);
+        });
+    });
+    updatePriorityHints();
+    saveToLocalStorage();
+}
+
+function updatePriorityHints() {
+    ['must', 'want', 'optional'].forEach(priority => {
+        const ids = selections[priority];
+        let totalCoins = 0, totalCredits = 0;
+        ids.forEach(id => {
+            totalCoins += coinAllocations[id] || 0;
+            const c = courses.find(x => x.id === id);
+            if (c) totalCredits += c.credits;
+        });
+        const hint = document.getElementById(priority + 'Hint');
+        if (hint) {
+            if (ids.length === 0) hint.textContent = `×${priorityWeights[priority]}权重`;
+            else hint.textContent = `${totalCredits}学分 | ${totalCoins}枚`;
+        }
+    });
+}
+
+function removeCourse(id, priority) {
+    selections[priority] = selections[priority].filter(x => x !== id);
+    delete coinAllocations[id];
+    saveToLocalStorage();
+    renderCourseList();
+    renderPriorityLists();
+    renderCalendar();
+    updateStats();
+}
+
+function updateCoin(id, value) {
+    coinAllocations[id] = parseInt(value) || 0;
+    saveToLocalStorage();
+    updateStats();
+}
+
+let draggedId = null;
+let draggedFromPriority = null;
+
+function handleDragStart(e) {
+    draggedId = parseInt(e.target.dataset.id);
+    draggedFromPriority = e.target.dataset.priority || null;
+    e.target.classList.add('dragging');
+    e.dataTransfer.effectAllowed = 'move';
+}
+
+function handleDragEnd(e) {
+    e.target.classList.remove('dragging');
+    document.querySelectorAll('.priority-body').forEach(el => el.classList.remove('drag-over'));
+}
+
+function setupDragAndDrop() {
+    document.querySelectorAll('.priority-body').forEach(zone => {
+        zone.addEventListener('dragover', (e) => { e.preventDefault(); zone.classList.add('drag-over'); });
+        zone.addEventListener('dragleave', () => { zone.classList.remove('drag-over'); });
+        zone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            zone.classList.remove('drag-over');
+            const priority = zone.closest('.priority-col').dataset.priority;
+            if (draggedId === null) return;
+            if (draggedFromPriority) selections[draggedFromPriority] = selections[draggedFromPriority].filter(x => x !== draggedId);
+            if (!selections[priority].includes(draggedId)) {
+                selections[priority].push(draggedId);
+                if (!coinAllocations[draggedId]) coinAllocations[draggedId] = suggestCoins(priority, draggedId);
+            }
+            saveToLocalStorage();
+            renderCourseList();
+            renderPriorityLists();
+            renderCalendar();
+            updateStats();
+            draggedId = null;
+            draggedFromPriority = null;
+        });
+    });
+}
+
+function renderCalendar() {
+    const container = document.getElementById('calendarScroll');
+    const months = [
+        { year: 2026, month: 3, name: '2026年3月' },
+        { year: 2026, month: 4, name: '2026年4月' },
+        { year: 2026, month: 5, name: '2026年5月' },
+        { year: 2026, month: 6, name: '2026年6月' },
+        { year: 2026, month: 7, name: '2026年7月' },
+        { year: 2026, month: 8, name: '2026年8月' }
+    ];
+    const allEvents = {};
+    const allSelected = getAllSelectedIds();
+    allSelected.forEach(id => {
+        const c = courses.find(x => x.id === id);
+        if (!c) return;
+        const priority = getCoursesPriority(id);
+        c.sessions.forEach(s => {
+            if (!allEvents[s.date]) allEvents[s.date] = [];
+            allEvents[s.date].push({ name: c.name, time: s.time, id: c.id, priority });
+        });
+    });
+    Object.keys(allEvents).forEach(date => {
+        const events = allEvents[date];
+        const timeSlots = {};
+        events.forEach(e => { if (!timeSlots[e.time]) timeSlots[e.time] = []; timeSlots[e.time].push(e); });
+        events.forEach(e => { e.hasConflict = timeSlots[e.time].length > 1; });
+    });
+    const weekdays = ['日', '一', '二', '三', '四', '五', '六'];
+    container.innerHTML = months.map(m => {
+        const firstDay = new Date(m.year, m.month - 1, 1);
+        const lastDay = new Date(m.year, m.month, 0);
+        const startPad = firstDay.getDay();
+        let daysHtml = weekdays.map(w => `<div class="calendar-header">周${w}</div>`).join('');
+        for (let i = 0; i < startPad; i++) daysHtml += '<div class="calendar-day other-month"></div>';
+        for (let day = 1; day <= lastDay.getDate(); day++) {
+            const dateStr = `${m.year}-${String(m.month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+            const events = allEvents[dateStr] || [];
+            const hasCourse = events.length > 0;
+            daysHtml += `<div class="calendar-day ${hasCourse ? 'has-course' : ''}" data-date="${dateStr}">
+                <div class="day-number">${day}</div>
+                ${events.slice(0, 3).map(e => `<div class="event ${e.hasConflict ? 'conflict' : 'no-conflict'} ${e.priority}" title="${e.name} ${e.time}">${e.name.substring(0, 4)}...</div>`).join('')}
+                ${events.length > 3 ? `<div style="font-size:0.6rem;color:var(--ink-500)">+${events.length - 3}</div>` : ''}
+            </div>`;
+        }
+        return `<div class="month-section">
+            <div class="month-title">${m.name}</div>
+            <div class="calendar-grid">${daysHtml}</div>
+        </div>`;
+    }).join('');
+}
+
+document.getElementById('searchInput').addEventListener('input', renderCourseList);
+document.getElementById('monthFilter').addEventListener('change', renderCourseList);
+
+document.getElementById('bottomNav').addEventListener('click', (e) => {
+    const navItem = e.target.closest('.bottom-nav-item');
+    if (!navItem) return;
+    const panelId = navItem.dataset.panel;
+    if (!panelId) return;
+    document.querySelectorAll('.bottom-nav-item').forEach(item => item.classList.remove('active'));
+    navItem.classList.add('active');
+    document.querySelectorAll('.panel, .priority-columns').forEach(panel => panel.classList.remove('mobile-active'));
+    document.getElementById(panelId).classList.add('mobile-active');
+});
+
+function updateNavBadge() {
+    const count = getAllSelectedIds().length;
+    const badge = document.getElementById('navBadge');
+    if (count > 0) { badge.textContent = count; badge.style.display = 'block'; }
+    else badge.style.display = 'none';
+}
+
+document.getElementById('filterTags').addEventListener('click', (e) => {
+    const tag = e.target.dataset.tag;
+    if (!tag || e.target.classList.contains('separator')) return;
+    if (tag === 'all') { activeFilters.clear(); activeFilters.add('all'); }
+    else {
+        activeFilters.delete('all');
+        if (activeFilters.has(tag)) { activeFilters.delete(tag); if (activeFilters.size === 0) activeFilters.add('all'); }
+        else activeFilters.add(tag);
+    }
+    document.querySelectorAll('.filter-tag').forEach(el => {
+        if (el.dataset.tag) el.classList.toggle('active', activeFilters.has(el.dataset.tag));
+    });
+    renderCourseList();
+});
+
+// ═══════════════════════════════════════════════════════════════════
+// 移动端Action Sheet功能
+// ═══════════════════════════════════════════════════════════════════
+let selectedCourseId = null;
+
+function isMobile() {
+    return window.innerWidth <= 700;
+}
+
+function openActionSheet(courseId) {
+    const course = courses.find(c => c.id === courseId);
+    if (!course) return;
+
+    selectedCourseId = courseId;
+
+    // 更新弹窗内容
+    const courseInfo = document.getElementById('actionSheetCourse');
+    const dateRange = course.start_date === course.end_date
+        ? course.start_date
+        : `${course.start_date} ~ ${course.end_date}`;
+
+    courseInfo.innerHTML = `
+        <div class="course-name">${course.name}</div>
+        <div class="course-info">
+            <span>${course.credits}学分</span>
+            <span>${dateRange}</span>
+            <span>${course.is_online ? '线上' : '线下'}</span>
+        </div>
+    `;
+
+    // 显示弹窗
+    document.getElementById('actionSheet').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeActionSheet() {
+    document.getElementById('actionSheet').classList.remove('active');
+    document.body.style.overflow = '';
+    selectedCourseId = null;
+}
+
+function addToPriority(priority) {
+    if (selectedCourseId === null) return;
+
+    // 检查是否已经在任何优先级列表中
+    const existingPriority = getCoursesPriority(selectedCourseId);
+    if (existingPriority) {
+        // 如果已存在，先从原列表移除
+        selections[existingPriority] = selections[existingPriority].filter(x => x !== selectedCourseId);
+    }
+
+    // 添加到新的优先级列表
+    if (!selections[priority].includes(selectedCourseId)) {
+        selections[priority].push(selectedCourseId);
+        if (!coinAllocations[selectedCourseId]) {
+            coinAllocations[selectedCourseId] = suggestCoins(priority, selectedCourseId);
+        }
+    }
+
+    // 关闭弹窗并刷新界面
+    closeActionSheet();
+    saveToLocalStorage();
+    renderCourseList();
+    renderPriorityLists();
+    renderCalendar();
+    updateStats();
+}
+
+// 处理课程卡片点击事件（移动端）
+function handleCourseCardClick(e) {
+    // 只在移动端生效
+    if (!isMobile()) return;
+
+    const card = e.target.closest('.course-card');
+    if (!card) return;
+
+    // 如果点击的是已选课程，不处理
+    if (card.classList.contains('selected')) return;
+
+    // 如果是拖拽操作，不处理
+    if (e.target.closest('.course-coins') || e.target.closest('input')) return;
+
+    const courseId = parseInt(card.dataset.id);
+    if (courseId) {
+        openActionSheet(courseId);
+    }
+}
+
+init();
+    </script>
+</body>
+</html>
