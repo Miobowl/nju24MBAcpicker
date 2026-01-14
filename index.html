@@ -179,6 +179,74 @@
             box-shadow: 0 4px 12px rgba(22, 101, 52, 0.4);
         }
 
+        /* 导出按钮 */
+        .export-btn {
+            background: linear-gradient(135deg, var(--indigo) 0%, #1e3a5f 100%);
+            color: var(--paper-cream);
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 8px 20px;
+            font-family: 'Noto Serif SC', serif;
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all var(--transition-base);
+            box-shadow: 0 2px 8px rgba(30, 58, 95, 0.3);
+        }
+
+        .export-btn:hover {
+            background: linear-gradient(135deg, #3d5a80 0%, var(--indigo) 100%);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(30, 58, 95, 0.4);
+        }
+
+        .export-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        /* Toast 提示 */
+        .toast {
+            position: fixed;
+            top: 80px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-20px);
+            background: linear-gradient(135deg, var(--ink-800) 0%, var(--ink-900) 100%);
+            color: var(--paper-cream);
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-family: 'Noto Serif SC', serif;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            border: 1px solid var(--gold-border);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 10000;
+        }
+
+        .toast.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .toast.success {
+            border-color: var(--jade);
+        }
+
+        .toast.error {
+            border-color: var(--vermilion);
+        }
+
         .stats {
             display: flex;
             gap: 32px;
@@ -1382,9 +1450,13 @@
     </style>
 </head>
 <body>
+    <div class="toast" id="toast"></div>
     <header>
         <h1>MBA选课助手</h1>
-        <button class="review-btn" id="reviewBtn" onclick="toggleReview()">开启锐评</button>
+        <div class="header-actions">
+            <button class="review-btn" id="reviewBtn" onclick="toggleReview()">开启锐评</button>
+            <button class="export-btn" id="exportBtn" onclick="exportSelections()">导出方案</button>
+        </div>
         <div class="stats">
             <div class="stat">
                 <div class="value" id="totalCredits">0</div>
@@ -1678,6 +1750,107 @@ function toggleReview() {
     } else if (code !== null) {
         alert('解锁码错误');
     }
+}
+
+// Toast 提示
+function showToast(message, type = 'success') {
+    const toast = document.getElementById('toast');
+    toast.textContent = message;
+    toast.className = 'toast ' + type;
+    toast.classList.add('show');
+    setTimeout(() => {
+        toast.classList.remove('show');
+    }, 2500);
+}
+
+// 导出选课方案
+function exportSelections() {
+    const allSelected = getAllSelectedIds();
+    if (allSelected.length === 0) {
+        showToast('暂无已选课程', 'error');
+        return;
+    }
+
+    const priorityLabels = {
+        must: '📌 必选',
+        want: '🔵 想选',
+        optional: '⚪ 可选'
+    };
+
+    let text = '🎓 MBA选课方案\n\n';
+    let totalCredits = 0;
+    let totalCoins = 0;
+
+    ['must', 'want', 'optional'].forEach(priority => {
+        const ids = selections[priority];
+        if (ids.length === 0) return;
+
+        const priorityCourses = ids.map(id => courses.find(c => c.id === id)).filter(Boolean);
+        const credits = priorityCourses.reduce((sum, c) => sum + c.credits, 0);
+        const coins = ids.reduce((sum, id) => sum + (coinAllocations[id] || 0), 0);
+
+        totalCredits += credits;
+        totalCoins += coins;
+
+        text += `${priorityLabels[priority]} (${ids.length}门 / ${credits}学分 / ${coins}金币)\n`;
+
+        priorityCourses.forEach((course, idx) => {
+            const isLast = idx === priorityCourses.length - 1;
+            const prefix = isLast ? '└─' : '├─';
+            const coinAmount = coinAllocations[course.id] || 0;
+
+            // 格式化日期范围
+            let dateRange = '';
+            if (course.sessions && course.sessions.length > 0) {
+                const dates = [...new Set(course.sessions.map(s => s.date))].sort();
+                if (dates.length === 1) {
+                    dateRange = dates[0].slice(5).replace('-', '/');
+                } else if (dates.length === 2) {
+                    const d1 = dates[0].slice(5).replace('-', '/');
+                    const d2 = dates[1].slice(5).replace('-', '/');
+                    // 判断是否连续
+                    const date1 = new Date(dates[0]);
+                    const date2 = new Date(dates[1]);
+                    const diffDays = (date2 - date1) / (1000 * 60 * 60 * 24);
+                    if (diffDays === 1) {
+                        dateRange = `${d1}-${d2.split('/')[1]}`;
+                    } else {
+                        dateRange = `${d1}, ${d2}`;
+                    }
+                } else {
+                    dateRange = `${dates[0].slice(5).replace('-', '/')}起${dates.length}天`;
+                }
+            }
+
+            text += `${prefix} ${course.name}  |  ${dateRange}  |  ${coinAmount}币\n`;
+        });
+
+        text += '\n';
+    });
+
+    // 统计信息
+    text += `📊 统计：共${allSelected.length}门 / ${totalCredits}学分 / ${totalCoins}金币`;
+
+    // 复制到剪贴板
+    navigator.clipboard.writeText(text).then(() => {
+        showToast('已复制到剪贴板', 'success');
+    }).catch(err => {
+        // 降级方案：使用 textarea
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.style.position = 'fixed';
+        textarea.style.opacity = '0';
+        document.body.appendChild(textarea);
+        textarea.select();
+        try {
+            document.execCommand('copy');
+            showToast('已复制到剪贴板', 'success');
+        } catch (e) {
+            showToast('复制失败，请手动复制', 'error');
+            console.error('复制失败:', e);
+        }
+        document.body.removeChild(textarea);
+    });
 }
 
 function calculateDynamicCoins() {
