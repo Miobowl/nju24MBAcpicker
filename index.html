@@ -247,6 +247,11 @@
             border-color: var(--vermilion);
         }
 
+        .toast.warning {
+            border-color: var(--amber);
+            background: linear-gradient(135deg, #92400e 0%, #78350f 100%);
+        }
+
         .stats {
             display: flex;
             gap: 32px;
@@ -814,6 +819,31 @@
             font-weight: 500;
         }
 
+        /* 中标概率显示 */
+        .coin-input-wrap .win-prob {
+            font-size: 0.7rem;
+            margin-left: auto;
+            font-weight: 600;
+            padding: 2px 6px;
+            border-radius: 3px;
+            white-space: nowrap;
+        }
+
+        .win-prob.prob-low {
+            color: var(--jade);
+            background: #ecfdf5;
+        }
+
+        .win-prob.prob-medium {
+            color: var(--amber);
+            background: #fffbeb;
+        }
+
+        .win-prob.prob-high {
+            color: var(--vermilion);
+            background: #fef2f2;
+        }
+
         /* ═══════════════════════════════════════════════════════════════════
            金币统计与策略提示
            ═══════════════════════════════════════════════════════════════════ */
@@ -851,6 +881,67 @@
             background: var(--ink-700);
             box-shadow: var(--shadow-md);
             transform: translateY(-1px);
+        }
+
+        /* 策略选择器 */
+        .strategy-selector {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 14px;
+            background: var(--paper-warm);
+            border-top: 1px solid var(--ink-200);
+            flex-shrink: 0;
+        }
+
+        .strategy-label {
+            font-size: 0.75rem;
+            color: var(--ink-500);
+            font-weight: 500;
+        }
+
+        .strategy-btn {
+            padding: 4px 10px;
+            border: 1px solid var(--ink-300);
+            border-radius: 4px;
+            background: var(--paper);
+            color: var(--ink-600);
+            font-size: 0.7rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .strategy-btn:hover {
+            border-color: var(--gold);
+            background: var(--gold-light);
+        }
+
+        .strategy-btn.active {
+            background: linear-gradient(135deg, var(--gold), #d4a843);
+            border-color: var(--gold);
+            color: white;
+            font-weight: 500;
+            box-shadow: 0 1px 3px rgba(196, 161, 59, 0.3);
+        }
+
+        .strategy-btn[data-strategy="conservative"] {
+            border-color: var(--jade);
+        }
+        .strategy-btn[data-strategy="conservative"].active {
+            background: linear-gradient(135deg, var(--jade), #2d8a5e);
+        }
+        .strategy-btn[data-strategy="conservative"]:hover:not(.active) {
+            background: #ecfdf5;
+        }
+
+        .strategy-btn[data-strategy="aggressive"] {
+            border-color: var(--vermilion);
+        }
+        .strategy-btn[data-strategy="aggressive"].active {
+            background: linear-gradient(135deg, var(--vermilion), #c24a3a);
+        }
+        .strategy-btn[data-strategy="aggressive"]:hover:not(.active) {
+            background: #fef2f2;
         }
 
         .strategy-hint {
@@ -1541,10 +1632,16 @@
             </div>
             <div class="coin-summary" id="coinSummary">
                 <span><strong id="coinTotal">0</strong> / 1000 枚金币</span>
-                <button class="auto-btn" onclick="autoAllocateCoins()">智能分配</button>
+                <button class="auto-btn" onclick="autoAllocateCoins()">博弈分配</button>
             </div>
-            <div class="strategy-hint">
-                <strong>策略提示：</strong>按学分×优先级权重分配金币，自动避开整数陷阱
+            <div class="strategy-selector">
+                <span class="strategy-label">策略:</span>
+                <button class="strategy-btn" data-strategy="conservative" onclick="setGameStrategy('conservative')">保守</button>
+                <button class="strategy-btn active" data-strategy="balanced" onclick="setGameStrategy('balanced')">平衡</button>
+                <button class="strategy-btn" data-strategy="aggressive" onclick="setGameStrategy('aggressive')">激进</button>
+            </div>
+            <div class="strategy-hint" id="strategyHint">
+                ⚖️ 平衡策略：综合考虑热度、竞争和优先级
             </div>
         </div>
 
@@ -1705,6 +1802,371 @@ let reviewUnlocked = false; // 锐评功能是否解锁
 // 博弈策略：优先级权重
 const priorityWeights = { must: 3, want: 2, optional: 1 };
 
+// 博弈论算法配置
+const gameTheoryConfig = {
+    // 假设竞争人数（MBA班级规模）
+    totalPlayers: 250,
+    // 每门课容量（估算）
+    defaultCapacity: 50,
+    // 热门课容量（限额课）
+    limitedCapacity: 30,
+    // 当前选择的策略
+    currentStrategy: 'balanced'
+};
+
+/**
+ * 博弈论金币分配算法
+ * 核心思想：基于课程热度和竞争环境，计算近似纳什均衡分配
+ */
+
+// 1. 课程热度评估函数
+function estimateCoursePopularity(courseId) {
+    const course = courses.find(c => c.id === courseId);
+    if (!course) return 1.0;
+
+    let popularity = 1.0;
+    const extras = courseExtras[courseId] || {};
+    const tag = getCourseTag(course);
+
+    // 1.1 基于课程类型的热度
+    const tagPopularity = {
+        'culture': 1.4,      // 文化休闲类最热门
+        'ai': 1.3,           // AI/科技类热门
+        'finance': 1.2,      // 金融类较热门
+        'leadership': 1.15,  // 领导力类较热门
+        'marketing': 1.1,    // 营销类一般
+        'strategy': 1.05,    // 战略类一般
+        'other': 1.0
+    };
+    popularity *= tagPopularity[tag] || 1.0;
+
+    // 1.2 限额课程更热门
+    if (extras.notes) {
+        if (extras.notes.includes('限额')) popularity *= 1.5;
+        // 特殊体验课更热门
+        if (extras.notes.includes('赛艇') || extras.notes.includes('品酒')) popularity *= 1.3;
+    }
+
+    // 1.3 考核难度影响（简单的更受欢迎）
+    if (extras.assessment) {
+        // 只有论文/小作文的课程更受欢迎
+        if (extras.assessment.includes('论文') && !extras.assessment.includes('考试')) {
+            popularity *= 1.15;
+        }
+        // 有考试且占比高的稍不受欢迎
+        const examMatch = extras.assessment.match(/考试(\d+)/);
+        if (examMatch && parseInt(examMatch[1]) >= 60) {
+            popularity *= 0.95;
+        }
+    }
+
+    // 1.4 2学分课程更受欢迎
+    if (course.credits >= 2) popularity *= 1.25;
+
+    // 1.5 线上课程稍低热度
+    if (course.is_online) popularity *= 0.85;
+
+    // 1.6 同名多班次的课程：说明需求大，但供给也多
+    const sameCourseCount = countSameCourse(course.name);
+    if (sameCourseCount > 1) {
+        // 需求大但供给多，整体竞争略低
+        popularity *= (1 + 0.1 * (sameCourseCount - 1));
+    }
+
+    return popularity;
+}
+
+// 统计同名课程（不同班次）数量
+function countSameCourse(courseName) {
+    const baseName = courseName.replace(/-\d+班$/, '').replace(/-[123]班$/, '');
+    return courses.filter(c => c.name.startsWith(baseName)).length;
+}
+
+// 2. 分析同时段竞争课程
+function analyzeTimeSlotCompetition(courseId) {
+    const course = courses.find(c => c.id === courseId);
+    if (!course || !course.sessions || course.sessions.length === 0) return 1.0;
+
+    // 获取该课程所有时间段的竞争课程
+    const competingCourses = new Set();
+    course.sessions.forEach(session => {
+        courses.forEach(c => {
+            if (c.id === courseId) return;
+            if (c.sessions.some(s => s.date === session.date && s.time === session.time)) {
+                competingCourses.add(c.id);
+            }
+        });
+    });
+
+    // 竞争课程越多，每门课分到的选课人数越少
+    // 但热门课仍然会有更高的竞争
+    const competitorCount = competingCourses.size;
+
+    // 计算竞争课程的平均热度
+    let avgCompetitorPopularity = 0;
+    competingCourses.forEach(id => {
+        avgCompetitorPopularity += estimateCoursePopularity(id);
+    });
+    if (competitorCount > 0) {
+        avgCompetitorPopularity /= competitorCount;
+    }
+
+    // 返回竞争分散系数（0-1之间，越低表示竞争越分散）
+    const dispersionFactor = 1 / (1 + competitorCount * 0.15);
+
+    return {
+        competitorCount,
+        avgCompetitorPopularity,
+        dispersionFactor
+    };
+}
+
+// 3. 估算课程中标概率（给定金币投入）
+function estimateWinProbability(courseId, coins, totalCoins = 1000) {
+    const popularity = estimateCoursePopularity(courseId);
+    const competition = analyzeTimeSlotCompetition(courseId);
+    const course = courses.find(c => c.id === courseId);
+    const extras = courseExtras[courseId] || {};
+
+    // 估算选择该课程的人数
+    const isLimited = extras.notes && extras.notes.includes('限额');
+    const capacity = isLimited ? gameTheoryConfig.limitedCapacity : gameTheoryConfig.defaultCapacity;
+
+    // 预期选择该课程的人数 = 总人数 × 热度因子 × 竞争分散系数
+    const expectedDemand = gameTheoryConfig.totalPlayers * (popularity / 3) * competition.dispersionFactor;
+
+    // 如果预期需求低于容量，中标概率高
+    if (expectedDemand <= capacity) {
+        return Math.min(0.95, 0.7 + coins / totalCoins * 0.25);
+    }
+
+    // 竞争激烈时，使用博弈论模型
+    // 假设其他玩家的出价服从以 (totalCoins/选课数) 为均值的正态分布
+    const avgBid = totalCoins / Math.max(1, expectedDemand / capacity);
+    const bidRatio = coins / avgBid;
+
+    // Sigmoid 函数计算中标概率
+    const probability = 1 / (1 + Math.exp(-2 * (bidRatio - 1)));
+
+    // 容量因素调整
+    const capacityRatio = capacity / expectedDemand;
+
+    return Math.min(0.95, Math.max(0.05, probability * Math.sqrt(capacityRatio)));
+}
+
+// 4. 计算博弈论最优分配（核心算法）
+function calculateGameTheoryCoins(strategy = 'balanced') {
+    const allSelected = getAllSelectedIds();
+    if (allSelected.length === 0) return {};
+
+    // 收集所有选中课程的信息
+    const courseInfos = allSelected.map(id => {
+        const course = courses.find(c => c.id === id);
+        const priority = getCoursesPriority(id);
+        if (!course || !priority) return null;
+
+        const popularity = estimateCoursePopularity(id);
+        const competition = analyzeTimeSlotCompetition(id);
+
+        return {
+            id,
+            course,
+            priority,
+            credits: course.credits,
+            popularity,
+            competition,
+            priorityWeight: priorityWeights[priority]
+        };
+    }).filter(Boolean);
+
+    if (courseInfos.length === 0) return {};
+
+    // 策略参数
+    const strategyParams = {
+        conservative: {
+            // 保守策略：确保必选课有足够金币，降低风险
+            mustMinRatio: 0.25,      // 必选课至少获得25%的金币
+            popularityWeight: 0.5,   // 热度影响降低
+            priorityBoost: 1.5       // 优先级加成增强
+        },
+        balanced: {
+            // 平衡策略：综合考虑各因素
+            mustMinRatio: 0.15,
+            popularityWeight: 1.0,
+            priorityBoost: 1.2
+        },
+        aggressive: {
+            // 激进策略：重点投入热门课，博取高收益
+            mustMinRatio: 0.10,
+            popularityWeight: 1.5,
+            priorityBoost: 1.0
+        }
+    };
+
+    const params = strategyParams[strategy] || strategyParams.balanced;
+
+    // 第一步：计算原始权重
+    let totalWeight = 0;
+    courseInfos.forEach(info => {
+        // 基础权重 = 学分 × 优先级权重
+        let weight = info.credits * info.priorityWeight * params.priorityBoost;
+
+        // 热度调整
+        weight *= Math.pow(info.popularity, params.popularityWeight);
+
+        // 竞争环境调整：竞争越激烈需要投入更多
+        weight *= (2 - info.competition.dispersionFactor);
+
+        info.rawWeight = weight;
+        totalWeight += weight;
+    });
+
+    // 第二步：初步分配
+    courseInfos.forEach(info => {
+        info.initialCoins = Math.round((info.rawWeight / totalWeight) * 1000);
+    });
+
+    // 第三步：保底调整（确保必选课有最低投入）
+    const mustCourses = courseInfos.filter(c => c.priority === 'must');
+    const mustTotalCoins = mustCourses.reduce((sum, c) => sum + c.initialCoins, 0);
+    const mustMinCoins = Math.round(1000 * params.mustMinRatio * mustCourses.length / Math.max(1, courseInfos.length));
+
+    if (mustTotalCoins < mustMinCoins && mustCourses.length > 0) {
+        // 需要增加必选课的金币
+        const deficit = mustMinCoins - mustTotalCoins;
+        const nonMustCourses = courseInfos.filter(c => c.priority !== 'must');
+        const nonMustTotal = nonMustCourses.reduce((sum, c) => sum + c.initialCoins, 0);
+
+        if (nonMustTotal > deficit) {
+            // 从非必选课中按比例扣除
+            const ratio = deficit / nonMustTotal;
+            nonMustCourses.forEach(c => {
+                c.initialCoins = Math.round(c.initialCoins * (1 - ratio));
+            });
+            // 增加到必选课
+            const perMust = Math.round(deficit / mustCourses.length);
+            mustCourses.forEach(c => {
+                c.initialCoins += perMust;
+            });
+        }
+    }
+
+    // 第四步：纳什均衡迭代优化
+    // 通过多轮迭代调整，使每门课的边际效用接近相等
+    for (let iter = 0; iter < 5; iter++) {
+        let totalAdjustment = 0;
+
+        courseInfos.forEach(info => {
+            // 计算当前分配下的边际效用
+            const currentProb = estimateWinProbability(info.id, info.initialCoins, 1000);
+            const deltaProbUp = estimateWinProbability(info.id, info.initialCoins + 20, 1000) - currentProb;
+            const deltaProbDown = currentProb - estimateWinProbability(info.id, info.initialCoins - 20, 1000);
+
+            // 期望价值 = 概率 × 学分 × 优先级权重
+            const value = info.credits * info.priorityWeight;
+            info.marginalUtility = deltaProbUp * value / 20; // 每金币的边际效用
+            info.currentProb = currentProb;
+        });
+
+        // 计算平均边际效用
+        const avgMarginalUtility = courseInfos.reduce((sum, c) => sum + c.marginalUtility, 0) / courseInfos.length;
+
+        // 调整分配：将金币从边际效用低的课程转移到边际效用高的课程
+        courseInfos.forEach(info => {
+            const utilityDiff = info.marginalUtility - avgMarginalUtility;
+            const adjustment = Math.round(utilityDiff * 100); // 调整量
+            info.initialCoins += adjustment;
+            info.initialCoins = Math.max(10, Math.min(500, info.initialCoins));
+            totalAdjustment += Math.abs(adjustment);
+        });
+
+        // 如果调整量很小，提前结束迭代
+        if (totalAdjustment < 10) break;
+    }
+
+    // 第五步：归一化确保总和为1000
+    let currentTotal = courseInfos.reduce((sum, c) => sum + c.initialCoins, 0);
+    if (currentTotal !== 1000 && currentTotal > 0) {
+        const ratio = 1000 / currentTotal;
+        courseInfos.forEach(c => {
+            c.initialCoins = Math.round(c.initialCoins * ratio);
+        });
+    }
+
+    // 第六步：避开整数陷阱（增强版）
+    const trapNumbers = [50, 100, 150, 200, 250, 300, 350, 400, 450, 500];
+    const offsets = [3, -3, 7, -7, 13, -13, 17, -17, 23, -23];
+    let offsetIdx = 0;
+
+    courseInfos.forEach(info => {
+        let coins = info.initialCoins;
+
+        // 避开常见整数陷阱
+        if (trapNumbers.includes(coins) || coins % 50 === 0 || coins % 10 === 0) {
+            coins += offsets[offsetIdx % offsets.length];
+            offsetIdx++;
+        }
+
+        // 避开太接近整数的值（如 49, 51, 99, 101）
+        const nearestTrap = trapNumbers.find(t => Math.abs(coins - t) <= 2);
+        if (nearestTrap) {
+            coins = nearestTrap + offsets[offsetIdx % offsets.length];
+            offsetIdx++;
+        }
+
+        info.finalCoins = Math.max(10, Math.min(500, coins));
+    });
+
+    // 最终微调确保总和接近1000
+    let finalTotal = courseInfos.reduce((sum, c) => sum + c.finalCoins, 0);
+    if (Math.abs(finalTotal - 1000) > 0) {
+        // 找到可以微调的课程
+        const diff = 1000 - finalTotal;
+        const adjustableCourses = courseInfos.filter(c =>
+            c.finalCoins + diff >= 10 && c.finalCoins + diff <= 500
+        );
+        if (adjustableCourses.length > 0) {
+            adjustableCourses[0].finalCoins += diff;
+        }
+    }
+
+    // 构建结果
+    const result = {};
+    courseInfos.forEach(info => {
+        result[info.id] = info.finalCoins;
+    });
+
+    return result;
+}
+
+// 5. 获取分配详情（用于UI显示）
+function getGameTheoryAnalysis() {
+    const allSelected = getAllSelectedIds();
+    if (allSelected.length === 0) return [];
+
+    return allSelected.map(id => {
+        const course = courses.find(c => c.id === id);
+        const priority = getCoursesPriority(id);
+        if (!course || !priority) return null;
+
+        const popularity = estimateCoursePopularity(id);
+        const competition = analyzeTimeSlotCompetition(id);
+        const currentCoins = coinAllocations[id] || 0;
+        const winProb = estimateWinProbability(id, currentCoins, 1000);
+
+        return {
+            id,
+            name: course.name,
+            priority,
+            popularity: popularity.toFixed(2),
+            competitorCount: competition.competitorCount,
+            currentCoins,
+            estimatedWinProb: (winProb * 100).toFixed(1) + '%',
+            riskLevel: winProb < 0.4 ? 'high' : winProb < 0.7 ? 'medium' : 'low'
+        };
+    }).filter(Boolean);
+}
+
 // 标签分类规则
 const tagRules = {
     finance: ['投融资', '财富', '证券', '银行', '金融', '资本', '保险', '货币', '收益'],
@@ -1854,30 +2316,8 @@ function exportSelections() {
 }
 
 function calculateDynamicCoins() {
-    const allSelected = getAllSelectedIds();
-    if (allSelected.length === 0) return {};
-    let totalWeighted = 0;
-    const courseWeights = {};
-    allSelected.forEach(id => {
-        const course = courses.find(c => c.id === id);
-        const priority = getCoursesPriority(id);
-        if (course && priority) {
-            const weight = course.credits * priorityWeights[priority];
-            courseWeights[id] = weight;
-            totalWeighted += weight;
-        }
-    });
-    if (totalWeighted === 0) return {};
-    const result = {};
-    const offsets = [3, -3, 7, -7, 13, -13, 17, -17];
-    let idx = 0;
-    allSelected.forEach(id => {
-        const weight = courseWeights[id] || 0;
-        let coins = Math.round((weight / totalWeighted) * 1000);
-        if (coins % 50 === 0 || coins % 10 === 0) { coins += offsets[idx % offsets.length]; idx++; }
-        result[id] = Math.max(10, Math.min(500, coins));
-    });
-    return result;
+    // 使用博弈论算法
+    return calculateGameTheoryCoins(gameTheoryConfig.currentStrategy);
 }
 
 function autoAllocateCoins() {
@@ -1887,6 +2327,66 @@ function autoAllocateCoins() {
     saveToLocalStorage();
     renderPriorityLists();
     updateStats();
+    // 显示分析结果
+    showAllocationAnalysis();
+}
+
+// 切换博弈策略
+function setGameStrategy(strategy) {
+    gameTheoryConfig.currentStrategy = strategy;
+    // 更新按钮状态
+    document.querySelectorAll('.strategy-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.strategy === strategy);
+    });
+    // 更新策略说明
+    updateStrategyHint();
+}
+
+// 更新策略提示
+function updateStrategyHint() {
+    const hints = {
+        conservative: '🛡️ 保守策略：优先保障必选课中标，降低风险',
+        balanced: '⚖️ 平衡策略：综合考虑热度、竞争和优先级',
+        aggressive: '🎯 激进策略：重点投入热门课，追求高收益'
+    };
+    const hintEl = document.getElementById('strategyHint');
+    if (hintEl) {
+        hintEl.innerHTML = hints[gameTheoryConfig.currentStrategy] || hints.balanced;
+    }
+}
+
+// 显示分配分析结果
+function showAllocationAnalysis() {
+    const analysis = getGameTheoryAnalysis();
+    if (analysis.length === 0) return;
+
+    // 计算总体统计
+    let totalProb = 0;
+    let highRiskCount = 0;
+    analysis.forEach(a => {
+        const prob = parseFloat(a.estimatedWinProb);
+        totalProb += prob;
+        if (a.riskLevel === 'high') highRiskCount++;
+    });
+    const avgProb = (totalProb / analysis.length).toFixed(1);
+
+    // 构建消息
+    let msg = `📊 博弈分析完成\n\n`;
+    msg += `平均中标概率: ${avgProb}%\n`;
+    if (highRiskCount > 0) {
+        msg += `⚠️ ${highRiskCount}门课程风险较高\n\n`;
+    }
+
+    // 列出高风险课程
+    const highRisk = analysis.filter(a => a.riskLevel === 'high');
+    if (highRisk.length > 0) {
+        msg += `高风险课程:\n`;
+        highRisk.forEach(a => {
+            msg += `  • ${a.name.substring(0, 15)}... (${a.estimatedWinProb})\n`;
+        });
+    }
+
+    showToast(`博弈分析完成，平均中标率 ${avgProb}%`, highRiskCount > 0 ? 'warning' : 'success');
 }
 
 function suggestCoins(priority, courseId) {
@@ -2098,19 +2598,27 @@ function renderPriorityLists() {
                 if (extras.notes) extrasHtml += '<div class="notes">' + extras.notes + '</div>';
                 extrasHtml += '</div>';
             }
+            // 计算中标概率
+            const winProb = estimateWinProbability(id, coins, 1000);
+            const probPercent = (winProb * 100).toFixed(0);
+            const riskLevel = winProb < 0.4 ? 'high' : winProb < 0.7 ? 'medium' : 'low';
+            const riskClass = 'prob-' + riskLevel;
+            const popularity = estimateCoursePopularity(id);
+            const hotLevel = popularity > 1.3 ? '🔥' : popularity > 1.15 ? '📈' : '';
+
             return '<div class="course-card" draggable="true" data-id="' + id + '" data-priority="' + priority + '">' +
                 '<div class="name">' +
                     '<span>' + c.name + '</span>' +
                     '<button class="remove-btn" onclick="removeCourse(' + id + ', \'' + priority + '\')" title="移除">×</button>' +
                 '</div>' +
-                '<div class="info">' + dates + ' | ' + c.credits + '学分</div>' +
+                '<div class="info">' + dates + ' | ' + c.credits + '学分' + (hotLevel ? ' ' + hotLevel : '') + '</div>' +
                 extrasHtml +
                 (conflicts.length ? '<div class="conflict-warn">⚠ 冲突: ' + conflicts.join(', ') + '</div>' : '') +
                 '<div class="coin-input-wrap">' +
                     '<span>投入</span>' +
                     '<input type="number" value="' + coins + '" min="0" max="1000" onchange="updateCoin(' + id + ', this.value)">' +
                     '<span>枚</span>' +
-                    '<span class="suggested" title="基于学分×优先级权重动态计算">建议' + suggested + '</span>' +
+                    '<span class="win-prob ' + riskClass + '" title="预估中标概率（基于博弈论模型）">中标' + probPercent + '%</span>' +
                 '</div>' +
             '</div>';
         }).join('');
