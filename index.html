@@ -148,6 +148,37 @@
             opacity: 0.8;
         }
 
+        /* 锐评按钮 */
+        .review-btn {
+            background: linear-gradient(135deg, var(--vermilion) 0%, #a01830 100%);
+            color: var(--paper-cream);
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 8px 20px;
+            font-family: 'Noto Serif SC', serif;
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all var(--transition-base);
+            box-shadow: 0 2px 8px rgba(196, 30, 58, 0.3);
+        }
+
+        .review-btn:hover {
+            background: linear-gradient(135deg, var(--vermilion-light) 0%, var(--vermilion) 100%);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(196, 30, 58, 0.4);
+        }
+
+        .review-btn.unlocked {
+            background: linear-gradient(135deg, var(--jade) 0%, #0d4a22 100%);
+            box-shadow: 0 2px 8px rgba(22, 101, 52, 0.3);
+        }
+
+        .review-btn.unlocked:hover {
+            background: linear-gradient(135deg, var(--jade-light) 0%, var(--jade) 100%);
+            box-shadow: 0 4px 12px rgba(22, 101, 52, 0.4);
+        }
+
         .stats {
             display: flex;
             gap: 32px;
@@ -1353,6 +1384,7 @@
 <body>
     <header>
         <h1>MBA选课助手</h1>
+        <button class="review-btn" id="reviewBtn" onclick="toggleReview()">开启锐评</button>
         <div class="stats">
             <div class="stat">
                 <div class="value" id="totalCredits">0</div>
@@ -1596,6 +1628,7 @@ const courses = [{"id":1,"name":"职场超能力：AI 高效工作流实战-1班
 let selections = { must: [], want: [], optional: [] };
 let coinAllocations = {};
 let activeFilters = new Set(['all']);
+let reviewUnlocked = false; // 锐评功能是否解锁
 
 // 博弈策略：优先级权重
 const priorityWeights = { must: 3, want: 2, optional: 1 };
@@ -1628,6 +1661,23 @@ function matchFilters(course) {
     }
     if (needCategoryMatch && !matchCategory) return false;
     return true;
+}
+
+function toggleReview() {
+    if (reviewUnlocked) {
+        // 已解锁，点击无效或可以选择关闭
+        return;
+    }
+    const code = prompt('请输入锐评解锁码：');
+    if (code === '24CNB') {
+        reviewUnlocked = true;
+        document.getElementById('reviewBtn').textContent = '锐评已开启';
+        document.getElementById('reviewBtn').classList.add('unlocked');
+        renderCourseList();
+        renderPriorityLists();
+    } else if (code !== null) {
+        alert('解锁码错误');
+    }
 }
 
 function calculateDynamicCoins() {
@@ -1825,7 +1875,7 @@ function renderCourseList() {
         }).join(', ');
         const extras = courseExtras[c.id] || {};
         let extrasHtml = '';
-        if (extras.assessment || extras.notes) {
+        if (reviewUnlocked && (extras.assessment || extras.notes)) {
             extrasHtml = '<div class="course-extras">';
             if (extras.assessment) extrasHtml += '<div class="assessment">' + extras.assessment + '</div>';
             if (extras.notes) extrasHtml += '<div class="notes">' + extras.notes + '</div>';
@@ -1869,7 +1919,7 @@ function renderPriorityLists() {
             }).join(', ');
             const extras = courseExtras[id] || {};
             let extrasHtml = '';
-            if (extras.assessment || extras.notes) {
+            if (reviewUnlocked && (extras.assessment || extras.notes)) {
                 extrasHtml = '<div class="course-extras">';
                 if (extras.assessment) extrasHtml += '<div class="assessment">' + extras.assessment + '</div>';
                 if (extras.notes) extrasHtml += '<div class="notes">' + extras.notes + '</div>';
