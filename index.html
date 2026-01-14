@@ -1804,12 +1804,16 @@ const priorityWeights = { must: 3, want: 2, optional: 1 };
 
 // 博弈论算法配置
 const gameTheoryConfig = {
-    // 假设竞争人数（MBA班级规模）
-    totalPlayers: 250,
-    // 每门课容量（估算）
-    defaultCapacity: 50,
+    // 总选课人数
+    totalPlayers: 400,
+    // 每人平均选课学分
+    avgCreditsPerPlayer: 10,
+    // 每门课容量
+    defaultCapacity: 60,
     // 热门课容量（限额课）
-    limitedCapacity: 30,
+    limitedCapacity: 50,
+    // 课程总数
+    totalCourses: 70,
     // 当前选择的策略
     currentStrategy: 'balanced'
 };
@@ -1928,30 +1932,65 @@ function estimateWinProbability(courseId, coins, totalCoins = 1000) {
     const course = courses.find(c => c.id === courseId);
     const extras = courseExtras[courseId] || {};
 
-    // 估算选择该课程的人数
+    // 课程容量
     const isLimited = extras.notes && extras.notes.includes('限额');
     const capacity = isLimited ? gameTheoryConfig.limitedCapacity : gameTheoryConfig.defaultCapacity;
 
-    // 预期选择该课程的人数 = 总人数 × 热度因子 × 竞争分散系数
-    const expectedDemand = gameTheoryConfig.totalPlayers * (popularity / 3) * competition.dispersionFactor;
+    // 计算预期需求
+    // 基础需求 = 总人数 × 平均选课数 / 课程总数 ≈ 400 × 10 / 70 ≈ 57
+    const baseDemand = gameTheoryConfig.totalPlayers * gameTheoryConfig.avgCreditsPerPlayer / gameTheoryConfig.totalCourses;
 
-    // 如果预期需求低于容量，中标概率高
-    if (expectedDemand <= capacity) {
-        return Math.min(0.95, 0.7 + coins / totalCoins * 0.25);
+    // 实际需求 = 基础需求 × 热度 × 竞争分散系数
+    // 同时段有多门课时，需求会分散
+    const expectedDemand = baseDemand * popularity * competition.dispersionFactor;
+
+    // 供需比：需求/容量
+    const demandRatio = expectedDemand / capacity;
+
+    // 场景1: 供大于求（需求 < 容量），几乎稳中
+    if (demandRatio <= 0.8) {
+        // 需求远小于容量，中标率95%
+        return 0.95;
     }
 
-    // 竞争激烈时，使用博弈论模型
-    // 假设其他玩家的出价服从以 (totalCoins/选课数) 为均值的正态分布
-    const avgBid = totalCoins / Math.max(1, expectedDemand / capacity);
-    const bidRatio = coins / avgBid;
+    // 场景2: 供需平衡（需求接近容量）
+    if (demandRatio <= 1.2) {
+        // 基础中标率 85%，金币影响较小
+        const baseProb = 0.85;
+        // 平均每门课投入 = 1000 / 10 = 100
+        const avgBid = 100;
+        // 金币高于平均则提高中标率，低于平均则降低
+        const bidBonus = (coins - avgBid) / avgBid * 0.1;
+        return Math.min(0.95, Math.max(0.70, baseProb + bidBonus));
+    }
 
-    // Sigmoid 函数计算中标概率
-    const probability = 1 / (1 + Math.exp(-2 * (bidRatio - 1)));
+    // 场景3: 供不应求（需求 > 容量），竞争激烈
+    // 中标率 ≈ 容量/需求 × 金币排名因子
+    const baseWinRate = capacity / expectedDemand;
 
-    // 容量因素调整
-    const capacityRatio = capacity / expectedDemand;
+    // 假设其他人的金币分配服从正态分布，均值=100，标准差=30
+    const avgBid = 100;
+    const bidStdDev = 30;
 
-    return Math.min(0.95, Math.max(0.05, probability * Math.sqrt(capacityRatio)));
+    // 你的金币在分布中的位置（Z分数）
+    const zScore = (coins - avgBid) / bidStdDev;
+
+    // 转换为排名百分位（使用近似的正态CDF）
+    // 金币越高，排名越靠前（百分位越高）
+    const percentile = 0.5 * (1 + Math.tanh(zScore * 0.8));
+
+    // 中标率 = 基础中标率 × 排名因子
+    // 排名前 (capacity/demand) 的人中标
+    // 如果你的排名百分位高于 (1 - capacity/demand)，则中标概率高
+    const cutoffPercentile = 1 - baseWinRate;
+
+    // 使用Sigmoid平滑过渡
+    const rankFactor = 1 / (1 + Math.exp(-5 * (percentile - cutoffPercentile)));
+
+    // 最终中标率
+    const finalProb = 0.3 + rankFactor * 0.65;
+
+    return Math.min(0.95, Math.max(0.30, finalProb));
 }
 
 // 4. 计算博弈论最优分配（核心算法）
