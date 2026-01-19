@@ -2339,8 +2339,46 @@ function showToast(message, type = 'success') {
 // 导出菜单控制
 function toggleExportMenu(event) {
     event.stopPropagation();
+
+    // 移动端使用 Action Sheet
+    if (isMobile()) {
+        openExportActionSheet();
+        return;
+    }
+
+    // 桌面端使用下拉菜单
     const menu = document.getElementById('exportMenu');
     menu.classList.toggle('active');
+}
+
+// 打开导出 Action Sheet（移动端）
+function openExportActionSheet() {
+    const actionSheet = document.getElementById('actionSheet');
+    const title = document.getElementById('actionSheetTitle');
+    const courseInfo = document.getElementById('actionSheetCourse');
+    const options = document.querySelector('.action-sheet-options');
+
+    title.textContent = '导出方案';
+    courseInfo.style.display = 'none';
+
+    options.innerHTML = `
+        <button class="action-option" onclick="copyPlanText(); closeActionSheet();">
+            <span class="option-icon" style="background: var(--indigo-bg); color: var(--indigo);">📋</span>
+            <div class="option-text">
+                <div class="option-title">复制文本</div>
+                <div class="option-desc">复制选课方案到剪贴板</div>
+            </div>
+        </button>
+        <button class="action-option" onclick="exportToICS(); closeActionSheet();">
+            <span class="option-icon" style="background: var(--jade-bg); color: var(--jade);">📅</span>
+            <div class="option-text">
+                <div class="option-title">导出日历文件</div>
+                <div class="option-desc">下载 ICS 日历文件</div>
+            </div>
+        </button>
+    `;
+
+    actionSheet.classList.add('active');
 }
 
 // 点击外部关闭菜单
