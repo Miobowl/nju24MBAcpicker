@@ -2466,6 +2466,45 @@ function formatICSDate(date, time) {
     };
 }
 
+// 生成 ICS 文件内容
+function generateICS() {
+    const allSelected = getAllSelectedIds();
+    if (allSelected.length === 0) {
+        return null;
+    }
+
+    let ics = [
+        'BEGIN:VCALENDAR',
+        'VERSION:2.0',
+        'PRODID:-//MBA选课助手//CN',
+        'CALSCALE:GREGORIAN',
+        'METHOD:PUBLISH'
+    ];
+
+    allSelected.forEach(id => {
+        const course = courses.find(c => c.id === id);
+        if (!course || !course.sessions) return;
+
+        course.sessions.forEach((session, idx) => {
+            const times = formatICSDate(session.date, session.time);
+            const location = course.is_online ? '线上课程' : (session.location || '待定');
+            const uid = `course-${id}-session-${idx}@mba-picker`;
+
+            ics.push('BEGIN:VEVENT');
+            ics.push(`UID:${uid}`);
+            ics.push(`DTSTART:${times.start}`);
+            ics.push(`DTEND:${times.end}`);
+            ics.push(`SUMMARY:${course.name}`);
+            ics.push(`LOCATION:${location}`);
+            ics.push('END:VEVENT');
+        });
+    });
+
+    ics.push('END:VCALENDAR');
+
+    return ics.join('\r\n');
+}
+
 function calculateDynamicCoins() {
     // 使用博弈论算法
     return calculateGameTheoryCoins(gameTheoryConfig.currentStrategy);
