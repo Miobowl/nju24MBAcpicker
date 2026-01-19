@@ -1606,7 +1606,19 @@
         <h1>MBA选课助手</h1>
         <div class="header-actions">
             <button class="review-btn" id="reviewBtn" onclick="toggleReview()">开启锐评</button>
-            <button class="export-btn" id="exportBtn" onclick="exportSelections()">导出方案</button>
+            <div class="export-menu-wrapper">
+                <button class="export-btn" id="exportBtn" onclick="toggleExportMenu(event)">导出方案</button>
+                <div class="export-menu" id="exportMenu">
+                    <button class="export-menu-item" onclick="copyPlanText()">
+                        <span class="icon">📋</span>
+                        <span>复制文本</span>
+                    </button>
+                    <button class="export-menu-item" onclick="exportToICS()">
+                        <span class="icon">📅</span>
+                        <span>导出日历文件</span>
+                    </button>
+                </div>
+            </div>
         </div>
         <div class="stats">
             <div class="stat">
