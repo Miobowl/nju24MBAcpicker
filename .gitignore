@@ -16,3 +16,6 @@ NDH6SA~M
 
 # Node (if used later)
 node_modules/
+
+# Git worktrees
+.worktrees/
