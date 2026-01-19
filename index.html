@@ -2445,6 +2445,27 @@ function copyPlanText() {
     });
 }
 
+// ICS 日期格式化
+// 输入: date="2026-03-05", time="9:00-12:00"
+// 输出: { start: "20260305T090000", end: "20260305T120000" }
+function formatICSDate(date, time) {
+    // 移除日期中的横线
+    const dateStr = date.replace(/-/g, '');
+
+    // 解析时间 "9:00-12:00" 或 "09:00-12:00"
+    const [startTime, endTime] = time.split('-');
+
+    function formatTime(t) {
+        const [hour, minute] = t.split(':');
+        return hour.padStart(2, '0') + minute.padStart(2, '0') + '00';
+    }
+
+    return {
+        start: dateStr + 'T' + formatTime(startTime),
+        end: dateStr + 'T' + formatTime(endTime)
+    };
+}
+
 function calculateDynamicCoins() {
     // 使用博弈论算法
     return calculateGameTheoryCoins(gameTheoryConfig.currentStrategy);
