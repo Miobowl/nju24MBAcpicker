@@ -103,7 +103,7 @@
             flex-wrap: wrap;
             gap: 16px;
             position: relative;
-            overflow: hidden;
+            z-index: 100;
             border-bottom: 3px solid var(--gold);
         }
 
@@ -204,6 +204,66 @@
             opacity: 0.5;
             cursor: not-allowed;
             transform: none;
+        }
+
+        /* 导出菜单容器 */
+        .export-menu-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* 导出下拉菜单 */
+        .export-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            min-width: 180px;
+            background: var(--paper-cream);
+            border: 1px solid var(--ink-200);
+            border-radius: 8px;
+            box-shadow: var(--shadow-lg);
+            z-index: 1000;
+            overflow: hidden;
+            animation: menuFadeIn 0.15s ease-out;
+        }
+
+        .export-menu.active {
+            display: block;
+        }
+
+        @keyframes menuFadeIn {
+            from { opacity: 0; transform: translateY(-8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .export-menu-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            background: none;
+            border: none;
+            width: 100%;
+            text-align: left;
+            font-family: 'Noto Serif SC', serif;
+            font-size: 0.9rem;
+            color: var(--ink-700);
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+
+        .export-menu-item:hover {
+            background: var(--gold-glow);
+            color: var(--ink-900);
+        }
+
+        .export-menu-item:not(:last-child) {
+            border-bottom: 1px solid var(--ink-100);
+        }
+
+        .export-menu-item .icon {
+            font-size: 1.1rem;
         }
 
         .header-actions {
@@ -1546,7 +1606,19 @@
         <h1>MBA选课助手</h1>
         <div class="header-actions">
             <button class="review-btn" id="reviewBtn" onclick="toggleReview()">开启锐评</button>
-            <button class="export-btn" id="exportBtn" onclick="exportSelections()">导出方案</button>
+            <div class="export-menu-wrapper">
+                <button class="export-btn" id="exportBtn" onclick="toggleExportMenu(event)">导出方案</button>
+                <div class="export-menu" id="exportMenu">
+                    <button class="export-menu-item" onclick="copyPlanText()">
+                        <span class="icon">📋</span>
+                        <span>复制文本</span>
+                    </button>
+                    <button class="export-menu-item" onclick="exportToICS()">
+                        <span class="icon">📅</span>
+                        <span>导出日历文件</span>
+                    </button>
+                </div>
+            </div>
         </div>
         <div class="stats">
             <div class="stat">
@@ -2264,8 +2336,65 @@ function showToast(message, type = 'success') {
     }, 2500);
 }
 
-// 导出选课方案
-function exportSelections() {
+// 导出菜单控制
+function toggleExportMenu(event) {
+    event.stopPropagation();
+
+    // 移动端使用 Action Sheet
+    if (isMobile()) {
+        openExportActionSheet();
+        return;
+    }
+
+    // 桌面端使用下拉菜单
+    const menu = document.getElementById('exportMenu');
+    menu.classList.toggle('active');
+}
+
+// 打开导出 Action Sheet（移动端）
+function openExportActionSheet() {
+    const actionSheet = document.getElementById('actionSheet');
+    const title = document.getElementById('actionSheetTitle');
+    const courseInfo = document.getElementById('actionSheetCourse');
+    const options = document.querySelector('.action-sheet-options');
+
+    title.textContent = '导出方案';
+    courseInfo.style.display = 'none';
+
+    options.innerHTML = `
+        <button class="action-option" onclick="copyPlanText(); closeActionSheet();">
+            <span class="option-icon" style="background: var(--indigo-bg); color: var(--indigo);">📋</span>
+            <div class="option-text">
+                <div class="option-title">复制文本</div>
+                <div class="option-desc">复制选课方案到剪贴板</div>
+            </div>
+        </button>
+        <button class="action-option" onclick="exportToICS(); closeActionSheet();">
+            <span class="option-icon" style="background: var(--jade-bg); color: var(--jade);">📅</span>
+            <div class="option-text">
+                <div class="option-title">导出日历文件</div>
+                <div class="option-desc">下载 ICS 日历文件</div>
+            </div>
+        </button>
+    `;
+
+    actionSheet.classList.add('active');
+}
+
+// 点击外部关闭菜单
+document.addEventListener('click', function(e) {
+    const menu = document.getElementById('exportMenu');
+    const wrapper = e.target.closest('.export-menu-wrapper');
+    if (!wrapper && menu) {
+        menu.classList.remove('active');
+    }
+});
+
+// 导出选课方案（复制文本）
+function copyPlanText() {
+    // 关闭菜单
+    document.getElementById('exportMenu').classList.remove('active');
+
     const allSelected = getAllSelectedIds();
     if (allSelected.length === 0) {
         showToast('暂无已选课程', 'error');
@@ -2352,6 +2481,107 @@ function exportSelections() {
         }
         document.body.removeChild(textarea);
     });
+}
+
+// ICS 日期格式化
+// 输入: date="2026-03-05", time="9:00-12:00"
+// 输出: { start: "20260305T090000", end: "20260305T120000" }
+function formatICSDate(date, time) {
+    // 移除日期中的横线
+    const dateStr = date.replace(/-/g, '');
+
+    // 解析时间 "9:00-12:00" 或 "09:00-12:00"
+    const [startTime, endTime] = time.split('-');
+
+    function formatTime(t) {
+        const [hour, minute] = t.split(':');
+        return hour.padStart(2, '0') + minute.padStart(2, '0') + '00';
+    }
+
+    return {
+        start: dateStr + 'T' + formatTime(startTime),
+        end: dateStr + 'T' + formatTime(endTime)
+    };
+}
+
+// 生成 ICS 文件内容
+function generateICS() {
+    const allSelected = getAllSelectedIds();
+    if (allSelected.length === 0) {
+        return null;
+    }
+
+    let ics = [
+        'BEGIN:VCALENDAR',
+        'VERSION:2.0',
+        'PRODID:-//MBA选课助手//CN',
+        'CALSCALE:GREGORIAN',
+        'METHOD:PUBLISH'
+    ];
+
+    allSelected.forEach(id => {
+        const course = courses.find(c => c.id === id);
+        if (!course || !course.sessions) return;
+
+        course.sessions.forEach((session, idx) => {
+            const times = formatICSDate(session.date, session.time);
+            const location = course.is_online ? '线上课程' : (session.location || '待定');
+            const uid = `course-${id}-session-${idx}@mba-picker`;
+
+            ics.push('BEGIN:VEVENT');
+            ics.push(`UID:${uid}`);
+            ics.push(`DTSTART:${times.start}`);
+            ics.push(`DTEND:${times.end}`);
+            ics.push(`SUMMARY:${course.name}`);
+            ics.push(`LOCATION:${location}`);
+            ics.push('END:VEVENT');
+        });
+    });
+
+    ics.push('END:VCALENDAR');
+
+    return ics.join('\r\n');
+}
+
+// 下载 ICS 文件
+function downloadICS(content, filename) {
+    const blob = new Blob([content], { type: 'text/calendar;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+    URL.revokeObjectURL(url);
+}
+
+// 导出为 ICS 日历文件
+function exportToICS() {
+    // 关闭菜单
+    document.getElementById('exportMenu').classList.remove('active');
+
+    const allSelected = getAllSelectedIds();
+    if (allSelected.length === 0) {
+        showToast('请先选择课程', 'error');
+        return;
+    }
+
+    const icsContent = generateICS();
+    if (!icsContent) {
+        showToast('生成日历文件失败', 'error');
+        return;
+    }
+
+    // 生成文件名：MBA选课-2026-01-19.ics
+    const today = new Date();
+    const dateStr = today.toISOString().split('T')[0];
+    const filename = `MBA选课-${dateStr}.ics`;
+
+    downloadICS(icsContent, filename);
+    showToast('日历文件已下载', 'success');
 }
 
 function calculateDynamicCoins() {
