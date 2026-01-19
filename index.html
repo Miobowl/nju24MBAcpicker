@@ -2352,8 +2352,11 @@ document.addEventListener('click', function(e) {
     }
 });
 
-// 导出选课方案
-function exportSelections() {
+// 导出选课方案（复制文本）
+function copyPlanText() {
+    // 关闭菜单
+    document.getElementById('exportMenu').classList.remove('active');
+
     const allSelected = getAllSelectedIds();
     if (allSelected.length === 0) {
         showToast('暂无已选课程', 'error');
