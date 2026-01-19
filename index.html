@@ -2336,6 +2336,22 @@ function showToast(message, type = 'success') {
     }, 2500);
 }
 
+// 导出菜单控制
+function toggleExportMenu(event) {
+    event.stopPropagation();
+    const menu = document.getElementById('exportMenu');
+    menu.classList.toggle('active');
+}
+
+// 点击外部关闭菜单
+document.addEventListener('click', function(e) {
+    const menu = document.getElementById('exportMenu');
+    const wrapper = e.target.closest('.export-menu-wrapper');
+    if (!wrapper && menu) {
+        menu.classList.remove('active');
+    }
+});
+
 // 导出选课方案
 function exportSelections() {
     const allSelected = getAllSelectedIds();
